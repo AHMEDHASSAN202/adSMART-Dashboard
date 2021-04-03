@@ -27,7 +27,7 @@ class Role extends Model
 
     public function scopeSearch($query, $request)
     {
-        if ($s = $request->input('query.s')) {
+        if ($s = $request->query('s')) {
             return $query->where(Role::RoleDescriptionTable.'.name', 'LIKE', '%' . $s . '%');
         }
     }

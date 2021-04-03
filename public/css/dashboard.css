@@ -18,7 +18,8 @@
     fill: var(--info) !important;
 }
 
-.nav.nav-tabs.nav-tabs-line.nav-tabs-line-3x .nav-link:hover:not(.disabled), .nav.nav-tabs.nav-tabs-line.nav-tabs-line-3x .nav-link.active, .nav.nav-tabs.nav-tabs-line.nav-tabs-line-3x .show > .nav-link {
+.nav.nav-tabs.nav-tabs-line.nav-tabs-line-3x .nav-link:hover:not(.disabled), .nav.nav-tabs.nav-tabs-line.nav-tabs-line-3x .nav-link.active, .nav.nav-tabs.nav-tabs-line.nav-tabs-line-3x .show > .nav-link,
+.nav.nav-tabs.nav-tabs-line .nav-link:hover:not(.disabled), .nav.nav-tabs.nav-tabs-line .nav-link.active, .nav.nav-tabs.nav-tabs-line .show > .nav-link {
     border-color: var(--info) !important;
 }
 
@@ -41,5 +42,17 @@ html[dir=rtl] .spinner {
 
 html[dir=rtl] * {
     font-family: 'Cairo', sans-serif;
+}
+
+.data-table-extensions-action {
+    z-index: 1;
+}
+
+.header .header-menu .menu-nav > .menu-item.menu-item-here > .menu-link {
+    background-color: transparent !important;
+}
+
+.header .header-menu .menu-nav > .menu-item.menu-item-here:not(.menu-item-active) > .menu-link .menu-text {
+    color: #7E8299 !important;
 }
 

@@ -1,3 +1,4 @@
+<?php $language = \App\Classes\Utilities::getLanguage() ?>
 <!DOCTYPE html>
 <html lang="{{$language->language_code}}" dir="{{$language->language_direction}}">
     <head>

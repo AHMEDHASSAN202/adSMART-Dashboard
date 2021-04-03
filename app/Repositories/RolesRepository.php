@@ -17,15 +17,14 @@ class RolesRepository
 {
     public function getRoles(Request $request)
     {
-        $page = $request->input('pagination.page', 1);
-        $perPage = Utilities::$paginationPerPage;
+        $perPage = $request->query('perpage', Utilities::$paginationPerPage);
 
         return Role::select(
                 'roles.role_id',
                 'roles.created_at',
                 'name',
                 'fk_language_id'
-            )->roleDescription()->language()->search($request)->paginate($perPage, ['*'], 'page', $page);
+            )->orderBy('role_id', 'DESC')->roleDescription()->language()->search($request)->paginate($perPage);
     }
 
     public function showRolesColumns(LengthAwarePaginator $roles)
@@ -51,7 +50,7 @@ class RolesRepository
     public function addNewRole($data)
     {
         $permissions = empty($data['permissions']) ? [] : $data['permissions'];
-        $role = Role::create(['permissions' => json_encode(array_keys($permissions))]);
+        $role = Role::create(['permissions' => json_encode($permissions)]);
         if (!$role) return false;
         $d = [];
         $languages = Utilities::getLanguages();
@@ -66,15 +65,15 @@ class RolesRepository
         return DB::table('roles_description')->insert($d);
     }
 
-    public function getRole($role_id)
+    public function getRole($role)
     {
-        $role = Role::findOrFail($role_id);
         $roleDescriptions = DB::table(Role::RoleDescriptionTable)->where(['fk_role_id' => $role->role_id])->get();
         $res['role_id'] = $role->role_id;
         $res['permissions'] = $role->permissions;
         $res['role_name'] = [];
         foreach ($roleDescriptions as $description) {
-            $res['role_name'][$description->fk_language_id] = $description->name;
+            $languageCode = Utilities::getLanguage(null, $description->fk_language_id)->language_code;
+            $res['role_name'][$languageCode] = $description->name;
         }
         return $res;
     }
@@ -82,7 +81,7 @@ class RolesRepository
     public function updateRole($role_id, $data)
     {
         $permissions = empty($data['permissions']) ? [] : $data['permissions'];
-        Role::where('role_id', $role_id)->update(['permissions' => json_encode(array_keys($permissions))]);
+        Role::where('role_id', $role_id)->update(['permissions' => json_encode($permissions)]);
         $languages = Utilities::getLanguages();
         foreach ($languages as $language) {
             DB::table(Role::RoleDescriptionTable)->updateOrInsert(

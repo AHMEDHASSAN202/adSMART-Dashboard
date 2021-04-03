@@ -22,12 +22,14 @@ class LanguagesTableSeeder extends Seeder
                 'language_name'          => 'English',
                 'language_code'          => 'en',
                 'language_direction'     => 'ltr',
-                'language_display_front' => true
+                'language_display_front' => true,
+                'language_image'         => '226-united-states.svg'
             ], [
                 'language_name'          => 'عربي',
                 'language_code'          => 'ar',
                 'language_direction'     => 'rtl',
-                'language_display_front' => true
+                'language_display_front' => true,
+                'language_image'         => '158-egypt.svg'
             ]
         ]);
     }

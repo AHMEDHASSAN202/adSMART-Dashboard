@@ -9,6 +9,7 @@ use App\Models\Role;
 use App\Http\Requests\Dashboard\CreateNewRoleRequest;
 use App\Http\Requests\Dashboard\UpdateRoleRequest;
 use App\Repositories\RolesRepository;
+use Inertia\Inertia;
 
 class RolesController extends Controller
 {
@@ -19,62 +20,51 @@ class RolesController extends Controller
         $this->rolesRepository = $rolesRepository;
     }
 
-
     public function index(Request $request)
     {
-        app('document')->setTitle(_e('roles'))->setDescription(_e('browse'));
+        app('document')->setTitle(_e('roles'));
 
-        $roleForUpdate = null;
+        $roles = $this->rolesRepository->getRoles($request);
 
-        //edit role
-        if ($editRoleId = $request->query('editRole')) {
-            $roleForUpdate = $this->rolesRepository->getRole($editRoleId);
-        }
-
-        if ($request->wantsJson()) {
-            //edit role
-            if ($roleForUpdate) {
-                return response()->json($roleForUpdate);
-            }
-            $roles = $this->rolesRepository->getRoles($request);
-            $ktColumns = $this->rolesRepository->showRolesColumns($roles);
-            $data = Utilities::KtDatatableResponse($ktColumns, null, 'asc', '#');
-            return response()->json($data);
-        }
-
-        return view('roles::pages.roles_index', ['roleForUpdate' => $roleForUpdate]);
+        return Inertia::render('Roles/Index', compact('roles'));
     }
 
-    public function addRole(CreateNewRoleRequest $createNewRoleRequest)
+    public function create()
+    {
+        app('document')->setTitle(_e('new_role'));
+        $permissions = Utilities::getAllPermissions();
+
+        return Inertia::render('Roles/CreateEdit', compact('permissions'));
+    }
+
+    public function store(CreateNewRoleRequest $createNewRoleRequest)
     {
         $result = $this->rolesRepository->addNewRole($createNewRoleRequest->all());
 
-        if ($createNewRoleRequest->wantsJson()) {
-            return response()->json([], $result ? 400 : 201);
-        }
-
-        return redirect()->route('roles.index')->with(Utilities::toastr($result));
+        return redirect()->route('dashboard.roles.index')->with(Utilities::alertFromStatus($result));
     }
 
-    public function updateRole(Role $role, UpdateRoleRequest $updateRoleRequest)
+    public function edit(Role $role)
+    {
+        app('document')->setTitle(_e(['edit', 'role']));
+
+        $result = $this->rolesRepository->getRole($role);
+        $permissions = Utilities::getAllPermissions();
+
+        return Inertia::render('Roles/CreateEdit', ['role' => $result, 'permissions' => $permissions]);
+    }
+
+    public function update(Role $role, UpdateRoleRequest $updateRoleRequest)
     {
         $this->rolesRepository->updateRole($role->role_id, $updateRoleRequest->all());
 
-        if ($updateRoleRequest->wantsJson()) {
-            return response()->json([], 200);
-        }
-
-        return redirect()->route('roles.index')->with(Utilities::toastr(true));
+        return redirect()->route('dashboard.roles.index')->with(Utilities::alertFromStatus(true));
     }
 
-    public function deleteRole(Request $request)
+    public function destroy(Request $request)
     {
         $this->rolesRepository->deleteRoles($request->ids);
 
-        if ($request->wantsJson()) {
-            return response()->json([], 200);
-        }
-
-        return redirect()->route('roles.index')->with(Utilities::toastr(true));
+        return redirect()->route('dashboard.roles.index')->with(Utilities::alertFromStatus(true));
     }
 }

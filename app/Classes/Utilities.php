@@ -9,13 +9,13 @@ namespace App\Classes;
 
 use App\Models\Flag;
 use App\Repositories\LocalizationRepository;
-use Illuminate\Filesystem\Cache;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\HtmlString;
 
 class Utilities
 {
-    public static $paginationPerPage = 20;
+    public static $paginationPerPage = 10;
+    private static $language = null;
 
     public static function KtDatatableResponse($data, $perpage=null, $sort='asc', $field='id')
     {
@@ -99,6 +99,18 @@ class Utilities
     public static function getLanguages()
     {
         return app(LocalizationRepository::class)->getLanguages();
+    }
+
+    public static function setLanguage($language)
+    {
+        static::$language = $language;
+    }
+
+    public static function getLanguage($code=null, $id=null)
+    {
+        if (!$code && !$id) return static::$language;
+        if ($code) return app(LocalizationRepository::class)->getLanguage($code);
+        if ($id) return app(LocalizationRepository::class)->getLanguageById($id);
     }
 
     public static function getLanguageTranslations($lang=null)
@@ -224,8 +236,8 @@ class Utilities
                 ],
                 [
                     'title' => _e('roles'),
-                    'icon' => 'fas fa-user-friends', // or can be 'flaticon-home' or any flaticon-*
-                    'page' => '#',
+                    'icon' => 'flaticon2-shield', // or can be 'flaticon-home' or any flaticon-*
+                    'page' => route('dashboard.roles.index'),
                     'extraClasses' => '',
                 ],
 

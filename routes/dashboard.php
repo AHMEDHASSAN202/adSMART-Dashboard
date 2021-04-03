@@ -28,10 +28,12 @@ Route::group(['prefix' => 'localization'], function () {
 
 //roles routes
 Route::group(['prefix' => 'roles'], function () {
-    Route::get('/', ['uses' => 'RolesController@index', 'as' => 'roles.index']);
-    Route::post('/', ['uses' => 'RolesController@addRole', 'as' => 'roles.add_role']);
-    Route::put('/{role}', ['uses' => 'RolesController@updateRole', 'as' => 'roles.update_role']);
-    Route::delete('/', ['uses' => 'RolesController@deleteRole', 'as' => 'roles.delete_role']);
+    Route::get('', ['uses' => 'RolesController@index', 'as' => 'dashboard.roles.index']);
+    Route::post('', ['uses' => 'RolesController@store', 'as' => 'dashboard.roles.store']);
+    Route::get('create', ['uses' => 'RolesController@create', 'as' => 'dashboard.roles.create']);
+    Route::get('{role}/edit', ['uses' => 'RolesController@edit', 'as' => 'dashboard.roles.edit']);
+    Route::put('{role}', ['uses' => 'RolesController@update', 'as' => 'dashboard.roles.update']);
+    Route::delete('', ['uses' => 'RolesController@destroy', 'as' => 'dashboard.roles.destroy']);
 });
 
 
