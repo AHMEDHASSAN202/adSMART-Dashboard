@@ -35,7 +35,10 @@
                     @csrf()
 
                     @if (!empty($errors->all()))
-                        <div class="txt2-error p-b-10 text-center"><span>invalid email or password</span></div>
+                        <div class="txt2-error p-b-10 text-center"><span>{{ $errors->first() }}</span></div>
+                    @endif
+                    @if ($msg = session()->get('success'))
+                        <div class="p-b-10 text-center" style="color: green;"><span>{{ $msg }}</span></div>
                     @endif
                     <div class="wrap-input100 m-b-20">
                         <input required min="3" max="100" class="input100" type="email" value="{{ old('email') }}" name="email" placeholder="Email">

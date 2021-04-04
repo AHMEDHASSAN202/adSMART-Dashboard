@@ -2421,6 +2421,36 @@ class TranslationsTableSeeder extends Seeder
                 "translation_key" => "signout",
                 "translation_value" => "تسجيل خروج",
                 "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "invalid_email_or_password_msg",
+                "translation_value" => "invalid email or password",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "invalid_email_or_password_msg",
+                "translation_value" => "خطأ في البريد الالكتروني او كلمة المرور",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "need_verify_email_msg",
+                "translation_value" => "please check your email to verify your account!",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "need_verify_email_msg",
+                "translation_value" => "يرجى التحقق من بريدك الإلكتروني للتحقق من حسابك!",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "success_verify_msg",
+                "translation_value" => "The account has been activated successfully!",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "success_verify_msg",
+                "translation_value" => "تم تفعيل االحساب بنجاح",
+                "translation_lang" => "ar",
             ]
         ]);
     }

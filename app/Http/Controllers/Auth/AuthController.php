@@ -27,4 +27,5 @@ class AuthController extends Controller
     {
         return view($this->loginView, ['target' => $this->target]);
     }
+
 }

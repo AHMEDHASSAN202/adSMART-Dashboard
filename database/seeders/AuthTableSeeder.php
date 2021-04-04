@@ -20,7 +20,7 @@ class AuthTableSeeder extends Seeder
         User::create([
             'fk_role_id' => 1,
             'user_name' => 'ahmed hassan',
-            'user_email'    => 'ahmed@gmail.com',
+            'user_email'    => 'testelbhai@gmail.com',
             'user_password' => password_hash(123456, PASSWORD_DEFAULT)
         ]);
 

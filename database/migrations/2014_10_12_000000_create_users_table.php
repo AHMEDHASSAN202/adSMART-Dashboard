@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->foreignId('fk_role_id')->nullable();
             $table->string('user_name');
             $table->string('user_email')->unique();
-            $table->timestamp('user_email_verified_at')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('user_password');
             $table->string('user_avatar')->nullable();
             $table->rememberToken();

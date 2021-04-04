@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Support\MessageBag;
 use App\Http\Requests\Dashboard\LoginToDashboardRequest;
+use Illuminate\Support\MessageBag;
+use App\Http\Requests\EmailVerificationRequest;
 
 class DashboardAuthController extends AuthController
 {
@@ -11,10 +12,8 @@ class DashboardAuthController extends AuthController
    {
        $logged = $this->authRepository->loginToDashboard($loginToDashboardRequest);
 
-       if (!$logged) {
-           $errors = new MessageBag();
-           $errors->add('email_or_password', true);
-           return redirect()->back()->with(compact('errors'))->withInput();
+       if ($logged instanceof MessageBag || !$logged) {
+           return redirect()->back()->with(['errors' => $logged])->withInput();
        }
 
        return redirect($this->target ? url($this->target) : route('dashboard.index'));
@@ -32,5 +31,13 @@ class DashboardAuthController extends AuthController
 
        return redirect('/');
    }
+
+
+    public function emailVerification(EmailVerificationRequest $emailVerificationRequest)
+    {
+        $emailVerificationRequest->fulfill();
+
+        return redirect()->route('auth.dashboard.login')->with(['success' => _e('success_verify_msg')])->withInput(['email' => $emailVerificationRequest->user->user_email]);
+    }
 
 }

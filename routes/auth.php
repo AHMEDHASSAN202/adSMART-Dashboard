@@ -9,9 +9,14 @@ Route::group(['middleware' => ['guest:dashboard']], function () {
     Route::get('dashboard/login', 'DashboardAuthController@loginPage')->name('auth.dashboard.login');
     //submit login to dashboard
     Route::post('dashboard/login', 'DashboardAuthController@submitLogin')->name('auth.dashboard.submitLogin');
+
 });
 
 Route::group(['middleware' => ['auth:dashboard']], function () {
     //logout from dashboard
     Route::post('dashboard/logout', 'DashboardAuthController@logoutFromDashboard')->name('auth.dashboard.logout');
 });
+
+
+//for dashboard
+Route::get('email/verify/{id}/{hash}/dashboard', 'DashboardAuthController@emailVerification')->middleware(['signed'])->name('verification.verify.dashboard');

@@ -2,10 +2,14 @@
 
 namespace App\Providers;
 
+use App\Events\Dashboard\AfterUserLoginToDashboardEvent;
+use App\Events\Dashboard\AfterUserLogoutFromDashboardEvent;
+use App\Events\Dashboard\BeforeUserLoginToDashboardEvent;
+use App\Events\Dashboard\BeforeUserLogoutFromDashboardEvent;
+use App\Listeners\Dashboard\SendEmailVerificationNotificationDashboard;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -18,6 +22,18 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        BeforeUserLoginToDashboardEvent::class => [
+            SendEmailVerificationNotificationDashboard::class
+        ],
+        AfterUserLoginToDashboardEvent::class => [
+
+        ],
+        BeforeUserLogoutFromDashboardEvent::class => [
+
+        ],
+        AfterUserLogoutFromDashboardEvent::class => [
+
+        ]
     ];
 
     /**

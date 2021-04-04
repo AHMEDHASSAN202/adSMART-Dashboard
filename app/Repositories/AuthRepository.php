@@ -14,6 +14,7 @@ use App\Events\Dashboard\AfterUserLoginToDashboardEvent;
 use App\Events\Dashboard\AfterUserLogoutFromDashboardEvent;
 use App\Events\Dashboard\BeforeUserLoginToDashboardEvent;
 use App\Events\Dashboard\BeforeUserLogoutFromDashboardEvent;
+use Illuminate\Support\MessageBag;
 
 class AuthRepository
 {
@@ -26,17 +27,23 @@ class AuthRepository
 
         //check on user
         if (!$user) {
-            return false;
+            $status = new MessageBag();
+            $status->add('email_or_password', _e('invalid_email_or_password_msg'));
+            return $status;
         }
 
         //check password
         if (!Hash::check($loginToDashboardRequest->password, $user->user_password)) {
-            return false;
+            $status = new MessageBag();
+            $status->add('email_or_password', _e('invalid_email_or_password_msg'));
+            return $status;
         }
 
         //check permissions
         if (!$user->hasPermissions($this->dashboardPermission)) {
-            return false;
+            $status = new MessageBag();
+            $status->add('email_or_password', _e('invalid_email_or_password_msg'));
+            return $status;
         }
 
         //dispatch before user login event
