@@ -5,10 +5,6 @@
  * All Routes Under "auth" Middleware
  */
 
-Route::get('about', function () {
-    return \Inertia\Inertia::render('About');
-});
-
 //dashboard routes
 Route::get('', ['uses' => 'DashboardController@index', 'as' => 'dashboard.index']);
 

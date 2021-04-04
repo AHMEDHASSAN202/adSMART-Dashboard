@@ -13,7 +13,7 @@ class HandleDashboardInertiaRequests extends Middleware
      * @see https://inertiajs.com/server-side-setup#root-template
      * @var string
      */
-    protected $rootView = 'dashboard';
+    protected $rootView = 'dashboard.dashboard';
 
     /**
      * Determines the current asset version.

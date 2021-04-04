@@ -18,12 +18,17 @@ class AuthTableSeeder extends Seeder
         Model::unguard();
 
         User::create([
-            'user_role' => 'admin',
+            'fk_role_id' => 1,
             'user_name' => 'ahmed hassan',
             'user_email'    => 'ahmed@gmail.com',
             'user_password' => password_hash(123456, PASSWORD_DEFAULT)
         ]);
 
-
+        User::create([
+            'fk_role_id' => 2,
+            'user_name' => 'user',
+            'user_email'    => 'user@gmail.com',
+            'user_password' => password_hash(123456, PASSWORD_DEFAULT)
+        ]);
     }
 }

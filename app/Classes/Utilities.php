@@ -49,7 +49,7 @@ class Utilities
         echo $s;
     }
 
-    public static function getAllPermissions()
+    public static function getAllPermissions($groups=true)
     {
         $permissions = [
             'dashboard' => ['browse'],
@@ -61,7 +61,18 @@ class Utilities
             'users' => ['browse', 'create', 'update'],
         ];
 
-        return $permissions;
+        if ($groups) {
+            return $permissions;
+        }
+
+        $pers = [];
+        foreach ($permissions as $key => $value) {
+            foreach ($value as $v) {
+                $pers[] = $key . '-' . $v;
+            }
+        }
+
+        return $pers;
     }
 
     public static function editHtmlButton($editUrl)

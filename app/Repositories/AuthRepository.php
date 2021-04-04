@@ -17,6 +17,8 @@ use App\Events\Dashboard\BeforeUserLogoutFromDashboardEvent;
 
 class AuthRepository
 {
+    private $dashboardGuard = 'dashboard';
+    protected $dashboardPermission = 'dashboard-browse';
 
     public function loginToDashboard($loginToDashboardRequest)
     {
@@ -32,8 +34,8 @@ class AuthRepository
             return false;
         }
 
-        //check role
-        if (!in_array($user->user_role, config('auth.dashboard_roles'))) {
+        //check permissions
+        if (!$user->hasPermissions($this->dashboardPermission)) {
             return false;
         }
 
@@ -41,7 +43,7 @@ class AuthRepository
         event(new BeforeUserLoginToDashboardEvent($user));
 
         //logged it
-        Auth::login($user, (boolean)$loginToDashboardRequest->rememberme);
+        Auth::guard($this->dashboardGuard)->login($user, (boolean)$loginToDashboardRequest->rememberme);
 
         //dispatch after user login event
         event(new AfterUserLoginToDashboardEvent($user));
@@ -52,11 +54,11 @@ class AuthRepository
 
     public function logoutFromDashboard()
     {
-        $me = Auth::user();
+        $me = Auth::guard($this->dashboardGuard)->user();
 
         event(new BeforeUserLogoutFromDashboardEvent($me));
 
-        Auth::logout();
+        Auth::guard($this->dashboardGuard)->logout();
 
         event(new AfterUserLogoutFromDashboardEvent($me));
 
@@ -65,6 +67,6 @@ class AuthRepository
 
     public function getProfile()
     {
-        return auth()->user();
+        return auth($this->dashboardGuard)->user();
     }
 }

@@ -19,9 +19,6 @@ class CreateRolesDescriptionTable extends Migration
             $table->unsignedBigInteger('fk_language_id');
             $table->string('name');
             $table->timestamps();
-
-            $table->foreign('fk_role_id')->references('role_id')->on('roles')->onDelete('cascade');
-            $table->foreign('fk_language_id')->references('language_id')->on('languages')->onDelete(null);
         });
     }
 

@@ -2381,6 +2381,46 @@ class TranslationsTableSeeder extends Seeder
                 "translation_key" => "permissions",
                 "translation_value" => "الصلاحيات",
                 "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "login",
+                "translation_value" => "Login",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "login",
+                "translation_value" => "تسجيل دخول",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "logout",
+                "translation_value" => "Logout",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "logout",
+                "translation_value" => "تسجيل خروج",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "signin",
+                "translation_value" => "Sign in",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "signin",
+                "translation_value" => "تسجيل دخول",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "signout",
+                "translation_value" => "Sign out",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "signout",
+                "translation_value" => "تسجيل خروج",
+                "translation_lang" => "ar",
             ]
         ]);
     }

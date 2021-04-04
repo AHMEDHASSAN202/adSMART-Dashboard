@@ -58,7 +58,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
 
             Route::prefix('dashboard')
-                ->middleware(['web', 'dashboard.inertia.request'])
+                ->middleware(['web', 'auth:dashboard', 'dashboard.inertia.request'])
                 ->namespace($this->dashboard_namespace)
                 ->group(base_path('routes/dashboard.php'));
 

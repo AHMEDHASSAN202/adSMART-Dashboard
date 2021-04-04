@@ -42,13 +42,15 @@ export default function ProfileInfoPanel() {
                         </div>
                         <div className="navi mt-2">
                             <a href="#" className="navi-item">
-                        <span className="navi-link p-0 pb-2">
-                            <span className="navi-icon mr-1"></span>
-                            <span className="navi-text text-muted text-hover-primary">jm@softplus.com</span>
-                        </span>
+                                <span className="navi-link p-0 pb-2">
+                                    <span className="navi-icon mr-1"></span>
+                                    <span className="navi-text text-muted text-hover-primary">jm@softplus.com</span>
+                                </span>
                             </a>
-
-                            <a href="#" className="btn btn-sm btn-dark font-weight-bolder py-2 px-5">Sign Out</a>
+                            <form action={route('auth.dashboard.logout')} method='POST'>
+                                <input type="text" name='_token' value={window.csrfToken} hidden readOnly />
+                                <button type="submit" className="btn btn-sm btn-dark font-weight-bolder py-2 px-5">{translations['signout']}</button>
+                            </form>
                         </div>
                     </div>
                 </div>
