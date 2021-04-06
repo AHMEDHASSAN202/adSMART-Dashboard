@@ -15,7 +15,7 @@ class AuthController extends Controller
 {
     protected $authRepository;
     protected $target = '';
-    protected $loginView = 'dashboard.dashboard-login';
+    protected $loginView = 'dashboard.auth.dashboard-login';
 
     public function __construct(AuthRepository $authRepository, Request $request)
     {

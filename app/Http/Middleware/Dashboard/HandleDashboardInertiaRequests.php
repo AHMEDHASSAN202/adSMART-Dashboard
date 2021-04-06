@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware\Dashboard;
 
+use App\Repositories\AuthRepository;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -37,7 +38,8 @@ class HandleDashboardInertiaRequests extends Middleware
     public function share(Request $request)
     {
         return array_merge(parent::share($request), [
-            'alert'    => $request->session()->get('alert')
+            'alert'    => $request->session()->get('alert'),
+            'user'     => app(AuthRepository::class)->getProfileAdmin()
         ]);
     }
 }

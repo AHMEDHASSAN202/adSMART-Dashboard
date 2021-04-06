@@ -499,6 +499,16 @@ class TranslationsTableSeeder extends Seeder
                 'translation_lang'      => 'ar',
             ],
             [
+                'translation_key'       => 'send',
+                'translation_value'     => 'Send',
+                'translation_lang'      => 'en',
+            ],
+            [
+                'translation_key'       => 'send',
+                'translation_value'     => 'ارسال',
+                'translation_lang'      => 'ar',
+            ],
+            [
                 'translation_key'       => 'add',
                 'translation_value'     => 'Add',
                 'translation_lang'      => 'en',
@@ -816,6 +826,16 @@ class TranslationsTableSeeder extends Seeder
             [
                 'translation_key'       => 'my_messages',
                 'translation_value'     => 'رسائلي',
+                'translation_lang'      => 'ar',
+            ],
+            [
+                'translation_key'       => 'my_messages_desc',
+                'translation_value'     => 'My Messages and Inbox',
+                'translation_lang'      => 'en',
+            ],
+            [
+                'translation_key'       => 'my_messages_desc',
+                'translation_value'     => 'رسائلي والصندوق الوارد',
                 'translation_lang'      => 'ar',
             ],
             [
@@ -2423,6 +2443,16 @@ class TranslationsTableSeeder extends Seeder
                 "translation_lang" => "ar",
             ],
             [
+                "translation_key" => "rememberme",
+                "translation_value" => "Remember Me",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "rememberme",
+                "translation_value" => "تذكرني",
+                "translation_lang" => "ar",
+            ],
+            [
                 "translation_key" => "invalid_email_or_password_msg",
                 "translation_value" => "invalid email or password",
                 "translation_lang" => "en",
@@ -2450,6 +2480,46 @@ class TranslationsTableSeeder extends Seeder
             [
                 "translation_key" => "success_verify_msg",
                 "translation_value" => "تم تفعيل االحساب بنجاح",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "dashboard_login_title",
+                "translation_value" => "Admin Dashboard",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "dashboard_login_title",
+                "translation_value" => "لوحة التحكم",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "dashboard_forgot_password_title",
+                "translation_value" => "Reset Password",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "dashboard_forgot_password_title",
+                "translation_value" => "إعادة تعيين كلمة المرور",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "reset_link_sent_msg",
+                "translation_value" => "please check your email to reset password",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "reset_link_sent_msg",
+                "translation_value" => "يرجى التحقق من بريدك الإلكتروني لإعادة تعيين كلمة المرور",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "reset_link_success_msg",
+                "translation_value" => "Reset Password Successfully",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "reset_link_success_msg",
+                "translation_value" => "تم تغيير كلمة المرور",
                 "translation_lang" => "ar",
             ]
         ]);

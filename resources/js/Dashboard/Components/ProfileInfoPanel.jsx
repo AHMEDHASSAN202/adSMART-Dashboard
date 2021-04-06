@@ -5,6 +5,32 @@ import {AppContext} from "../AppContext";
 export default function ProfileInfoPanel() {
 
     const {data, dispatch} = useContext(AppContext);
+    const myNavi = [
+        {
+            title: translations['profile_info'],
+            desc: translations['account_desc'],
+            icon: <i className="flaticon-profile-1 text-warning icon-lg"></i>,
+            href: '#'
+        },
+        {
+            title: translations['my_messages'],
+            desc: translations['my_messages_desc'],
+            icon: <i className="flaticon2-analytics text-danger icon-lg"></i>,
+            href: '#'
+        },
+        {
+            title: translations['my_notification'],
+            desc: translations['my_notification'],
+            icon: <i className="flaticon2-world text-success icon-lg"></i>,
+            href: '#'
+        },
+        {
+            title: translations['settings'],
+            desc: translations['settings_description'],
+            icon: <i className="flaticon2-gear text-primary icon-lg"></i>,
+            href: '#'
+        }
+    ];
 
     return (
 
@@ -12,8 +38,8 @@ export default function ProfileInfoPanel() {
 
             <div className="offcanvas-header d-flex align-items-center justify-content-between pb-5">
                 <h3 className="font-weight-bold m-0">
-                    User Profile
-                    <small className="text-muted font-size-sm ml-2">12 messages</small>
+                    {translations['profile_info']}
+                    <small className="text-muted font-size-sm ml-2">12 {translations['messages']}</small>
                 </h3>
                 <button
                     className="btn btn-xs btn-icon btn-light btn-hover-primary"
@@ -34,17 +60,16 @@ export default function ProfileInfoPanel() {
                         <i className="symbol-badge bg-success"></i>
                     </div>
                     <div className="d-flex flex-column">
-                        <a href="#" className="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">
-                            James Jones
+                        <a href="#" className="font-weight-bold font-size-h5 text-dark-75 text-capitalize text-hover-primary">
+                            {data.user.user_name}
                         </a>
-                        <div className="text-muted mt-1">
-                            Application Developer
+                        <div className="text-muted mt-1 text-capitalize">
+                            {data.user.role.name}
                         </div>
                         <div className="navi mt-2">
                             <a href="#" className="navi-item">
                                 <span className="navi-link p-0 pb-2">
-                                    <span className="navi-icon mr-1"></span>
-                                    <span className="navi-text text-muted text-hover-primary">jm@softplus.com</span>
+                                    <span className="navi-text text-muted text-hover-primary">{data.user.user_email}</span>
                                 </span>
                             </a>
                             <form action={route('auth.dashboard.logout')} method='POST'>
@@ -55,88 +80,30 @@ export default function ProfileInfoPanel() {
                     </div>
                 </div>
 
-
-
                 <div className="separator separator-dashed mt-8 mb-5"></div>
-
-
 
                 <div className="navi navi-spacer-x-0 p-0">
 
-                    <a href="custom/apps/user/profile-1/personal-information.html" className="navi-item">
-                        <div className="navi-link">
-                            <div className="symbol symbol-40 bg-light mr-3">
-                                <div className="symbol-label">
-							<span className="svg-icon svg-icon-md svg-icon-success"></span>						</div>
-                            </div>
-                            <div className="navi-text">
-                                <div className="font-weight-bold">
-                                    My Profile
+                    {myNavi.map((n) => (
+                        <a href={n.href} className="navi-item">
+                            <div className="navi-link">
+                                <div className="symbol symbol-40 bg-light mr-3">
+                                    <div className="symbol-label">
+                                        {n.icon}
+                                    </div>
                                 </div>
-                                <div className="text-muted">
-                                    Account settings and more
-                                    <span className="label label-light-danger label-inline font-weight-bold">update</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                                <div className="navi-text">
+                                    <div className="font-weight-bold">
+                                        {n.title}
+                                    </div>
 
-
-
-                    <a href="custom/apps/user/profile-3.html"  className="navi-item">
-                        <div className="navi-link">
-                            <div className="symbol symbol-40 bg-light mr-3">
-                                <div className="symbol-label">
- 						   <span className="svg-icon svg-icon-md svg-icon-warning"></span> 					   </div>
-                            </div>
-                            <div className="navi-text">
-                                <div className="font-weight-bold">
-                                    My Messages
-                                </div>
-                                <div className="text-muted">
-                                    Inbox and tasks
+                                    <div className="text-muted">
+                                        {n.desc}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-
-
-
-                    <a href="custom/apps/user/profile-2.html"  className="navi-item">
-                        <div className="navi-link">
-                            <div className="symbol symbol-40 bg-light mr-3">
-                                <div className="symbol-label">
-							<span className="svg-icon svg-icon-md svg-icon-danger"></span>						</div>
-                            </div>
-                            <div className="navi-text">
-                                <div className="font-weight-bold">
-                                    My Activities
-                                </div>
-                                <div className="text-muted">
-                                    Logs and notifications
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-
-
-
-                    <a href="custom/apps/userprofile-1/overview.html" className="navi-item">
-                        <div className="navi-link">
-                            <div className="symbol symbol-40 bg-light mr-3">
-                                <div className="symbol-label">
-							<span className="svg-icon svg-icon-md svg-icon-primary"></span>						</div>
-                            </div>
-                            <div className="navi-text">
-                                <div className="font-weight-bold">
-                                    My Tasks
-                                </div>
-                                <div className="text-muted">
-                                    latest tasks and projects
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                        </a>
+                    ))}
 
                 </div>
             </div>

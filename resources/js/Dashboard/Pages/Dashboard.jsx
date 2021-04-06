@@ -7,6 +7,7 @@ import Content from "../Layout/Content";
 
 const Dashboard = (props) => {
     const {data, dispatch} = useContext(AppContext);
+
     return (
         <>
             <Topbar title={props.pageTitle} breadcrumb={[{title: 'About', href: '/dashboard/about'}]}>

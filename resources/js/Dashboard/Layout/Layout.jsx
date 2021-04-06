@@ -11,12 +11,8 @@ import { InertiaProgress } from '@inertiajs/progress'
 InertiaProgress.init({showSpinner: true})
 
 export default function Layout ({children}) {
-    const [data, dispatch] = React.useReducer(Reducer, AppState);
     const {props} = usePage()
-
-    if (props.reload) {
-        window.location.reload();
-    }
+    const [data, dispatch] = React.useReducer(Reducer, {...AppState, user: props.user, props: props});
 
     useEffect(() => {
         Inertia.on('navigate', (event) => {
@@ -24,6 +20,7 @@ export default function Layout ({children}) {
             dispatch(currentUrl(url));
         })
     }, []);
+
     return (
         <AppContext.Provider value={{data, dispatch}}>
             <Aside />

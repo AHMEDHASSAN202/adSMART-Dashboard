@@ -7,6 +7,8 @@ export const TOGGLE_PROFILE_PANEL = 'TOGGLE_PROFILE_PANEL';
 export const CURRENT_URL = 'CURRENT_URL';
 export const SET_LANGUAGES = 'SET_LANGUAGES';
 export const UPDATE_ALERT = 'UPDATE_ALERT';
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export const SET_PAGE_PROPS = 'SET_PAGE_PROPS';
 
 export function pageLoader(status) {
   return {
@@ -53,6 +55,23 @@ export function setLanguages(payload) {
 export function updateAlert(payload) {
     return {
         TYPE: UPDATE_ALERT,
+        payload: payload
+    }
+}
+
+export function setUser(payload) {
+    return {
+        TYPE: SET_CURRENT_USER,
+        payload: payload
+    }
+}
+
+export function setPageProps(payload) {
+    if (payload.reload) {
+        window.location.reload();
+    }
+    return {
+        TYPE: SET_PAGE_PROPS,
         payload: payload
     }
 }

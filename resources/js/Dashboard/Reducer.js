@@ -5,7 +5,7 @@ import {
     ADD_LANGUAGE,
     UPDATE_TRANSLATE,
     TOGGLE_PROFILE_PANEL,
-    CURRENT_URL, SET_LANGUAGES, UPDATE_ALERT
+    CURRENT_URL, SET_LANGUAGES, UPDATE_ALERT, SET_CURRENT_USER, SET_PAGE_PROPS
 } from "./actions";
 
 export const Reducer = (state, action) => {
@@ -33,7 +33,10 @@ export const Reducer = (state, action) => {
             return {...state, languages: action.payload}
         case UPDATE_ALERT:
             return {...state, alert: action.payload}
-
+        case SET_CURRENT_USER:
+            return {...state, user: action.payload}
+        case SET_PAGE_PROPS:
+            return {...state, props: action.payload}
         default:
             return state;
     }

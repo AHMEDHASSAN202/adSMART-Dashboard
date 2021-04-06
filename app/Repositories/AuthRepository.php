@@ -72,7 +72,7 @@ class AuthRepository
         return true;
     }
 
-    public function getProfile()
+    public function getProfileAdmin()
     {
         return auth($this->dashboardGuard)->user();
     }

@@ -7,6 +7,7 @@ use App\Events\Dashboard\AfterUserLogoutFromDashboardEvent;
 use App\Events\Dashboard\BeforeUserLoginToDashboardEvent;
 use App\Events\Dashboard\BeforeUserLogoutFromDashboardEvent;
 use App\Listeners\Dashboard\SendEmailVerificationNotificationDashboard;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -32,6 +33,9 @@ class EventServiceProvider extends ServiceProvider
 
         ],
         AfterUserLogoutFromDashboardEvent::class => [
+
+        ],
+        PasswordReset::class => [
 
         ]
     ];
