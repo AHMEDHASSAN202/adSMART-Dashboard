@@ -60,12 +60,12 @@ const CreateEdit = (props) => {
                             <div className='card-body'>
                                 <div className="form-group">
                                     <label>{translations['name']}</label>
-                                    <input required type="text" onChange={(e) => setLanguage({...language, language_name: e.target.value})} value={language.language_name} className={'form-control form-control-solid' + (props.errors.language_name ? ' is-invalid' : '')}/>
+                                    <input required type="text" onChange={(e) => setLanguage({...language, language_name: e.target.value})} value={language.language_name} className={'form-control ' + (props.errors.language_name ? ' is-invalid' : '')}/>
                                     <InvalidFeedBack msg={props.errors.language_name}/>
                                 </div>
                                 <div className="form-group">
                                     <label>{translations['code']}</label>
-                                    <input required type="text" onChange={(e) => setLanguage({...language, language_code: e.target.value})} value={language.language_code} className={"form-control form-control-solid" + (props.errors.language_code ? ' is-invalid' : '')}/>
+                                    <input required type="text" onChange={(e) => setLanguage({...language, language_code: e.target.value})} value={language.language_code} className={"form-control " + (props.errors.language_code ? ' is-invalid' : '')}/>
                                     <InvalidFeedBack msg={props.errors.language_code}/>
                                 </div>
                                 <div className='form-group'>

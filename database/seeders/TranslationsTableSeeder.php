@@ -709,13 +709,13 @@ class TranslationsTableSeeder extends Seeder
                 'translation_lang'      => 'ar',
             ],
             [
-                'translation_key'       => 'old_password',
-                'translation_value'     => 'Old Password',
+                'translation_key'       => 'current_password',
+                'translation_value'     => 'Current Password',
                 'translation_lang'      => 'en',
             ],
             [
-                'translation_key'       => 'old_password',
-                'translation_value'     => 'كلمة المرور القديمة',
+                'translation_key'       => 'current_password',
+                'translation_value'     => 'كلمة المرور الحالية',
                 'translation_lang'      => 'ar',
             ],
             [
@@ -2383,6 +2383,16 @@ class TranslationsTableSeeder extends Seeder
                 "translation_lang" => "ar",
             ],
             [
+                "translation_key" => "avatar",
+                "translation_value" => "Avatar",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "avatar",
+                "translation_value" => "صورة شخصية",
+                "translation_lang" => "ar",
+            ],
+            [
                 "translation_key" => "icon",
                 "translation_value" => "Icon",
                 "translation_lang" => "en",
@@ -2520,6 +2530,126 @@ class TranslationsTableSeeder extends Seeder
             [
                 "translation_key" => "reset_link_success_msg",
                 "translation_value" => "تم تغيير كلمة المرور",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "profile_information",
+                "translation_value" => "Profile Information",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "profile_information",
+                "translation_value" => "المعلومات الشخصية",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "update_your_profile_msg",
+                "translation_value" => "update your profile information and emails",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "update_your_profile_msg",
+                "translation_value" => "تحديث معلومات ملفك الشخصي ورسائل البريد الإلكتروني",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "personal_options",
+                "translation_value" => "Personal Options",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "personal_options",
+                "translation_value" => "الخيارات الشخصية",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "update_your_personal_options_msg",
+                "translation_value" => "Update your personal options",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "update_your_personal_options_msg",
+                "translation_value" => "تحديث خياراتك الشخصية",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "account_management",
+                "translation_value" => "Account Management",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "account_management",
+                "translation_value" => "إدارة الحساب",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "update_your_account_management_msg",
+                "translation_value" => "Manage your account",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "update_your_account_management_msg",
+                "translation_value" => "إدارة حسابك",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "update_my_activities_msg",
+                "translation_value" => "Manage and show your activities",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "update_my_activities_msg",
+                "translation_value" => "إدارة وإظهار أنشطتك",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "change_password",
+                "translation_value" => "Change Password",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "change_password",
+                "translation_value" => "تغيير كلمة المرور",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "change_password_desc",
+                "translation_value" => "Set new password",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "change_password_desc",
+                "translation_value" => "قم بتعيين كلمة مرور جديدة",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "browser_sessions",
+                "translation_value" => "Browser Sessions",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "browser_sessions",
+                "translation_value" => "قم بتعيين كلمة مرور جديدة",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "browser_sessions_desc",
+                "translation_value" => "Manage and logout your active sessions on other browsers",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "browser_sessions_desc",
+                "translation_value" => "إدارة جلساتك النشطة وتسجيل الخروج منها على متصفحات أخرى",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "feel_account_has_been_compromised_msg",
+                "translation_value" => "if you feel your account has been compromised you should also update your password",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "feel_account_has_been_compromised_msg",
+                "translation_value" => "إذا شعرت أنه تم اختراق حسابك ، فيجب عليك أيضًا تحديث كلمة المرور الخاصة بك",
                 "translation_lang" => "ar",
             ]
         ]);

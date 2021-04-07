@@ -1,6 +1,8 @@
 import react, {useContext} from 'react';
 import {toggleProfilePanel} from './../actions';
 import {AppContext} from "../AppContext";
+import { InertiaLink } from '@inertiajs/inertia-react'
+import PrimaryButton from "./PrimaryButton";
 
 export default function ProfileInfoPanel() {
 
@@ -10,7 +12,7 @@ export default function ProfileInfoPanel() {
             title: translations['profile_info'],
             desc: translations['account_desc'],
             icon: <i className="flaticon-profile-1 text-warning icon-lg"></i>,
-            href: '#'
+            href: route('auth.dashboard.profile')
         },
         {
             title: translations['my_messages'],
@@ -50,8 +52,6 @@ export default function ProfileInfoPanel() {
                 </button>
             </div>
 
-
-
             <div className="offcanvas-content pr-5 mr-n5">
 
                 <div className="d-flex align-items-center mt-5">
@@ -60,21 +60,24 @@ export default function ProfileInfoPanel() {
                         <i className="symbol-badge bg-success"></i>
                     </div>
                     <div className="d-flex flex-column">
-                        <a href="#" className="font-weight-bold font-size-h5 text-dark-75 text-capitalize text-hover-primary">
+                        <InertiaLink href={route('auth.dashboard.profile')} className="font-weight-bold font-size-h5 text-dark-75 text-capitalize text-hover-primary">
                             {data.user.user_name}
-                        </a>
+                        </InertiaLink>
                         <div className="text-muted mt-1 text-capitalize">
                             {data.user.role.name}
                         </div>
                         <div className="navi mt-2">
-                            <a href="#" className="navi-item">
+                            <InertiaLink href={route('auth.dashboard.profile')} className="navi-item">
                                 <span className="navi-link p-0 pb-2">
                                     <span className="navi-text text-muted text-hover-primary">{data.user.user_email}</span>
                                 </span>
-                            </a>
+                            </InertiaLink>
                             <form action={route('auth.dashboard.logout')} method='POST'>
                                 <input type="text" name='_token' value={window.csrfToken} hidden readOnly />
-                                <button type="submit" className="btn btn-sm btn-dark font-weight-bolder py-2 px-5">{translations['signout']}</button>
+                                <PrimaryButton type='submit'>
+                                    <i className='flaticon-close icon-md m-icon'></i>
+                                    {translations['signout']}
+                                </PrimaryButton>
                             </form>
                         </div>
                     </div>
@@ -84,8 +87,8 @@ export default function ProfileInfoPanel() {
 
                 <div className="navi navi-spacer-x-0 p-0">
 
-                    {myNavi.map((n) => (
-                        <a href={n.href} className="navi-item">
+                    {myNavi.map((n, key) => (
+                        <InertiaLink href={n.href} key={key} className="navi-item">
                             <div className="navi-link">
                                 <div className="symbol symbol-40 bg-light mr-3">
                                     <div className="symbol-label">
@@ -102,7 +105,7 @@ export default function ProfileInfoPanel() {
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </InertiaLink>
                     ))}
 
                 </div>

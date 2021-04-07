@@ -83,9 +83,13 @@ class LocalizationRepository
 
         $languages = $this->getLanguages();
 
-        return $languages->first(function ($lang) use ($code) {
+        $language = $languages->first(function ($lang) use ($code) {
             return strtolower($lang->language_code) == strtolower($code);
         });
+
+        $language->language_image_path = _flagSvg($language->language_image);
+
+        return $language;
     }
 
     public function getLanguageById($languageId)
@@ -94,9 +98,13 @@ class LocalizationRepository
 
         $languages = $this->getLanguages();
 
-        return $languages->first(function ($lang) use ($languageId) {
+        $language = $languages->first(function ($lang) use ($languageId) {
             return $lang->language_id == $languageId;
         });
+
+        $language->language_image_path = _flagSvg($language->language_image);
+
+        return $language;
     }
 
 

@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 use Illuminate\Routing\Controller;
 use App\Http\Requests\UpdateOrCreateVisitorInformationRequest;
 use App\Repositories\VisitorsInformationRepository;
-use Inertia\Inertia;
 
 class VisitorsInformationController extends Controller
 {
@@ -28,7 +27,7 @@ class VisitorsInformationController extends Controller
         //get visitor ip
         $ip = $this->visitorsInformationRepository->getIp();
         //update query
-        $visitor = $this->visitorsInformationRepository->updateOrCreate($ip, $data);
+        $visitor = $this->visitorsInformationRepository->updateVisitorData($ip, $data);
 
         if ($updateOrCreateVisitorInformationRequest->ajax()) {
             return ['visitor' => $visitor, 'reload' => true];

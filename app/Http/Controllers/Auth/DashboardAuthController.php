@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Classes\Utilities;
 use App\Http\Requests\Dashboard\ForgotPasswordRequest;
 use App\Http\Requests\Dashboard\LoginToDashboardRequest;
 use App\Http\Requests\Dashboard\ResetPasswordSubmit;
+use App\Models\ActivityLog;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\Facades\Hash;
@@ -12,6 +14,7 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Support\MessageBag;
 use App\Http\Requests\EmailVerificationRequest;
 use Illuminate\Support\Str;
+use Inertia\Inertia;
 
 class DashboardAuthController extends AuthController
 {
@@ -83,5 +86,14 @@ class DashboardAuthController extends AuthController
         return $status === Password::PASSWORD_RESET ?
                            redirect()->route('auth.dashboard.login')->with(['success' => _e('reset_link_success_msg')]) :
                            back()->withErrors(['email' => _e('error_message')]);
+    }
+
+    public function getProfile()
+    {
+        $profile = $this->authRepository->getProfileAdmin();
+        $profile->activityLogs = ActivityLog::getActivityLogsAuth($profile->user_id);
+        $flags = Utilities::getFlags();
+
+        return Inertia::render('Profile/Index', compact('profile', 'flags'));
     }
 }

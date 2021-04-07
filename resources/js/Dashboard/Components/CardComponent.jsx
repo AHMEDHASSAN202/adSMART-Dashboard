@@ -17,7 +17,7 @@ const CardComponent = ({title, subtitle, children, footer, icon, tabs=[]}) => {
     }, [activeLink])
 
     return (
-        <div className="card card-custom">
+        <div className="card card-custom mb-4">
             {title ?
                 <div className={'card-header ' + (tabs.length ? 'card-header-tabs-line' : '')}>
                     <div className="card-title">

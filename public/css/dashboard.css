@@ -1,3 +1,6 @@
+body {
+    background-color: #f4f5f7;
+}
 .header .menu-item-active > .menu-link .menu-text,
 .header .menu-item:hover > .menu-link .menu-text,
 .header .menu-item:hover,
@@ -13,46 +16,53 @@
 .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-heading .menu-icon, .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-link .menu-icon {
     color: var(--info) !important;
 }
-
 .header-menu .menu-nav > .menu-item .menu-submenu > .menu-subnav > .menu-item:hover:not(.menu-item-here):not(.menu-item-active) > .menu-link .menu-icon.svg-icon svg g [fill], .header-menu .menu-nav > .menu-item .menu-submenu > .menu-subnav > .menu-item.menu-item-hover:not(.menu-item-here):not(.menu-item-active) > .menu-link .menu-icon.svg-icon svg g [fill] {
     fill: var(--info) !important;
 }
-
 .nav.nav-tabs.nav-tabs-line.nav-tabs-line-3x .nav-link:hover:not(.disabled), .nav.nav-tabs.nav-tabs-line.nav-tabs-line-3x .nav-link.active, .nav.nav-tabs.nav-tabs-line.nav-tabs-line-3x .show > .nav-link,
 .nav.nav-tabs.nav-tabs-line .nav-link:hover:not(.disabled), .nav.nav-tabs.nav-tabs-line .nav-link.active, .nav.nav-tabs.nav-tabs-line .show > .nav-link {
     border-color: var(--info) !important;
 }
-
 html[dir=ltr] .spinner {
     top: 50% !important;
     right: 40% !important;
 }
-
 html[dir=rtl] .spinner {
     top: 50% !important;
     right: 60% !important;
 }
-
 .btn-image-delete {
     position: absolute;
     top: -15px;
     right: -15px;
     z-index: 1;
 }
-
 html[dir=rtl] * {
     font-family: 'Cairo', sans-serif;
 }
-
 .data-table-extensions-action {
     z-index: 1;
 }
-
 .header .header-menu .menu-nav > .menu-item.menu-item-here > .menu-link {
     background-color: transparent !important;
 }
-
 .header .header-menu .menu-nav > .menu-item.menu-item-here:not(.menu-item-active) > .menu-link .menu-text {
     color: #7E8299 !important;
+}
+.m-icon {
+    margin-right: 3px;
+    margin-bottom: 2px;
+}
+.h-p {
+    font-size: 1.6rem;
+}
+.h-small {
+    font-size: 1rem;
+}
+.form-control:focus {
+    border-color: var(--info) !important;
+}
+.text-decoration-underline {
+    text-decoration: underline;
 }
 

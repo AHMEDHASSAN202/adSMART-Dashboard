@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Classes\InertiaDocument;
 use Illuminate\Support\ServiceProvider;
+use Jenssegers\Agent\Agent;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +27,9 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton('document', function () {
             return new InertiaDocument();
+        });
+        $this->app->singleton('agent', function () {
+            return new Agent();
         });
     }
 }

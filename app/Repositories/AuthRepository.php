@@ -7,6 +7,7 @@
 namespace App\Repositories;
 
 
+use App\Events\Dashboard\UserAttemptedToDashboardLogin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
@@ -34,6 +35,7 @@ class AuthRepository
 
         //check password
         if (!Hash::check($loginToDashboardRequest->password, $user->user_password)) {
+            event(new UserAttemptedToDashboardLogin($user));
             $status = new MessageBag();
             $status->add('email_or_password', _e('invalid_email_or_password_msg'));
             return $status;

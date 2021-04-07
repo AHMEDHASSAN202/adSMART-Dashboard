@@ -20,7 +20,8 @@ Route::group(['middleware' => ['guest:dashboard']], function () {
     Route::post('dashboard/reset-password', 'DashboardAuthController@forgotPasswordResetSubmit')->name('auth.dashboard.password.reset.submit');
 });
 
-Route::group(['middleware' => ['auth:dashboard']], function () {
+Route::group(['middleware' => ['auth:dashboard', 'dashboard.inertia.request']], function () {
     //logout from dashboard
     Route::post('dashboard/logout', 'DashboardAuthController@logoutFromDashboard')->name('auth.dashboard.logout');
+    Route::get('dashboard/profile', 'DashboardAuthController@getProfile')->name('auth.dashboard.profile');
 });

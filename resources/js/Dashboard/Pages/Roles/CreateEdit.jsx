@@ -62,7 +62,7 @@ const CreateEdit = (props) => {
                                      <CardTab key={i} id={tab.id}>
                                          <div className="form-group">
                                              <label>{translations['name']}</label>
-                                             <input required min={3} max={100} type="text" onChange={(e) => setData('role_name', {...formData.role_name, [tab.id]: e.target.value}) } value={formData.role_name[tab.id]} className={'form-control form-control-solid ' + myIf(props.errors, 'role_name.'+tab.id, 'is-invalid', '')} />
+                                             <input required min={3} max={100} type="text" onChange={(e) => setData('role_name', {...formData.role_name, [tab.id]: e.target.value}) } value={formData.role_name[tab.id]} className={'form-control ' + myIf(props.errors, 'role_name.'+tab.id, 'is-invalid', '')} />
                                              <InvalidFeedBack msg={getFromObject(props.errors, 'role_name.'+tab.id)} />
                                          </div>
                                      </CardTab>

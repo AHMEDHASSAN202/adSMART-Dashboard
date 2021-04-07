@@ -1,7 +1,7 @@
 import React from 'react';
 import ImageUploading from 'react-images-uploading';
 
-const ImageUploaderComponent = ({children, multiple=false, onImagesChange, ...props}) => {
+const ImageUploaderComponent = ({children='Click or Drop here', multiple=false, onImagesChange, ...props}) => {
     const [images, setImages] = React.useState([]);
     const onChange = (imageList, addUpdateIndex) => {
         setImages(imageList);
@@ -41,7 +41,7 @@ const ImageUploaderComponent = ({children, multiple=false, onImagesChange, ...pr
                             onClick={onImageUpload}
                             {...dragProps}
                         >
-                            Click or Drop here
+                            {children}
                         </button>
                         &nbsp;
                         {multiple && <button className='btn btn-danger' onClick={onImageRemoveAll}>Remove all images</button>}
@@ -51,7 +51,7 @@ const ImageUploaderComponent = ({children, multiple=false, onImagesChange, ...pr
                                     <i className='flaticon2-delete text-muted icon-sm'></i>
                                 </button>
                                 <div className='image-input image-input-outline'>
-                                    <div className='image-input-wrapper d-inline-block m-2' style={{backgroundImage: 'url('+image['data_url']+')'}}></div>
+                                    <div className='image-input-wrapper d-inline-block m-2' style={{backgroundImage: 'url('+image['dataURL']+')'}}></div>
                                 </div>
                             </div>
                         ))}

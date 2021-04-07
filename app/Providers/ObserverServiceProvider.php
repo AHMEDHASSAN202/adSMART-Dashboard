@@ -5,7 +5,6 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Option;
 use App\Observers\OptionsObserver;
-use App\Models\Visitor;
 use App\Observers\VisitorObserver;
 use App\Models\Role;
 use App\Observers\RoleObserver;
@@ -31,7 +30,6 @@ class ObserverServiceProvider extends ServiceProvider
         Language::observe(LanguageObserver::class);
         Translation::observe(TranslationObserver::class);
         Role::observe(RoleObserver::class);
-        Visitor::observe(VisitorObserver::class);
         Option::observe(OptionsObserver::class);
     }
 }

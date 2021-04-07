@@ -23,7 +23,8 @@ class InitialVisitorInfoMiddleware
         }
 
         if (empty($language)) {
-            $language = app('App\Repositories\VisitorsInformationRepository')->getVisitorInformation();
+            $info = app('App\Repositories\VisitorsInformationRepository')->getVisitorInformation();
+            $language = $info['language'];
         }
 
         app()->setLocale($language->language_code);

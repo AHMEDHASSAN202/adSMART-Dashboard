@@ -6,6 +6,11 @@ use App\Events\Dashboard\AfterUserLoginToDashboardEvent;
 use App\Events\Dashboard\AfterUserLogoutFromDashboardEvent;
 use App\Events\Dashboard\BeforeUserLoginToDashboardEvent;
 use App\Events\Dashboard\BeforeUserLogoutFromDashboardEvent;
+use App\Events\Dashboard\UserAttemptedToDashboardLogin;
+use App\Listeners\Dashboard\RegisterActivityAfterLoged;
+use App\Listeners\Dashboard\RegisterChangeUserPasswordActivity;
+use App\Listeners\Dashboard\RegisterResetUserPasswordActivity;
+use App\Listeners\Dashboard\RegisterUserAttemptedToDashboardLogin;
 use App\Listeners\Dashboard\SendEmailVerificationNotificationDashboard;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Events\Registered;
@@ -27,7 +32,10 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotificationDashboard::class
         ],
         AfterUserLoginToDashboardEvent::class => [
-
+            RegisterActivityAfterLoged::class,
+        ],
+        UserAttemptedToDashboardLogin::class => [
+            RegisterUserAttemptedToDashboardLogin::class
         ],
         BeforeUserLogoutFromDashboardEvent::class => [
 
@@ -36,7 +44,7 @@ class EventServiceProvider extends ServiceProvider
 
         ],
         PasswordReset::class => [
-
+            RegisterResetUserPasswordActivity::class
         ]
     ];
 

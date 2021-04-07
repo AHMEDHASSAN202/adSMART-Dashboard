@@ -21,12 +21,12 @@ const ControlComponent = ({ children, ...rest }) => (
 );
 
 
-const FlagsSelectComponent = (props) => {
+const FlagsSelectComponent = ({flagValue='flag_svg', ...props}) => {
     return (
         <SelectComponent
             {...props}
             getOptionLabel={(option) => option.flag_name}
-            getOptionValue={(option) => option.flag_svg}
+            getOptionValue={(option) => option[flagValue]}
             components={{Option, Control: ControlComponent}}
         />
     );
