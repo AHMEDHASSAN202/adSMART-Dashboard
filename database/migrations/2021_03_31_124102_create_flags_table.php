@@ -17,6 +17,9 @@ class CreateFlagsTable extends Migration
             $table->id('flag_id');
             $table->string('flag_name', 50);
             $table->string('flag_svg', 50);
+            $table->string('phone_code', 10)->nullable();
+            $table->string('code2', 2)->nullable();
+            $table->string('code3', 3)->nullable();
         });
     }
 

@@ -93,19 +93,19 @@ class DashboardAuthController extends AuthController
     {
         $profile = $this->authRepository->getProfileAdmin();
         $activities = ActivityLog::getActivityLogsAuth($profile->user_id);
-        $profile->myActivities = collect([]);
-        $profile->loggedActivities = collect([]);
+        $myActivities = collect([]);
+        $loggedActivities = collect([]);
         foreach ($activities as $activity) {
             if ($activity->user_activity != 'dashboard_logged') {
-                $profile->myActivities->push($activity);
+                $myActivities->push($activity);
             }else {
                 $activity->currentDevice = ($activity->ip_address === $request->ip());
-                $profile->loggedActivities->push($activity);
+                $loggedActivities->push($activity);
             }
         }
         $flags = Utilities::getFlags();
 
-        return Inertia::render('Profile/Index', compact('profile', 'flags'));
+        return Inertia::render('Profile/Index', compact('profile','myActivities', 'loggedActivities', 'flags'));
     }
 
     public function logoutFromOtherDevices(Request $request)

@@ -75,9 +75,16 @@ class AuthRepository
         return true;
     }
 
-    public function getProfileAdmin()
+    public function getAdmin()
     {
         return auth($this->dashboardGuard)->user();
+    }
+
+    public function getProfileAdmin()
+    {
+        $profile = auth($this->dashboardGuard)->user()->loadMissing('personalInfo');
+
+        return $profile;
     }
 
     public function logoutOtherDevices($password)

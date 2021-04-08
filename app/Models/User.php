@@ -55,6 +55,11 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
     {
         return $this->belongsTo(Role::class, 'fk_role_id', 'role_id')->roleDescription()->language();
     }
+    public function personalInfo()
+    {
+        return $this->hasOne(Profile::class, 'fk_user_id', 'user_id')
+                    ->join('flags', 'fk_user_country', '=', 'flag_id');
+    }
     //========== #END# Relations ======================\\
 
 

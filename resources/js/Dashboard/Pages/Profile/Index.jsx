@@ -7,6 +7,8 @@ import CardComponent from "../../Components/CardComponent";
 import OneImageUploaderComponent from "../../Components/OneImageUploaderComponent";
 import FlagsSelectComponent from "../../Components/FlagsSelectComponent";
 import WriteCurrentPasswordPanel from "../../Components/WriteCurrentPasswordPanel";
+import { useForm } from '@inertiajs/inertia-react'
+import InvalidFeedBack from "../../Components/InvalidFeedback";
 
 const breadcrumb = [
     {
@@ -18,8 +20,41 @@ const breadcrumb = [
 
 const Index = (props) => {
     console.log(props);
-    const {profile, flags} = props;
+    const {profile: {personal_info, ...profile}, loggedActivities, myActivities, flags} = props;
     const [isPasswordPanelOpen, setPasswordPanelOpen] = useState(false);
+    const {
+        data:profileInfoData,
+        setData:profileInfoSetData,
+        put:profileInfoPut,
+        processing:profileInfoProcessing,
+        errors:profileInfoErrors
+    } = useForm({
+        user_name: profile.user_name,
+        user_email: profile.user_email,
+        user_avatar: profile.user_avatar,
+    })
+    const {
+        data:personalInfoData,
+        setData:personalInfoSetData,
+        put:personalInfoPut,
+        processing:personalInfoProcessing,
+        errors:personalInfoErrors
+    } = useForm({
+        fk_user_country: personal_info.fk_user_country,
+        user_phone: personal_info.user_phone,
+        user_address: personal_info.user_address,
+    })
+    const {
+            data:changePasswordData,
+            setData:changePasswordSetData,
+            put:changePasswordPut,
+            processing:changePasswordProcessing,
+            errors:changePasswordErrors
+    } = useForm({
+        current_password: '',
+        password: '',
+        password_confirmation: ''
+    })
     return (
         <>
             <WriteCurrentPasswordPanel
@@ -35,30 +70,46 @@ const Index = (props) => {
                         <small className='font-size-sm text-muted h-small'>{translations['update_your_profile_msg']}</small>
                     </div>
                     <div className="col-md-8">
-                        <CardComponent>
+                        <CardComponent
+                            footer={<PrimaryButton>{translations['update']}</PrimaryButton>}
+                        >
                             <div className="form-group row">
                                 <label className="col-xl-3 col-lg-3 col-form-label">{translations['avatar']}</label>
                                 <div className="col-lg-9 col-xl-6">
-                                    <OneImageUploaderComponent defaultImage={{dataURL: '/dashboard-assets/media/users/300_21.jpg'}} onImagesChange={(imageList) => console.log(imageList)} acceptType={['png', 'jpg', 'jpeg']}/>
+                                    <OneImageUploaderComponent defaultImage={{dataURL: profileInfoData.user_avatar}} onImagesChange={(image) => profileInfoSetData('user_avatar', image)} acceptType={['png', 'jpg', 'jpeg']}/>
                                     <span className="form-text text-muted">Allowed file types:  png, jpg, jpeg.</span>
                                 </div>
                             </div>
                             <div className="form-group row">
                                 <label className="col-2 col-form-label" htmlFor="name">{translations['name']}</label>
                                 <div className="col-10">
-                                    <input min={3} max={100} required className="form-control" type="text" value="" id="name" />
+                                    <input
+                                        min={3}
+                                        max={100}
+                                        required
+                                        className={'form-control' + (profileInfoErrors.user_name ? ' in-invalid' : '')}
+                                        type="text"
+                                        value={profileInfoData.user_name}
+                                        id="user_name"
+                                        onChange={(e) => profileInfoSetData('user_name', e.target.value)}
+                                    />
+                                    {profileInfoErrors.user_name ? <InvalidFeedBack msg={profileInfoErrors.user_name}/> : ''}
                                 </div>
                             </div>
                             <div className="form-group row">
                                 <label className="col-2 col-form-label" htmlFor="email">{translations['email']}</label>
                                 <div className="col-10">
-                                    <input min={3} max={100} required className="form-control" type="email" value="" id="email"/>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label className="col-2 col-form-label" htmlFor="phone">{translations['phone']}</label>
-                                <div className="col-10">
-                                    <input min={11} max={11} className="form-control" type="text" value="" id="phone"/>
+                                    <input
+                                        min={3}
+                                        max={100}
+                                        required
+                                        className={'form-control' + (profileInfoErrors.user_email ? ' in-invalid' : '')}
+                                        type="email"
+                                        value={profileInfoData.user_email}
+                                        id="email"
+                                        onChange={(e) => profileInfoSetData('user_email', e.target.value)}
+                                    />
+                                    {profileInfoErrors.user_email ? <InvalidFeedBack msg={profileInfoErrors.user_email}/> : ''}
                                 </div>
                             </div>
                         </CardComponent>
@@ -71,22 +122,50 @@ const Index = (props) => {
                         <small className='font-size-sm text-muted h-small'>{translations['update_your_personal_options_msg']}</small>
                     </div>
                     <div className="col-md-8">
-                        <CardComponent>
+                        <CardComponent
+                            footer={<PrimaryButton>{translations['update']}</PrimaryButton>}
+                        >
                             <div className="form-group row">
                                 <label className="col-2 col-form-label" htmlFor="country">{translations['country']}</label>
                                 <div className="col-10">
                                     <FlagsSelectComponent
                                         options={flags}
-                                        onChange={(e) => console.log(e)}
-                                        flagValue={'flag_name'}
+                                        value={flags.filter(f => f.flag_id == personalInfoData.fk_user_country)}
+                                        onChange={(f) => personalInfoSetData('fk_user_country', f.flag_id)}
+                                        flagValue={'flag_id'}
                                         id={'country'}
                                     />
                                 </div>
                             </div>
                             <div className="form-group row">
+                                <label className="col-2 col-form-label" htmlFor="phone">{translations['phone']}</label>
+                                <div className="col-10">
+                                    <input
+                                        min={11}
+                                        max={11}
+                                        className={'form-control' + (personalInfoData.user_phone ? ' in-invalid' : '')}
+                                        type="text"
+                                        value={personalInfoData.user_phone}
+                                        id="phone"
+                                        onChange={(e) => personalInfoSetData('user_phone', e.target.value)}
+                                    />
+                                    {personalInfoData.user_phone ? <InvalidFeedBack msg={personalInfoData.user_phone}/> : ''}
+                                </div>
+                            </div>
+                            <div className="form-group row">
                                 <label className="col-2 col-form-label" htmlFor="address">{translations['address']}</label>
                                 <div className="col-10">
-                                    <input min={3} max={200} required className="form-control" type="text" value="" id="address" />
+                                    <input
+                                        min={3}
+                                        max={200}
+                                        required
+                                        className={'form-control' + (personalInfoData.user_address ? ' in-invalid' : '')}
+                                        type="text"
+                                        value={personalInfoData.user_address}
+                                        id="address"
+                                        onChange={(e) => personalInfoSetData('user_address', e.target.value)}
+                                    />
+                                    {personalInfoData.user_address ? <InvalidFeedBack msg={personalInfoData.user_address}/> : ''}
                                 </div>
                             </div>
                         </CardComponent>
@@ -99,23 +178,53 @@ const Index = (props) => {
                         <small className='font-size-sm text-muted h-small'>{translations['change_password_desc']}</small>
                     </div>
                     <div className="col-md-8">
-                        <CardComponent>
+                        <CardComponent
+                            footer={<PrimaryButton>{translations['update_password']}</PrimaryButton>}
+                        >
                             <div className="form-group row">
                                 <label className="col-2 col-form-label" htmlFor="current_password">{translations['current_password']}</label>
                                 <div className="col-10">
-                                    <input min={6} max={100} required className="form-control" type="password" value="" id="current_password"/>
+                                    <input
+                                        min={6}
+                                        max={100}
+                                        required
+                                        className={'form-control' + (changePasswordData.current_password ? ' in-invalid' : '')}
+                                        type="password"
+                                        value={changePasswordData.current_password}
+                                        onChange={e => changePasswordSetData('current_password', e.target.value)}
+                                        id="current_password"
+                                    />
+                                    {changePasswordErrors.current_password ? <InvalidFeedBack msg={changePasswordErrors.current_password}/> : ''}
                                 </div>
                             </div>
                             <div className="form-group row">
                                 <label className="col-2 col-form-label" htmlFor="password">{translations['password']}</label>
                                 <div className="col-10">
-                                    <input min={6} max={100} className="form-control" type="password" value="" id="password"/>
+                                    <input
+                                        min={6}
+                                        max={100}
+                                        className={'form-control' + (changePasswordData.password ? ' in-invalid' : '')}
+                                        type="password"
+                                        value={changePasswordData.password}
+                                        onChange={e => changePasswordSetData('password', e.target.value)}
+                                        id="password"
+                                    />
+                                    {changePasswordErrors.password ? <InvalidFeedBack msg={changePasswordErrors.password}/> : ''}
                                 </div>
                             </div>
                             <div className="form-group row">
                                 <label className="col-2 col-form-label" htmlFor="confirm_password">{translations['confirm_password']}</label>
                                 <div className="col-10">
-                                    <input min={6} max={100} className="form-control" type="password" value="" id="confirm_password"/>
+                                    <input
+                                        min={6}
+                                        max={100}
+                                        className={'form-control' + (changePasswordData.password_confirmation ? ' in-invalid' : '')}
+                                        type="password"
+                                        value={changePasswordData.password_confirmation}
+                                        onChange={e => changePasswordSetData('password_confirmation', e.target.value)}
+                                        id="confirm_password"
+                                    />
+                                    {changePasswordErrors.password_confirmation ? <InvalidFeedBack msg={changePasswordErrors.password_confirmation}/> : ''}
                                 </div>
                             </div>
                         </CardComponent>
@@ -133,7 +242,7 @@ const Index = (props) => {
                         }>
                             <p className='lead text-warning text-decoration-underline'>{translations['feel_account_has_been_compromised_msg']}</p>
                             <ul className='list-unstyled'>
-                                {profile.loggedActivities.map((activity, key) => (
+                                {loggedActivities.map((activity, key) => (
                                     <li key={key}>
                                         <div className="d-flex align-items-center flex-wrap mb-10">
                                             <div className="symbol symbol-50 symbol-light mr-5">

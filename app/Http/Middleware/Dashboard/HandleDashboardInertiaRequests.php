@@ -39,7 +39,7 @@ class HandleDashboardInertiaRequests extends Middleware
     {
         return array_merge(parent::share($request), [
             'alert'    => $request->session()->get('alert'),
-            'user'     => app(AuthRepository::class)->getProfileAdmin()
+            'user'     => app(AuthRepository::class)->getAdmin()
         ]);
     }
 }

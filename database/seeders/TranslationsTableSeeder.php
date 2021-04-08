@@ -2661,6 +2661,26 @@ class TranslationsTableSeeder extends Seeder
                 "translation_key" => "logout_others_sessions",
                 "translation_value" => "تسجيل الخروج من الجلسات الاخرى",
                 "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "close",
+                "translation_value" => "Close",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "close",
+                "translation_value" => "غلق",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "back",
+                "translation_value" => "Back",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "back",
+                "translation_value" => "رجوع",
+                "translation_lang" => "ar",
             ]
         ]);
     }

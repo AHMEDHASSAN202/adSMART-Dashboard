@@ -58,6 +58,13 @@ const  WriteCurrentPasswordPanel = ({isOpen, setOpen, url, data={}, onSuccess=nu
                     }}>
                     {translations['send']}
                 </PrimaryButton>
+                <button
+                    className='btn btn-secondary mx-3'
+                    onClick={() => {
+                        setOpen(false);
+                        setCurrentPassword('');
+                        setError('')
+                }}>{translations['close']}Close</button>
             </div>
         </div>
     );

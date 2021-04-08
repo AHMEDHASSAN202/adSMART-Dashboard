@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
+    $str = '';
+    $countries = \Illuminate\Support\Facades\DB::table('flags')->get();
+    foreach ($countries as $country) {
+        $str .= str_replace(['{', '}', ':'], ['[', ']', '=>'], json_encode($country)) . ', ';
+    }
+    dd($str);
     return view('welcome');
 });
