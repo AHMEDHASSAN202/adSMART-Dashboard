@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import Layout from "./../../Layout/Layout";
 import Topbar from './../../Layout/Topbar';
 import Content from "./../../Layout/Content";
@@ -5,6 +6,7 @@ import PrimaryButton from "../../Components/PrimaryButton";
 import CardComponent from "../../Components/CardComponent";
 import OneImageUploaderComponent from "../../Components/OneImageUploaderComponent";
 import FlagsSelectComponent from "../../Components/FlagsSelectComponent";
+import WriteCurrentPasswordPanel from "../../Components/WriteCurrentPasswordPanel";
 
 const breadcrumb = [
     {
@@ -16,8 +18,15 @@ const breadcrumb = [
 
 const Index = (props) => {
     console.log(props);
+    const {profile, flags} = props;
+    const [isPasswordPanelOpen, setPasswordPanelOpen] = useState(false);
     return (
         <>
+            <WriteCurrentPasswordPanel
+                isOpen={isPasswordPanelOpen}
+                setOpen={setPasswordPanelOpen}
+                url={route('auth.dashboard.profile.logout.other.devices')}
+            />
             <Topbar title={translations['profile_info']} breadcrumb={breadcrumb} />
             <Content>
                 <div className="row mb-2">
@@ -67,7 +76,7 @@ const Index = (props) => {
                                 <label className="col-2 col-form-label" htmlFor="country">{translations['country']}</label>
                                 <div className="col-10">
                                     <FlagsSelectComponent
-                                        options={props.flags}
+                                        options={flags}
                                         onChange={(e) => console.log(e)}
                                         flagValue={'flag_name'}
                                         id={'country'}
@@ -119,8 +128,34 @@ const Index = (props) => {
                         <small className='font-size-sm text-muted h-small'>{translations['browser_sessions_desc']}</small>
                     </div>
                     <div className="col-md-8">
-                        <CardComponent>
+                        <CardComponent footer={
+                            <PrimaryButton onClick={() => setPasswordPanelOpen(!isPasswordPanelOpen)}>{translations['logout_others_sessions']}</PrimaryButton>
+                        }>
                             <p className='lead text-warning text-decoration-underline'>{translations['feel_account_has_been_compromised_msg']}</p>
+                            <ul className='list-unstyled'>
+                                {profile.loggedActivities.map((activity, key) => (
+                                    <li key={key}>
+                                        <div className="d-flex align-items-center flex-wrap mb-10">
+                                            <div className="symbol symbol-50 symbol-light mr-5">
+                                                <span className="symbol-label d-block">
+                                                    {activity.device_type ?
+                                                        {
+                                                            desktop: <i className='flaticon-laptop icon-3x d-flex justify-content-center align-items-center h-100'></i>,
+                                                            mobile: <i className='fas fa-mobile-alt icon-3x d-flex justify-content-center align-items-center h-100'></i>
+                                                        }[activity.device_type]
+                                                        : ''
+                                                    }
+                                                </span>
+                                            </div>
+                                            <div className="d-flex flex-column flex-grow-1 mr-2">
+                                                {activity.platform}
+                                                <span className="text-muted font-weight-bold">{activity.browser} / {activity.ip_address} - {activity.created_at} {activity.currentDevice ? <span className='text-info font-weight-bold'>Current Device</span> : ''}</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                ))}
+                                <li></li>
+                            </ul>
                         </CardComponent>
                     </div>
                 </div>

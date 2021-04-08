@@ -16,6 +16,7 @@ class CreateActivityLogsTable extends Migration
         Schema::create('activity_logs', function (Blueprint $table) {
             $table->id();
             $table->string('device');
+            $table->string('device_type')->nullable();
             $table->string('platform');
             $table->string('browser');
             $table->string('ip_address');

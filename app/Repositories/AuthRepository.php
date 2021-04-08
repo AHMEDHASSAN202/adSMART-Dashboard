@@ -8,6 +8,7 @@ namespace App\Repositories;
 
 
 use App\Events\Dashboard\UserAttemptedToDashboardLogin;
+use App\Models\ActivityLog;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
@@ -77,5 +78,18 @@ class AuthRepository
     public function getProfileAdmin()
     {
         return auth($this->dashboardGuard)->user();
+    }
+
+    public function logoutOtherDevices($password)
+    {
+        try {
+            auth($this->dashboardGuard)->logoutOtherDevices($password, 'user_password');
+            ActivityLog::removeDashboardLoggedActivities();
+            return true;
+        } catch (\Exception $exception) {
+            $errors = new MessageBag();
+            $errors->add('currentPassword', _e('validation::password'));
+            return $errors;
+        }
     }
 }

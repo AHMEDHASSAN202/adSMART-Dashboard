@@ -23,11 +23,11 @@ body {
 .nav.nav-tabs.nav-tabs-line .nav-link:hover:not(.disabled), .nav.nav-tabs.nav-tabs-line .nav-link.active, .nav.nav-tabs.nav-tabs-line .show > .nav-link {
     border-color: var(--info) !important;
 }
-html[dir=ltr] .spinner {
+html[dir=ltr] #nprogress .spinner {
     top: 50% !important;
     right: 40% !important;
 }
-html[dir=rtl] .spinner {
+html[dir=rtl] #nprogress .spinner {
     top: 50% !important;
     right: 60% !important;
 }
@@ -65,4 +65,15 @@ html[dir=rtl] * {
 .text-decoration-underline {
     text-decoration: underline;
 }
+.offcanvas-current-password {
+    height: 400px !important;
+    top: 40% !important;
+}
+.auto-position {
+    right: auto !important;
+    left: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+}
+
 

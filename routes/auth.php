@@ -23,5 +23,7 @@ Route::group(['middleware' => ['guest:dashboard']], function () {
 Route::group(['middleware' => ['auth:dashboard', 'dashboard.inertia.request']], function () {
     //logout from dashboard
     Route::post('dashboard/logout', 'DashboardAuthController@logoutFromDashboard')->name('auth.dashboard.logout');
+    //profile
     Route::get('dashboard/profile', 'DashboardAuthController@getProfile')->name('auth.dashboard.profile');
+    Route::post('dashboard/profile/logout-other-devices', 'DashboardAuthController@logoutFromOtherDevices')->name('auth.dashboard.profile.logout.other.devices');
 });

@@ -1,7 +1,7 @@
 
-const PrimaryButton = ({children, ...rest}) => {
+const PrimaryButton = ({children, classes='', ...rest}) => {
     return (
-        <button {...rest} className="btn btn-sm btn-dark font-weight-bolder py-2 px-5">{children}</button>
+        <button {...rest} className={'btn btn-dark font-weight-bolder text-uppercase ' + classes}>{children}</button>
     )
 }
 

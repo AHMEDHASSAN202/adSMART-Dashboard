@@ -2651,6 +2651,16 @@ class TranslationsTableSeeder extends Seeder
                 "translation_key" => "feel_account_has_been_compromised_msg",
                 "translation_value" => "إذا شعرت أنه تم اختراق حسابك ، فيجب عليك أيضًا تحديث كلمة المرور الخاصة بك",
                 "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "logout_others_sessions",
+                "translation_value" => "Logout Others Sessions",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "logout_others_sessions",
+                "translation_value" => "تسجيل الخروج من الجلسات الاخرى",
+                "translation_lang" => "ar",
             ]
         ]);
     }

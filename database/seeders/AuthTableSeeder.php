@@ -21,6 +21,7 @@ class AuthTableSeeder extends Seeder
             'fk_role_id' => 1,
             'user_name' => 'ahmed hassan',
             'user_email'    => 'testelbhai@gmail.com',
+            'email_verified_at' => now(),
             'user_password' => password_hash(123456, PASSWORD_DEFAULT)
         ]);
 

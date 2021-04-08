@@ -24,14 +24,16 @@ class RolesTableSeeder extends Seeder
         ]);
         DB::table(Role::RoleDescriptionTable)->insert(
             [
-                'fk_role_id'    => $role1->role_id,
-                'fk_language_id' => 1,
-                'name'      => 'Admin'
-            ],
-            [
-                'fk_role_id'    => $role1->role_id,
-                'fk_language_id' => 2,
-                'name'      => 'مدير الموقع'
+                [
+                    'fk_role_id'    => $role1->role_id,
+                    'fk_language_id' => 1,
+                    'name'      => 'Admin'
+                ],
+                [
+                    'fk_role_id'    => $role1->role_id,
+                    'fk_language_id' => 2,
+                    'name'      => 'مدير الموقع'
+                ]
             ]
         );
 
@@ -40,14 +42,16 @@ class RolesTableSeeder extends Seeder
         ]);
         DB::table(Role::RoleDescriptionTable)->insert(
             [
-                'fk_role_id'    => $role2->role_id,
-                'fk_language_id' => 1,
-                'name'      => 'User'
-            ],
-            [
-                'fk_role_id'    => $role2->role_id,
-                'fk_language_id' => 2,
-                'name'      => 'مستخدم'
+                [
+                    'fk_role_id'    => $role2->role_id,
+                    'fk_language_id' => 1,
+                    'name'      => 'User'
+                ],
+                [
+                    'fk_role_id'    => $role2->role_id,
+                    'fk_language_id' => 2,
+                    'name'      => 'مستخدم'
+                ]
             ]
         );
     }

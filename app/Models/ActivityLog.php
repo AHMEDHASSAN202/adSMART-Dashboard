@@ -11,6 +11,10 @@ class ActivityLog extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'created_at'      => 'date:Y-m-d h:i'
+    ];
+
     //============= Relations ===============\\
     public function model()
     {
@@ -27,8 +31,18 @@ class ActivityLog extends Model
             'platform' => $platform . ' ' . $agent->version($platform),
             'browser' => $agent->browser(),
             'device' => $agent->device(),
+            'device_type' => ($agent->isDesktop() ? 'desktop' : ($agent->isPhone() ? 'phone' : null)),
             'ip_address' => request()->ip(),
+            'created_at'    => now()
         ];
+
+        //wh will update logged if is logged from same ip
+        if ($data['user_activity'] == 'dashboard_logged') {
+            return ActivityLog::updateOrInsert([
+                'ip_address'    => request()->ip(),
+                'user_activity' => 'dashboard_logged'
+            ], $agentData + $data);
+        }
 
         return ActivityLog::insert($agentData + $data);
     }
@@ -47,5 +61,10 @@ class ActivityLog extends Model
     public static function getActivityLogsAuth($id, $limit=10)
     {
         return ActivityLog::where('auth_id', $id)->latest()->limit($limit)->get();
+    }
+
+    public static function removeDashboardLoggedActivities()
+    {
+        return ActivityLog::where('user_activity', 'dashboard_logged')->where('ip_address', '!=', request()->ip())->delete();
     }
 }

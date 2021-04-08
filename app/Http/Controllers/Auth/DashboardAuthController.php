@@ -9,6 +9,7 @@ use App\Http\Requests\Dashboard\ResetPasswordSubmit;
 use App\Models\ActivityLog;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Notifications\ResetPassword;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\MessageBag;
@@ -23,7 +24,7 @@ class DashboardAuthController extends AuthController
        $logged = $this->authRepository->loginToDashboard($loginToDashboardRequest);
 
        if ($logged instanceof MessageBag || !$logged) {
-           return redirect()->back()->with(['errors' => $logged])->withInput();
+           return redirect()->back()->withErrors($logged)->withInput();
        }
 
        return redirect($this->target ? url($this->target) : route('dashboard.index'));
@@ -36,7 +37,7 @@ class DashboardAuthController extends AuthController
        if (!$logout) {
            $errors = new MessageBag();
            $errors->add('invalid_logout', _e('invalid_logout'));
-           return redirect()->back()->with(compact('errors'));
+           return redirect()->back()->withErrors($errors);
        }
 
        return redirect('/');
@@ -88,12 +89,35 @@ class DashboardAuthController extends AuthController
                            back()->withErrors(['email' => _e('error_message')]);
     }
 
-    public function getProfile()
+    public function getProfile(Request $request)
     {
         $profile = $this->authRepository->getProfileAdmin();
-        $profile->activityLogs = ActivityLog::getActivityLogsAuth($profile->user_id);
+        $activities = ActivityLog::getActivityLogsAuth($profile->user_id);
+        $profile->myActivities = collect([]);
+        $profile->loggedActivities = collect([]);
+        foreach ($activities as $activity) {
+            if ($activity->user_activity != 'dashboard_logged') {
+                $profile->myActivities->push($activity);
+            }else {
+                $activity->currentDevice = ($activity->ip_address === $request->ip());
+                $profile->loggedActivities->push($activity);
+            }
+        }
         $flags = Utilities::getFlags();
 
         return Inertia::render('Profile/Index', compact('profile', 'flags'));
+    }
+
+    public function logoutFromOtherDevices(Request $request)
+    {
+        $validatedData = $request->validate(['currentPassword' => 'required'], ['required' => _e('validation::required')], ['currentPassword' => _e('current_password')]);
+
+        $r = $this->authRepository->logoutOtherDevices($validatedData['currentPassword']);
+
+        if ($r instanceof MessageBag) {
+            return redirect()->back()->with('errors', $r)->withErrors($r);
+        }
+
+        return redirect()->route('auth.dashboard.profile')->with(Utilities::alertFromStatus(true));
     }
 }
