@@ -64,7 +64,7 @@ const  WriteCurrentPasswordPanel = ({isOpen, setOpen, url, data={}, onSuccess=nu
                         setOpen(false);
                         setCurrentPassword('');
                         setError('')
-                }}>{translations['close']}Close</button>
+                }}>{translations['close']}</button>
             </div>
         </div>
     );

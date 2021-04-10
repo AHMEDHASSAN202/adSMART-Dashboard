@@ -32,7 +32,9 @@ export const Reducer = (state, action) => {
         case SET_LANGUAGES:
             return {...state, languages: action.payload}
         case UPDATE_ALERT:
-            return {...state, alert: action.payload}
+            let props = state.props;
+            props.alert = action.payload;
+            return {...state, props: props}
         case SET_CURRENT_USER:
             return {...state, user: action.payload}
         case SET_PAGE_PROPS:

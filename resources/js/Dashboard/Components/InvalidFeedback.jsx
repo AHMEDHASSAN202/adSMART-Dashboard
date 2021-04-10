@@ -4,7 +4,7 @@ const InvalidFeedBack = ({msg=''}) => {
         return '';
     }
     return (
-        <div className="invalid-feedback"><strong>{msg}</strong></div>
+        <div className="invalid-feedback" style={{display: 'block'}}><strong>{msg}</strong></div>
     );
 }
 

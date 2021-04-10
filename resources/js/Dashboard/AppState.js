@@ -5,7 +5,4 @@ export const AppState = {
     openProfilePanel: false,
     currentUrl: window.location.href,
     languages: window.languages,
-    alert: null,
-    user: null,
-    props: null
 };

@@ -22,11 +22,8 @@ class OptionRepository
 
     public function getOption($option_key)
     {
-        if (Cache::has('options')) {
-            $options = Cache::get('options');
-            return $options->where('option_key', $option_key)->first();
-        }
-        return Option::where('option_key', $option_key)->first();
+        $options = $this->getOptions();
+        return $options->where('option_key', $option_key)->first();
     }
 
     public function updateOrCreateOption($option_key, $option_value, $option_data = '')

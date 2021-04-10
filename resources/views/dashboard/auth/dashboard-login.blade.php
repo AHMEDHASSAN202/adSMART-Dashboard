@@ -1,6 +1,6 @@
 <?php $language = \App\Classes\Utilities::getLanguage() ?>
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{$language->language_direction}}">
     <head>
         <title>Dashboard Login</title>
         <meta charset="UTF-8">
@@ -58,7 +58,7 @@
                         </button>
                     </div>
                     <div class="container-login100-form-btn m-t-10 forget-password">
-                        <a href="{{ route('auth.dashboard.password.request') }}" class="txt2 fs-12">Forget Password ?</a>
+                        <a href="{{ route('auth.dashboard.password.request') }}" class="txt2 fs-12">{{_e('forgot_password')}} ?</a>
                     </div>
                 </form>
 

@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Profile;
+use App\Models\User;
+use App\Observers\ProfileObserver;
+use App\Observers\UserObserver;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Option;
 use App\Observers\OptionsObserver;
@@ -31,5 +35,7 @@ class ObserverServiceProvider extends ServiceProvider
         Translation::observe(TranslationObserver::class);
         Role::observe(RoleObserver::class);
         Option::observe(OptionsObserver::class);
+        User::observe(UserObserver::class);
+        Profile::observe(ProfileObserver::class);
     }
 }

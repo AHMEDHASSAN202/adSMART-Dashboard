@@ -30,6 +30,6 @@ class RegisterActivityAfterLoged
            'auth_id'        => $event->user->user_id,
            'user_activity'  => 'dashboard_logged',
            'user_activity_desc'  => ActivityLog::getActivityDescription('dashboard_logged'),
-       ]);
+       ], true);
     }
 }

@@ -5,14 +5,16 @@ import {AppState} from './../AppState';
 import Aside from './Aside';
 import Wrapper from './Wrapper';
 import { Inertia } from '@inertiajs/inertia'
-import { usePage } from '@inertiajs/inertia-react'
 import {currentUrl} from './../actions';
-import { InertiaProgress } from '@inertiajs/progress'
+import Header from './Header';
+import ProfileInfoPanel from './../Components/ProfileInfoPanel';
+import NotificationPanel from './../Components/NotificationPanel';
+import { InertiaProgress } from '@inertiajs/progress';
 InertiaProgress.init({showSpinner: true})
 
+
 export default function Layout ({children}) {
-    const {props} = usePage()
-    const [data, dispatch] = React.useReducer(Reducer, {...AppState, user: props.user, props: props});
+    const [data, dispatch] = React.useReducer(Reducer, {...AppState});
 
     useEffect(() => {
         Inertia.on('navigate', (event) => {
@@ -24,10 +26,20 @@ export default function Layout ({children}) {
     return (
         <AppContext.Provider value={{data, dispatch}}>
             <Aside />
+            <div className="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
 
-            <Wrapper>
-                {children}
-            </Wrapper>
+                <Header />
+
+                <ProfileInfoPanel />
+
+                <NotificationPanel />
+
+                <Wrapper>
+                    {children}
+                </Wrapper>
+
+                {/*<Footer />*/}
+            </div>
         </AppContext.Provider>
     );
 }

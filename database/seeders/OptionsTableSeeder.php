@@ -87,6 +87,16 @@ class OptionsTableSeeder extends Seeder
                 'option_key'        => 'default_currency',
                 'option_value'      => 'USD',
                 'option_data'       => '',
+            ],
+            [
+                'option_key'        => 'users_must_verify_email',
+                'option_value'      => true,
+                'option_data'       => '',
+            ],
+            [
+                'option_key'        => 'display_must_verify_email_msg',
+                'option_value'      => true,
+                'option_data'       => '',
             ]
         ]);
     }

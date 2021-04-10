@@ -28,6 +28,6 @@ class RegisterResetUserPasswordActivity
             'auth_id'        => $event->user->user_id,
             'user_activity'  => 'user_reset_password',
             'user_activity_desc'  => ActivityLog::getActivityDescription('user_reset_password'),
-        ]);
+        ], true);
     }
 }

@@ -2513,6 +2513,16 @@ class TranslationsTableSeeder extends Seeder
                 "translation_lang" => "ar",
             ],
             [
+                "translation_key" => "forgot_password",
+                "translation_value" => "Forgot Password",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "forgot_password",
+                "translation_value" => "هل نسيت كلمة المرور",
+                "translation_lang" => "ar",
+            ],
+            [
                 "translation_key" => "reset_link_sent_msg",
                 "translation_value" => "please check your email to reset password",
                 "translation_lang" => "en",
@@ -2629,7 +2639,7 @@ class TranslationsTableSeeder extends Seeder
             ],
             [
                 "translation_key" => "browser_sessions",
-                "translation_value" => "قم بتعيين كلمة مرور جديدة",
+                "translation_value" => "جلسات التصفح",
                 "translation_lang" => "ar",
             ],
             [
@@ -2680,6 +2690,26 @@ class TranslationsTableSeeder extends Seeder
             [
                 "translation_key" => "back",
                 "translation_value" => "رجوع",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "must_verify_email_msg",
+                "translation_value" => "You must verify your email address.",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "must_verify_email_msg",
+                "translation_value" => "يجب عليك التحقق من عنوان بريدك الإلكتروني.",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "resend_verification_notification",
+                "translation_value" => "resend verification link",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "resend_verification_notification",
+                "translation_value" => "إعادة إرسال رابط التحقق",
                 "translation_lang" => "ar",
             ]
         ]);

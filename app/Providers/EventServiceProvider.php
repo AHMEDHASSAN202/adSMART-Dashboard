@@ -2,16 +2,24 @@
 
 namespace App\Providers;
 
+use App\Events\Dashboard\AfterChangeMyProfilePassword;
+use App\Events\Dashboard\AfterEditUserEvent;
+use App\Events\Dashboard\AfterPersonalOptionsEdit;
 use App\Events\Dashboard\AfterUserLoginToDashboardEvent;
 use App\Events\Dashboard\AfterUserLogoutFromDashboardEvent;
 use App\Events\Dashboard\BeforeUserLoginToDashboardEvent;
 use App\Events\Dashboard\BeforeUserLogoutFromDashboardEvent;
 use App\Events\Dashboard\UserAttemptedToDashboardLogin;
+use App\Listeners\Dashboard\ClearUserFiles;
 use App\Listeners\Dashboard\RegisterActivityAfterLoged;
+use App\Listeners\Dashboard\RegisterChangeMyProfilePasswordActivity;
 use App\Listeners\Dashboard\RegisterChangeUserPasswordActivity;
+use App\Listeners\Dashboard\RegisterEditUserActivity;
+use App\Listeners\Dashboard\RegisterPersonalOptionsEditActivity;
 use App\Listeners\Dashboard\RegisterResetUserPasswordActivity;
 use App\Listeners\Dashboard\RegisterUserAttemptedToDashboardLogin;
-use App\Listeners\Dashboard\SendEmailVerificationNotificationDashboard;
+use App\Listeners\Dashboard\ResendVerificationNotificationIfEditEmail;
+use App\Listeners\Dashboard\SendVerificationNotificationAfterLoggen;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -29,7 +37,7 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         BeforeUserLoginToDashboardEvent::class => [
-            SendEmailVerificationNotificationDashboard::class
+            SendVerificationNotificationAfterLoggen::class
         ],
         AfterUserLoginToDashboardEvent::class => [
             RegisterActivityAfterLoged::class,
@@ -45,6 +53,17 @@ class EventServiceProvider extends ServiceProvider
         ],
         PasswordReset::class => [
             RegisterResetUserPasswordActivity::class
+        ],
+        AfterEditUserEvent::class => [
+            ResendVerificationNotificationIfEditEmail::class,
+            ClearUserFiles::class,
+            RegisterEditUserActivity::class
+        ],
+        AfterPersonalOptionsEdit::class => [
+            RegisterPersonalOptionsEditActivity::class
+        ],
+        AfterChangeMyProfilePassword::class => [
+            RegisterChangeMyProfilePasswordActivity::class
         ]
     ];
 

@@ -22,34 +22,39 @@ const Index = (props) => {
     console.log(props);
     const {profile: {personal_info, ...profile}, loggedActivities, myActivities, flags} = props;
     const [isPasswordPanelOpen, setPasswordPanelOpen] = useState(false);
+    const [phoneCode, setPhoneCode] = useState(personal_info.phone_code);
     const {
         data:profileInfoData,
         setData:profileInfoSetData,
-        put:profileInfoPut,
+        post:profileInfoPut,
         processing:profileInfoProcessing,
         errors:profileInfoErrors
     } = useForm({
         user_name: profile.user_name,
         user_email: profile.user_email,
-        user_avatar: profile.user_avatar,
+        user_avatar: null,
+        _method: 'PUT'
     })
     const {
         data:personalInfoData,
         setData:personalInfoSetData,
         put:personalInfoPut,
         processing:personalInfoProcessing,
-        errors:personalInfoErrors
+        errors:personalInfoErrors,
+        transform: personalInfoTransform
     } = useForm({
         fk_user_country: personal_info.fk_user_country,
         user_phone: personal_info.user_phone,
         user_address: personal_info.user_address,
     })
+    personalInfoTransform((data) => ({...data, user_phone: new Number(data.user_phone)}))
     const {
             data:changePasswordData,
             setData:changePasswordSetData,
             put:changePasswordPut,
             processing:changePasswordProcessing,
-            errors:changePasswordErrors
+            errors:changePasswordErrors,
+            reset: resetPasswordFields
     } = useForm({
         current_password: '',
         password: '',
@@ -71,13 +76,20 @@ const Index = (props) => {
                     </div>
                     <div className="col-md-8">
                         <CardComponent
-                            footer={<PrimaryButton>{translations['update']}</PrimaryButton>}
+                            footer={
+                                <PrimaryButton
+                                    classes={profileInfoProcessing ? 'spinner spinner-white spinner-left spinner-sm' : ''}
+                                    disabled={profileInfoProcessing}
+                                    onClick={() => profileInfoPut(route('auth.dashboard.profile.info.update'), {preserveScroll: true}) }>{translations['update']
+                                    }</PrimaryButton>
+                            }
                         >
                             <div className="form-group row">
                                 <label className="col-xl-3 col-lg-3 col-form-label">{translations['avatar']}</label>
                                 <div className="col-lg-9 col-xl-6">
-                                    <OneImageUploaderComponent defaultImage={{dataURL: profileInfoData.user_avatar}} onImagesChange={(image) => profileInfoSetData('user_avatar', image)} acceptType={['png', 'jpg', 'jpeg']}/>
+                                    <OneImageUploaderComponent defaultImage={{dataURL: profile.user_avatar_full_path}} onImagesChange={(image) => profileInfoSetData('user_avatar', image['file'])} acceptType={['png', 'jpg', 'jpeg']}/>
                                     <span className="form-text text-muted">Allowed file types:  png, jpg, jpeg.</span>
+                                    {profileInfoErrors.user_avatar ? <InvalidFeedBack msg={profileInfoErrors.user_avatar}/> : ''}
                                 </div>
                             </div>
                             <div className="form-group row">
@@ -123,7 +135,13 @@ const Index = (props) => {
                     </div>
                     <div className="col-md-8">
                         <CardComponent
-                            footer={<PrimaryButton>{translations['update']}</PrimaryButton>}
+                            footer={
+                                <PrimaryButton
+                                    classes={personalInfoProcessing ? 'spinner spinner-white spinner-left spinner-sm' : ''}
+                                    disabled={personalInfoProcessing}
+                                    onClick={() => personalInfoPut(route('auth.dashboard.personal.options.update'), {preserveScroll: true})}
+                                >{translations['update']}</PrimaryButton>
+                            }
                         >
                             <div className="form-group row">
                                 <label className="col-2 col-form-label" htmlFor="country">{translations['country']}</label>
@@ -131,7 +149,10 @@ const Index = (props) => {
                                     <FlagsSelectComponent
                                         options={flags}
                                         value={flags.filter(f => f.flag_id == personalInfoData.fk_user_country)}
-                                        onChange={(f) => personalInfoSetData('fk_user_country', f.flag_id)}
+                                        onChange={(f) => {
+                                            personalInfoSetData('fk_user_country', f.flag_id);
+                                            setPhoneCode(f.phone_code)
+                                        }}
                                         flagValue={'flag_id'}
                                         id={'country'}
                                     />
@@ -139,17 +160,22 @@ const Index = (props) => {
                             </div>
                             <div className="form-group row">
                                 <label className="col-2 col-form-label" htmlFor="phone">{translations['phone']}</label>
-                                <div className="col-10">
+                                <div className="col-10 input-group">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text" style={{width: 60}}>
+                                            +{phoneCode}
+                                        </span>
+                                    </div>
                                     <input
                                         min={11}
                                         max={11}
-                                        className={'form-control' + (personalInfoData.user_phone ? ' in-invalid' : '')}
-                                        type="text"
+                                        className={'form-control' + (personalInfoErrors.user_phone ? ' in-invalid' : '')}
+                                        type="number"
                                         value={personalInfoData.user_phone}
                                         id="phone"
                                         onChange={(e) => personalInfoSetData('user_phone', e.target.value)}
                                     />
-                                    {personalInfoData.user_phone ? <InvalidFeedBack msg={personalInfoData.user_phone}/> : ''}
+                                    {personalInfoErrors.user_phone ? <InvalidFeedBack msg={personalInfoErrors.user_phone}/> : ''}
                                 </div>
                             </div>
                             <div className="form-group row">
@@ -159,13 +185,13 @@ const Index = (props) => {
                                         min={3}
                                         max={200}
                                         required
-                                        className={'form-control' + (personalInfoData.user_address ? ' in-invalid' : '')}
+                                        className={'form-control' + (personalInfoErrors.user_address ? ' in-invalid' : '')}
                                         type="text"
                                         value={personalInfoData.user_address}
                                         id="address"
                                         onChange={(e) => personalInfoSetData('user_address', e.target.value)}
                                     />
-                                    {personalInfoData.user_address ? <InvalidFeedBack msg={personalInfoData.user_address}/> : ''}
+                                    {personalInfoErrors.user_address ? <InvalidFeedBack msg={personalInfoErrors.user_address}/> : ''}
                                 </div>
                             </div>
                         </CardComponent>
@@ -179,7 +205,18 @@ const Index = (props) => {
                     </div>
                     <div className="col-md-8">
                         <CardComponent
-                            footer={<PrimaryButton>{translations['update_password']}</PrimaryButton>}
+                            footer={
+                                <PrimaryButton
+                                    onClick={() => {
+                                        changePasswordPut(route('auth.dashboard.profile.change.password'), {preserveScroll: true});
+                                        resetPasswordFields();
+                                    }}
+                                    classes={changePasswordProcessing ? 'spinner spinner-white spinner-left spinner-sm' : ''}
+                                    disabled={changePasswordProcessing}
+                                >
+                                    {translations['update_password']}
+                                </PrimaryButton>
+                            }
                         >
                             <div className="form-group row">
                                 <label className="col-2 col-form-label" htmlFor="current_password">{translations['current_password']}</label>

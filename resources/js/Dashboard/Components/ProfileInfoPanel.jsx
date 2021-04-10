@@ -3,9 +3,10 @@ import {toggleProfilePanel} from './../actions';
 import {AppContext} from "../AppContext";
 import { InertiaLink } from '@inertiajs/inertia-react'
 import PrimaryButton from "./PrimaryButton";
+import { usePage } from '@inertiajs/inertia-react'
 
 export default function ProfileInfoPanel() {
-
+    const {props: {user}} = usePage();
     const {data, dispatch} = useContext(AppContext);
     const myNavi = [
         {
@@ -56,20 +57,20 @@ export default function ProfileInfoPanel() {
 
                 <div className="d-flex align-items-center mt-5">
                     <div className="symbol symbol-100 mr-5">
-                        <div className="symbol-label" style={{backgroundImage: "url('/dashboard-assets/media/users/300_21.jpg')"}}></div>
+                        <div className="symbol-label" style={{backgroundImage: "url("+user.user_avatar_full_path+")"}}></div>
                         <i className="symbol-badge bg-success"></i>
                     </div>
                     <div className="d-flex flex-column">
                         <InertiaLink href={route('auth.dashboard.profile')} className="font-weight-bold font-size-h5 text-dark-75 text-capitalize text-hover-primary">
-                            {data.user.user_name}
+                            {user.user_name}
                         </InertiaLink>
                         <div className="text-muted mt-1 text-capitalize">
-                            {data.user.role.name}
+                            {user.role.name}
                         </div>
                         <div className="navi mt-2">
                             <InertiaLink href={route('auth.dashboard.profile')} className="navi-item">
                                 <span className="navi-link p-0 pb-2">
-                                    <span className="navi-text text-muted text-hover-primary">{data.user.user_email}</span>
+                                    <span className="navi-text text-muted text-hover-primary">{user.user_email}</span>
                                 </span>
                             </InertiaLink>
                             <form action={route('auth.dashboard.logout')} method='POST'>

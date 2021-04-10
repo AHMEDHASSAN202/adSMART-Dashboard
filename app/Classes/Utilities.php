@@ -156,6 +156,17 @@ class Utilities
         return $res;
     }
 
+    public static function makeAlert($class, $title, $icon)
+    {
+        return [
+            'alert' => [
+                'class' => $class,
+                'title' => $title,
+                'icon'  => $icon
+            ],
+        ];
+    }
+
     public static function initialDashboardData()
     {
         return [

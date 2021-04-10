@@ -22,7 +22,7 @@ class ActivityLog extends Model
     }
     //============= #END# Relations ============\\
 
-    public static function createWithAgent($data=[])
+    public static function createWithAgent($data=[], $updateIfExists=false)
     {
         $agent = app('agent');
         $platform =$agent->platform();
@@ -37,10 +37,11 @@ class ActivityLog extends Model
         ];
 
         //wh will update logged if is logged from same ip
-        if ($data['user_activity'] == 'dashboard_logged') {
+        if ($updateIfExists) {
             return ActivityLog::updateOrInsert([
                 'ip_address'    => request()->ip(),
-                'user_activity' => 'dashboard_logged'
+                'user_activity' => $data['user_activity'],
+                'auth_id'       => $data['auth_id'],
             ], $agentData + $data);
         }
 
@@ -53,6 +54,9 @@ class ActivityLog extends Model
             'dashboard_logged'  => "you're logged in to dashboard",
             'user_attempted_to_login'  => "user attempted to login",
             'user_reset_password'  => "password reset",
+            'update_profile_information'  => "you're update profile information",
+            'update_personal_options'  => "you're update personal options",
+            'change_your_password'  => "you're changed your password",
         ];
 
         return @$activityDescriptions[$activity];

@@ -35,7 +35,7 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
         'email_verified_at' => 'datetime',
     ];
 
-    protected $appends = ['permissions'];
+    protected $appends = ['permissions', 'user_avatar_full_path'];
 
     //========== Appends Attributes ======================\\
     public function getPermissionsAttribute()
@@ -46,6 +46,11 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
     public function getEmailAttribute()
     {
         return $this->user_email;
+    }
+
+    public function getUserAvatarFullPathAttribute()
+    {
+        return asset("storage/$this->user_avatar");
     }
     //========== #END# Appends Attributes ===================\\
 

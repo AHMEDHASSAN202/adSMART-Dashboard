@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Classes\Utilities;
+use App\Http\Requests\Dashboard\ChangeMyPasswordRequest;
 use App\Http\Requests\Dashboard\ForgotPasswordRequest;
 use App\Http\Requests\Dashboard\LoginToDashboardRequest;
 use App\Http\Requests\Dashboard\ResetPasswordSubmit;
+use App\Http\Requests\Dashboard\UpdatePersonalOptionsRequest;
+use App\Http\Requests\Dashboard\UpdateProfileInfoDashboardRequest;
 use App\Models\ActivityLog;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Notifications\ResetPassword;
@@ -47,7 +50,18 @@ class DashboardAuthController extends AuthController
     {
         $emailVerificationRequest->fulfill();
 
+        if ($this->authRepository->isLoggedToDashboard()) {
+            return redirect()->route('dashboard.index')->with(Utilities::makeAlert('info', _e('success_verify_msg'), 'flaticon-like'));
+        }
+
         return redirect()->route('auth.dashboard.login')->with(['success' => _e('success_verify_msg')])->withInput(['email' => $emailVerificationRequest->user->user_email]);
+    }
+
+    public function verificationNotification()
+    {
+        $this->authRepository->sendVerifyEmail($this->authRepository->getAdmin());
+
+        return redirect()->back()->with(Utilities::alertFromStatus(true));
     }
 
     public function forgotPasswordRequest()
@@ -119,5 +133,30 @@ class DashboardAuthController extends AuthController
         }
 
         return redirect()->route('auth.dashboard.profile')->with(Utilities::alertFromStatus(true));
+    }
+
+    public function updateProfileInfo(UpdateProfileInfoDashboardRequest $infoDashboardRequest)
+    {
+        $this->authRepository->updateProfileInfo($infoDashboardRequest);
+
+        return redirect()->back()->with(Utilities::alertFromStatus(true));
+    }
+
+    public function updatePersonalOptions(UpdatePersonalOptionsRequest $updatePersonalOptions)
+    {
+        $this->authRepository->updatePersonalOptions($updatePersonalOptions);
+
+        return redirect()->back()->with(Utilities::alertFromStatus(true));
+    }
+
+    public function changeMyPassword(ChangeMyPasswordRequest $changeMyPasswordRequest)
+    {
+        $result = $this->authRepository->changeMyPassword($changeMyPasswordRequest);
+
+        if ($result instanceof MessageBag) {
+            return redirect()->back()->withErrors($result);
+        }
+
+        return redirect()->back()->with(Utilities::alertFromStatus(true));
     }
 }

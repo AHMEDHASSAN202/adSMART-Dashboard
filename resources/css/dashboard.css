@@ -1,6 +1,14 @@
 body {
     background-color: #f4f5f7;
 }
+.as-a {
+    background-color: transparent;
+    border: 0;
+    color: var(--info) !important;
+}
+.as-a:hover {
+    text-decoration: underline;
+}
 .header .menu-item-active > .menu-link .menu-text,
 .header .menu-item:hover > .menu-link .menu-text,
 .header .menu-item:hover,
