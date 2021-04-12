@@ -1,4 +1,4 @@
-<?php $language = \App\Classes\Utilities::getLanguage() ?>
+<?php $language = getLanguage() ?>
 <!DOCTYPE html>
 <html lang="{{$language->language_code}}" dir="{{$language->language_direction}}">
     <head>
@@ -46,7 +46,7 @@
         <link href="{{ mix('/css/dashboard.css') }}" rel="stylesheet"/>
         <script src="{{ mix('/js/dashboard.js') }}" defer></script>
         <script>
-            <?php $initialData = \App\Classes\Utilities::initialDashboardData() ?>
+            <?php $initialData = initialDashboardData() ?>
             window.asideMenu = @json($initialData['asideMenu']);
             window.languages = @json($initialData['languages']);
             window.translations = @json($initialData['translations']);

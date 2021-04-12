@@ -28,25 +28,28 @@ class OptionRepository
 
     public function updateOrCreateOption($option_key, $option_value, $option_data = '')
     {
-        $option = Option::where('option_key', $option_key)->first();
-        if (!$option) {
-            $option = new Option();
-            $option->option_key = $option_key;
-        }
-        $option->option_value = $this->optionValue($option_value);
-        $option->option_data = $option_data;
-        $option->save();
+        $value = $this->optionValue($option_value);
 
-        return (boolean) $option;
+        return Option::updateOrInsert(['option_key' => $option_key], ['option_value' => $value, 'option_data' => $option_data]);
     }
 
     private function optionValue($option_value)
     {
         if ($option_value instanceof UploadedFile) {
             //store file
-            return $option_value->store('options');
+            return $option_value->store('images/options', 'public');
         }
 
         return $option_value;
+    }
+
+    public function saveOptions(array $data)
+    {
+        foreach ($data as $optionKey => $optionValue) {
+            if ($optionValue !== '' && $optionValue !== null) {
+                $this->updateOrCreateOption($optionKey, $optionValue);
+            }
+        }
+        Cache::forget('options');
     }
 }

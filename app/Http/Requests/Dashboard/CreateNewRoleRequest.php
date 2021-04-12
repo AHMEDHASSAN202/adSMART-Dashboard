@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Dashboard;
 
-use App\Classes\Utilities;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateNewRoleRequest extends FormRequest
@@ -14,7 +13,7 @@ class CreateNewRoleRequest extends FormRequest
      */
     public function rules()
     {
-        $languages = Utilities::getLanguages();
+        $languages = getLanguages();
         $rules = [];
         foreach ($languages as $language) {
             $rules['role_name.' . $language->language_code] = 'required|min:3|max:200';
@@ -37,7 +36,7 @@ class CreateNewRoleRequest extends FormRequest
     {
         $attr = [];
 
-        $languages = Utilities::getLanguages();
+        $languages = getLanguages();
 
         foreach ($languages as $language) {
             $attr['role_name.'.$language->language_code] = _e('name', $language->language_code);
@@ -48,7 +47,7 @@ class CreateNewRoleRequest extends FormRequest
 
     public function messages()
     {
-        $languages = Utilities::getLanguages();
+        $languages = getLanguages();
         $translatedKeys = [
             'required' => 'required',
             'min'      => 'min.numeric',

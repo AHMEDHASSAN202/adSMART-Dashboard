@@ -31,4 +31,5 @@ Route::group(['middleware' => ['auth:dashboard', 'dashboard.inertia.request']], 
     Route::put('dashboard/profile/info', 'DashboardAuthController@updateProfileInfo')->name('auth.dashboard.profile.info.update');
     Route::put('dashboard/profile/personal-options', 'DashboardAuthController@updatePersonalOptions')->name('auth.dashboard.personal.options.update');
     Route::put('dashboard/profile/change-password', 'DashboardAuthController@changeMyPassword')->name('auth.dashboard.profile.change.password');
+    Route::put('dashboard/profile/delete-account', 'DashboardAuthController@deleteAccount')->name('auth.dashboard.profile.delete.account');
 });

@@ -40,7 +40,7 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
     //========== Appends Attributes ======================\\
     public function getPermissionsAttribute()
     {
-        return $this->loadMissing('role')->role->permissions;
+        return optional($this->loadMissing('role')->role)->permissions;
     }
 
     public function getEmailAttribute()
@@ -58,7 +58,7 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
     //========== Relations ======================\\
     public function role()
     {
-        return $this->belongsTo(Role::class, 'fk_role_id', 'role_id')->roleDescription()->language();
+        return $this->belongsTo(Role::class, 'fk_role_id', 'role_id')->roleDescription();
     }
     public function personalInfo()
     {

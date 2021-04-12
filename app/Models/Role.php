@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Classes\Utilities;
 use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
@@ -15,14 +14,11 @@ class Role extends Model
 
     public function scopeRoleDescription($query)
     {
-        return $query->join(Role::RoleDescriptionTable, 'roles.role_id', '=', Role::RoleDescriptionTable.'.fk_role_id');
-    }
-
-    public function scopeLanguage($query)
-    {
-        $languageId = Utilities::getLanguage()->language_id;
-
-        return $query->where(Role::RoleDescriptionTable.'.fk_language_id', $languageId);
+        $languageId = getLanguage()->language_id;
+        return $query->leftJoin(Role::RoleDescriptionTable, function ($join) use ($languageId) {
+            $join->on('roles.role_id', '=', Role::RoleDescriptionTable.'.fk_role_id')
+                 ->where(Role::RoleDescriptionTable.'.fk_language_id', $languageId);
+        });
     }
 
     public function scopeSearch($query, $request)

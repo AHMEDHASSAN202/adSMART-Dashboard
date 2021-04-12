@@ -23,9 +23,9 @@ class CreateActivityLogsTable extends Migration
             $table->string('auth_id')->nullable();
             $table->string('user_id')->nullable();
             $table->string('user_activity');
-            $table->string('user_activity_desc')->nullable();
             $table->string('model_id')->nullable();
             $table->string('model_type')->nullable();
+            $table->string('extra_data')->nullable();
             $table->timestamps();
         });
     }

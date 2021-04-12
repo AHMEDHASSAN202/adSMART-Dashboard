@@ -19,9 +19,9 @@ const breadcrumb = [
 
 
 const Index = (props) => {
-    console.log(props);
     const {profile: {personal_info, ...profile}, loggedActivities, myActivities, flags} = props;
     const [isPasswordPanelOpen, setPasswordPanelOpen] = useState(false);
+    const [isDeleteAccountPanel, setDeleteAccountPanel] = useState(false);
     const [phoneCode, setPhoneCode] = useState(personal_info.phone_code);
     const {
         data:profileInfoData,
@@ -67,6 +67,12 @@ const Index = (props) => {
                 setOpen={setPasswordPanelOpen}
                 url={route('auth.dashboard.profile.logout.other.devices')}
             />
+            <WriteCurrentPasswordPanel
+                isOpen={isDeleteAccountPanel}
+                setOpen={setDeleteAccountPanel}
+                method={'put'}
+                url={route('auth.dashboard.profile.delete.account')}
+            />
             <Topbar title={translations['profile_info']} breadcrumb={breadcrumb} />
             <Content>
                 <div className="row mb-2">
@@ -89,7 +95,7 @@ const Index = (props) => {
                                 <div className="col-lg-9 col-xl-6">
                                     <OneImageUploaderComponent defaultImage={{dataURL: profile.user_avatar_full_path}} onImagesChange={(image) => profileInfoSetData('user_avatar', image['file'])} acceptType={['png', 'jpg', 'jpeg']}/>
                                     <span className="form-text text-muted">Allowed file types:  png, jpg, jpeg.</span>
-                                    {profileInfoErrors.user_avatar ? <InvalidFeedBack msg={profileInfoErrors.user_avatar}/> : ''}
+                                    <InvalidFeedBack msg={profileInfoErrors.user_avatar}/>
                                 </div>
                             </div>
                             <div className="form-group row">
@@ -105,7 +111,7 @@ const Index = (props) => {
                                         id="user_name"
                                         onChange={(e) => profileInfoSetData('user_name', e.target.value)}
                                     />
-                                    {profileInfoErrors.user_name ? <InvalidFeedBack msg={profileInfoErrors.user_name}/> : ''}
+                                    <InvalidFeedBack msg={profileInfoErrors.user_name}/>
                                 </div>
                             </div>
                             <div className="form-group row">
@@ -121,7 +127,7 @@ const Index = (props) => {
                                         id="email"
                                         onChange={(e) => profileInfoSetData('user_email', e.target.value)}
                                     />
-                                    {profileInfoErrors.user_email ? <InvalidFeedBack msg={profileInfoErrors.user_email}/> : ''}
+                                    <InvalidFeedBack msg={profileInfoErrors.user_email}/>
                                 </div>
                             </div>
                         </CardComponent>
@@ -175,7 +181,7 @@ const Index = (props) => {
                                         id="phone"
                                         onChange={(e) => personalInfoSetData('user_phone', e.target.value)}
                                     />
-                                    {personalInfoErrors.user_phone ? <InvalidFeedBack msg={personalInfoErrors.user_phone}/> : ''}
+                                    <InvalidFeedBack msg={personalInfoErrors.user_phone}/>
                                 </div>
                             </div>
                             <div className="form-group row">
@@ -191,7 +197,7 @@ const Index = (props) => {
                                         id="address"
                                         onChange={(e) => personalInfoSetData('user_address', e.target.value)}
                                     />
-                                    {personalInfoErrors.user_address ? <InvalidFeedBack msg={personalInfoErrors.user_address}/> : ''}
+                                    <InvalidFeedBack msg={personalInfoErrors.user_address}/>
                                 </div>
                             </div>
                         </CardComponent>
@@ -231,7 +237,7 @@ const Index = (props) => {
                                         onChange={e => changePasswordSetData('current_password', e.target.value)}
                                         id="current_password"
                                     />
-                                    {changePasswordErrors.current_password ? <InvalidFeedBack msg={changePasswordErrors.current_password}/> : ''}
+                                    <InvalidFeedBack msg={changePasswordErrors.current_password}/>
                                 </div>
                             </div>
                             <div className="form-group row">
@@ -246,7 +252,7 @@ const Index = (props) => {
                                         onChange={e => changePasswordSetData('password', e.target.value)}
                                         id="password"
                                     />
-                                    {changePasswordErrors.password ? <InvalidFeedBack msg={changePasswordErrors.password}/> : ''}
+                                    <InvalidFeedBack msg={changePasswordErrors.password}/>
                                 </div>
                             </div>
                             <div className="form-group row">
@@ -261,7 +267,7 @@ const Index = (props) => {
                                         onChange={e => changePasswordSetData('password_confirmation', e.target.value)}
                                         id="confirm_password"
                                     />
-                                    {changePasswordErrors.password_confirmation ? <InvalidFeedBack msg={changePasswordErrors.password_confirmation}/> : ''}
+                                    <InvalidFeedBack msg={changePasswordErrors.password_confirmation}/>
                                 </div>
                             </div>
                         </CardComponent>
@@ -313,51 +319,47 @@ const Index = (props) => {
                     </div>
                     <div className="col-md-8">
                         <CardComponent>
-                            <div className="timeline timeline-6 mt-3">
+                            {myActivities.length ?
+                                <div className="timeline timeline-6 mt-3 activity-timeline">
 
-                                <div className="timeline-item align-items-start">
+                                    {myActivities.map((activity, key) => (
+                                        <div className="timeline-item align-items-start" key={key}>
 
-                                    <div className="timeline-label font-weight-bolder text-dark-75 font-size-lg">08:42
-                                    </div>
+                                            <div className="timeline-label font-weight-bolder text-dark-75 font-size-lg">
+                                                {activity.updated_at || activity.created_at}
+                                            </div>
 
-                                    <div className="timeline-badge">
-                                        <i className="fa fa-genderless text-warning icon-xl"></i>
-                                    </div>
+                                            <div className="timeline-badge">
+                                                <i className="fa fa-genderless text-warning icon-xl"></i>
+                                            </div>
 
-                                    <div className="font-weight-mormal font-size-lg timeline-content text-muted pl-3">
-                                        Outlines keep you honest. And keep structure
-                                    </div>
-                                </div>
+                                            <div className="font-weight-mormal font-size-lg timeline-content text-muted pl-3">
+                                                {activity.activity_description}
+                                            </div>
+                                        </div>
+                                    ))}
 
-                                <div className="timeline-item align-items-start">
+                                </div> : <p>{translations['no_records_found']}</p>}
+                        </CardComponent>
+                    </div>
+                </div>
 
-                                    <div className="timeline-label font-weight-bolder text-dark-75 font-size-lg">08:42
-                                    </div>
-
-                                    <div className="timeline-badge">
-                                        <i className="fa fa-genderless text-danger icon-xl"></i>
-                                    </div>
-
-                                    <div className="font-weight-mormal font-size-lg timeline-content text-muted pl-3">
-                                        Outlines keep you honest. And keep structure
-                                    </div>
-                                </div>
-
-                                <div className="timeline-item align-items-start">
-
-                                    <div className="timeline-label font-weight-bolder text-dark-75 font-size-lg">08:42
-                                    </div>
-
-                                    <div className="timeline-badge">
-                                        <i className="fa fa-genderless text-primary icon-xl"></i>
-                                    </div>
-
-                                    <div className="font-weight-mormal font-size-lg timeline-content text-muted pl-3">
-                                        Outlines keep you honest. And keep structure
-                                    </div>
-                                </div>
-
+                <div className="row mb-15">
+                    <div className="col-md-4">
+                        <h3 className="font-weight-bold h-p text-secondary">{translations['delete_account']}</h3>
+                        <small className='font-size-sm text-muted h-small'>{translations['delete_account_desc']}</small>
+                    </div>
+                    <div className="col-md-8">
+                        <CardComponent>
+                            <div className="alert alert-custom alert-light-danger fade show mb-7 py-2 text-uppercase" role="alert">
+                                <div className="alert-icon"><i className="flaticon-warning"></i></div>
+                                <div className="alert-text"><strong>{translations['delete_account_warn']}</strong></div>
                             </div>
+                            <PrimaryButton
+                                onClick={() => setDeleteAccountPanel(true)}
+                            >
+                                {translations['delete_account']}
+                            </PrimaryButton>
                         </CardComponent>
                     </div>
                 </div>

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Classes\Utilities;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Http\Requests\Dashboard\UpdateTranslateRequest;
@@ -35,7 +34,7 @@ class TranslationsController extends Controller
         //update method
         $this->localizationRepository->updateTranslate($data['translations']);
 
-        return response()->json(Utilities::alertFromStatus(true));
+        return response()->json(alertFromStatus(true));
     }
 
 }

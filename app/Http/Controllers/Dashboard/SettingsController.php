@@ -3,34 +3,50 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Dashboard\SettingsContactUsDataUpdatedRequest;
+use App\Http\Requests\Dashboard\SettingsDashboardDataUpdatedRequest;
+use App\Http\Requests\Dashboard\SettingsGeneralDataUpdatedRequest;
+use App\Repositories\OptionRepository;
 use App\Repositories\SettingsRepository;
+use Inertia\Inertia;
 
 class SettingsController extends Controller
 {
+    private $optionRepository;
 
-    public function index()
+    public function __construct(OptionRepository $optionRepository)
     {
-        app('document')->setTitle(_e('settings'))->setDescription(_e('settings_description'));
-
-        return view('settings::pages.index');
+        $this->optionRepository = $optionRepository;
     }
 
-    public function clearCache(Request $request, SettingsRepository $settingsRepository)
+    public function index(OptionRepository $optionRepository)
     {
-        $cleared = $settingsRepository->clearCache();
+        app('document')->setTitle(_e('settings'));
 
-        if ($request->wantsJson()) {
-            return response()->json(['cleared' => $cleared], $cleared ? 200 : 400);
-        }
+        $options = $this->optionRepository->getOptions();
 
-        $d = [
-            'toastr' => [
-                'status' => $cleared ? 'success' : 'error',
-                'title' => $cleared ? _e('success_message') : _e('error_message'),
-            ]
-        ];
+        return Inertia::render('Settings/Index', compact('options'));
+    }
 
-        return redirect()->back()->with($d);
+    public function updateGeneralData(SettingsGeneralDataUpdatedRequest $settingsGeneralDataUpdatedRequest)
+    {
+        $this->optionRepository->saveOptions($settingsGeneralDataUpdatedRequest->validated());
+
+        return redirect()->back()->with(alertFromStatus(true));
+    }
+
+    public function updateContactUsData(SettingsContactUsDataUpdatedRequest $settingsContactUsDataUpdatedRequest)
+    {
+        $this->optionRepository->saveOptions($settingsContactUsDataUpdatedRequest->validated());
+
+        return redirect()->back()->with(alertFromStatus(true));
+    }
+
+    public function updateDashboardData(SettingsDashboardDataUpdatedRequest $settingsDashboardDataUpdatedRequest)
+    {
+        $this->optionRepository->saveOptions($settingsDashboardDataUpdatedRequest->validated());
+
+        return redirect()->back()->with(alertFromStatus(true));
     }
 
 }

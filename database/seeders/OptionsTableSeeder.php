@@ -49,16 +49,6 @@ class OptionsTableSeeder extends Seeder
                 'option_data'       => '',
             ],
             [
-                'option_key'        => 'dashboard_title:en',
-                'option_value'      => 'Dashboard',
-                'option_data'       => '',
-            ],
-            [
-                'option_key'        => 'dashboard_title:ar',
-                'option_value'      => 'لوحة التحكم',
-                'option_data'       => '',
-            ],
-            [
                 'option_key'        => 'keywords:en',
                 'option_value'      => 'ecommerce, payment, buy',
                 'option_data'       => '',
@@ -84,11 +74,6 @@ class OptionsTableSeeder extends Seeder
                 'option_data'       => '',
             ],
             [
-                'option_key'        => 'default_currency',
-                'option_value'      => 'USD',
-                'option_data'       => '',
-            ],
-            [
                 'option_key'        => 'users_must_verify_email',
                 'option_value'      => true,
                 'option_data'       => '',
@@ -96,6 +81,26 @@ class OptionsTableSeeder extends Seeder
             [
                 'option_key'        => 'display_must_verify_email_msg',
                 'option_value'      => true,
+                'option_data'       => '',
+            ],
+            [
+                'option_key'        => 'contact_email',
+                'option_value'      => 'ahmed@gmail.com',
+                'option_data'       => '',
+            ],
+            [
+                'option_key'        => 'contact_phone',
+                'option_value'      => '0106352416352',
+                'option_data'       => '',
+            ],
+            [
+                'option_key'        => 'contact_address',
+                'option_value'      => 'Egypt, Tanta',
+                'option_data'       => '',
+            ],
+            [
+                'option_key'        => 'default_avatar',
+                'option_value'      => 'images/users/avatars/ehaS7YB1IHA4fpIEtjafp4AzFWcxJnhUrSQ6sCin.jpg',
                 'option_data'       => '',
             ]
         ]);

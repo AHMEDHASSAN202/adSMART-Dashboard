@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Classes\Utilities;
 use App\Http\Requests\Dashboard\ChangeMyPasswordRequest;
 use App\Http\Requests\Dashboard\ForgotPasswordRequest;
 use App\Http\Requests\Dashboard\LoginToDashboardRequest;
@@ -26,9 +25,7 @@ class DashboardAuthController extends AuthController
    {
        $logged = $this->authRepository->loginToDashboard($loginToDashboardRequest);
 
-       if ($logged instanceof MessageBag || !$logged) {
-           return redirect()->back()->withErrors($logged)->withInput();
-       }
+       if ($logged instanceof MessageBag || !$logged) return redirect()->back()->withErrors($logged)->withInput();
 
        return redirect($this->target ? url($this->target) : route('dashboard.index'));
    }
@@ -51,7 +48,7 @@ class DashboardAuthController extends AuthController
         $emailVerificationRequest->fulfill();
 
         if ($this->authRepository->isLoggedToDashboard()) {
-            return redirect()->route('dashboard.index')->with(Utilities::makeAlert('info', _e('success_verify_msg'), 'flaticon-like'));
+            return redirect()->route('dashboard.index')->with(makeAlert('info', _e('success_verify_msg'), 'flaticon-like'));
         }
 
         return redirect()->route('auth.dashboard.login')->with(['success' => _e('success_verify_msg')])->withInput(['email' => $emailVerificationRequest->user->user_email]);
@@ -61,7 +58,7 @@ class DashboardAuthController extends AuthController
     {
         $this->authRepository->sendVerifyEmail($this->authRepository->getAdmin());
 
-        return redirect()->back()->with(Utilities::alertFromStatus(true));
+        return redirect()->back()->with(alertFromStatus(true));
     }
 
     public function forgotPasswordRequest()
@@ -117,7 +114,7 @@ class DashboardAuthController extends AuthController
                 $loggedActivities->push($activity);
             }
         }
-        $flags = Utilities::getFlags();
+        $flags = getFlags();
 
         return Inertia::render('Profile/Index', compact('profile','myActivities', 'loggedActivities', 'flags'));
     }
@@ -128,35 +125,42 @@ class DashboardAuthController extends AuthController
 
         $r = $this->authRepository->logoutOtherDevices($validatedData['currentPassword']);
 
-        if ($r instanceof MessageBag) {
-            return redirect()->back()->with('errors', $r)->withErrors($r);
-        }
+        if ($r instanceof MessageBag) return redirect()->back()->with('errors', $r)->withErrors($r);
 
-        return redirect()->route('auth.dashboard.profile')->with(Utilities::alertFromStatus(true));
+        return redirect()->route('auth.dashboard.profile')->with(alertFromStatus(true));
     }
 
     public function updateProfileInfo(UpdateProfileInfoDashboardRequest $infoDashboardRequest)
     {
         $this->authRepository->updateProfileInfo($infoDashboardRequest);
 
-        return redirect()->back()->with(Utilities::alertFromStatus(true));
+        return redirect()->back()->with(alertFromStatus(true));
     }
 
     public function updatePersonalOptions(UpdatePersonalOptionsRequest $updatePersonalOptions)
     {
         $this->authRepository->updatePersonalOptions($updatePersonalOptions);
 
-        return redirect()->back()->with(Utilities::alertFromStatus(true));
+        return redirect()->back()->with(alertFromStatus(true));
     }
 
     public function changeMyPassword(ChangeMyPasswordRequest $changeMyPasswordRequest)
     {
         $result = $this->authRepository->changeMyPassword($changeMyPasswordRequest);
 
-        if ($result instanceof MessageBag) {
-            return redirect()->back()->withErrors($result);
-        }
+        if ($result instanceof MessageBag) return redirect()->back()->withErrors($result);
 
-        return redirect()->back()->with(Utilities::alertFromStatus(true));
+        return redirect()->back()->with(alertFromStatus(true));
+    }
+
+    public function deleteAccount(Request $request)
+    {
+        $validatedData = $request->validate(['currentPassword' => 'required'], ['required' => _e('validation::required')], ['currentPassword' => _e('current_password')]);
+
+        $result = $this->authRepository->deleteMyAccount($validatedData['currentPassword']);
+
+        if ($result instanceof MessageBag) return redirect()->back()->withErrors($result);
+
+        return Inertia::location(url(''));
     }
 }

@@ -1,4 +1,4 @@
-<?php $language = \App\Classes\Utilities::getLanguage() ?>
+<?php $language = getLanguage() ?>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{$language->language_direction}}">
     <head>

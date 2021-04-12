@@ -24,7 +24,7 @@ class AuthTableSeeder extends Seeder
             'user_email'    => 'testelbhai@gmail.com',
             'email_verified_at' => now(),
             'user_password' => password_hash(123456, PASSWORD_DEFAULT),
-            'user_avatar'   => 'images/users/avatars/UOaAi2yQMyUnHULutJkrVs8lf2A84bopuXskAEVa.jpg'
+            'user_avatar'   => 'images/users/avatars/ehaS7YB1IHA4fpIEtjafp4AzFWcxJnhUrSQ6sCin.jpg'
         ]);
 
         Profile::insert([

@@ -83,4 +83,20 @@ html[dir=rtl] * {
     top: auto !important;
     bottom: auto !important;
 }
+.activity-timeline:before {
+    left: 85px !important;
+}
 
+.activity-timeline .timeline-label {
+    width: 85px !important;
+}
+.my-settings-tabs .nav-item {
+    font-size: 14px;
+    line-height: 1.8;
+}
+.my-accordion .card .card-header .card-title:not(.collapsed) {
+    color: var(--info) !important;
+}
+.my-accordion .svg-icon.svg-icon-primary svg g [fill]  {
+    fill: var(--info) !important;
+}

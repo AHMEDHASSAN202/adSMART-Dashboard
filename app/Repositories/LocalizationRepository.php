@@ -43,7 +43,6 @@ class LocalizationRepository
 
                 return $langWithTranslate;
             });
-
             return $translations;
         });
     }
@@ -162,4 +161,30 @@ class LocalizationRepository
         return $language;
     }
 
+    public function addNewTranslationsLanguage($languageCode)
+    {
+        $translationsArray = [];
+
+        $keys = DB::table(Translation::getTableName())->select('translation_key', 'translation_value')->where('translation_lang', getOptionValue('default_lang'))->get();
+
+        $keys->map(function ($key) use (&$translationsArray, $languageCode) {
+            $translationsArray[] = [
+                'translation_key'   => $key->translation_key,
+                'translation_value' => $key->translation_value,
+                'translation_lang'  => $languageCode
+            ];
+        });
+
+        DB::table(Translation::getTableName())->insert($translationsArray);
+    }
+
+    public function updateTranslationsLanguageCode($oldCode, $newCode)
+    {
+        return DB::table(Translation::getTableName())->where('translation_lang', $oldCode)->update(['translation_lang' => $newCode]);
+    }
+
+    public function deleteTranslationsLanguage($languageCode)
+    {
+        return DB::table(Translation::getTableName())->where('translation_lang', $languageCode)->delete();
+    }
 }

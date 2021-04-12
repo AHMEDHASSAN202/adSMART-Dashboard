@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Classes\Utilities;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Models\Language;
@@ -33,20 +32,20 @@ class LanguagesController extends Controller
     {
         app('document')->setTitle(_e(['add', 'language']));
 
-        return Inertia::render('Localization/Language/CreateEdit', ['flags' => Utilities::getFlags()]);
+        return Inertia::render('Localization/Language/CreateEdit', ['flags' => getFlags()]);
     }
 
     public function store(CreateNewLanguageRequest $createNewLanguageRequest)
     {
         $newLanguage = $this->localizationRepository->addNewLanguage($createNewLanguageRequest);
 
-        return redirect()->route('dashboard.languages.index', [], 303)->with(Utilities::alertFromStatus($newLanguage));
+        return redirect()->route('dashboard.languages.index', [], 303)->with(alertFromStatus($newLanguage));
     }
 
     public function edit($languageId)
     {
         $language = $this->localizationRepository->getLanguageById($languageId);
-        $flags = Utilities::getFlags();
+        $flags = getFlags();
 
         abort_if(is_null($language), 404);
 
@@ -59,20 +58,20 @@ class LanguagesController extends Controller
     {
         $updated = $this->localizationRepository->updateLanguage($language, $updateLanguageRequest);
 
-        return redirect()->route('dashboard.languages.index')->with(Utilities::alertFromStatus($updated));
+        return redirect()->route('dashboard.languages.index')->with(alertFromStatus($updated));
     }
 
     public function destroy(DeleteLanguageRequest $deleteLanguageRequest)
     {
         $deleted = $this->localizationRepository->removeLanguage($deleteLanguageRequest->ids);
 
-        return redirect()->back(303)->with(Utilities::alertFromStatus($deleted));
+        return redirect()->back(303)->with(alertFromStatus($deleted));
     }
 
     public function toggleDisplayFront(Language $language)
     {
         $this->localizationRepository->toggleDisplayFront($language);
 
-        return redirect()->back(303)->with(Utilities::alertFromStatus(true));
+        return redirect()->back(303)->with(alertFromStatus(true));
     }
 }

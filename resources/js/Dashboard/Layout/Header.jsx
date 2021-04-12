@@ -2,6 +2,7 @@ import react, {useContext} from 'react';
 import {toggleProfilePanel} from './../actions';
 import {AppContext} from "../AppContext";
 import LanguagesDropdown from "../Components/LanguagesDropdown";
+import { InertiaLink } from '@inertiajs/inertia-react'
 
 export default function Header() {
     const {data, dispatch} = useContext(AppContext);
@@ -16,16 +17,16 @@ export default function Header() {
                         <ul className="menu-nav ">
                             <li className="menu-item  menu-item-open menu-item-here menu-item-submenu menu-item-rel menu-item-open menu-item-here menu-item-active"
                                 data-menu-toggle="click" aria-haspopup="true">
-                                <a href="#" className="menu-link menu-toggle">
+                                <a href="/" className="menu-link menu-toggle">
                                     <span className="menu-text">{translations['website']}</span>
                                     <i className="menu-arrow"></i>
                                 </a>
                             </li>
                             <li className="menu-item  menu-item-open menu-item-here menu-item-rel" aria-haspopup="true">
-                                <a href="#" className="menu-link menu-toggle">
+                                <InertiaLink href={route('dashboard.settings.index')} className="menu-link menu-toggle">
                                     <span className="menu-text">{translations['settings']}</span><
                                     i className="menu-arrow"></i>
-                                </a>
+                                </InertiaLink>
                             </li>
                         </ul>
 

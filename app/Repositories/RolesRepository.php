@@ -7,9 +7,7 @@
 namespace App\Repositories;
 
 
-use App\Classes\Utilities;
 use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use App\Models\Role;
 
@@ -17,34 +15,14 @@ class RolesRepository
 {
     public function getRoles(Request $request)
     {
-        $perPage = $request->query('perpage', Utilities::$paginationPerPage);
+        $perPage = $request->query('perpage', config('myapp.paginationPerPage'));
 
         return Role::select(
                 'roles.role_id',
                 'roles.created_at',
                 'name',
                 'fk_language_id'
-            )->orderBy('role_id', 'DESC')->roleDescription()->language()->search($request)->paginate($perPage);
-    }
-
-    public function showRolesColumns(LengthAwarePaginator $roles)
-    {
-        $ktDatatableData = collect([]);
-
-        $roles->map(function ($role, $i) use ($ktDatatableData) {
-            $actionButtons = Utilities::editHtmlButton(route('roles.index', ['editRole' => $role->role_id])) . Utilities::deleteHtmlButton(route('roles.delete_role'), $role->role_id);
-            $c = [
-                '#' => Utilities::checkBoxHtmlInput($role->role_id),
-                _e('name') => $role->name,
-                _e('created_at') => $role->created_at ? $role->created_at->format('Y-m-d') : null,
-                _e('actions') => $actionButtons
-            ];
-            $ktDatatableData->push($c);
-        });
-
-        $roles->setCollection($ktDatatableData);
-
-        return $roles;
+            )->orderBy('role_id', 'DESC')->roleDescription()->search($request)->paginate($perPage);
     }
 
     public function addNewRole($data)
@@ -53,7 +31,7 @@ class RolesRepository
         $role = Role::create(['permissions' => json_encode($permissions)]);
         if (!$role) return false;
         $d = [];
-        $languages = Utilities::getLanguages();
+        $languages = getLanguages();
         foreach ($languages as $language) {
             $d[] = [
                 'fk_role_id'     => $role->role_id,
@@ -72,7 +50,7 @@ class RolesRepository
         $res['permissions'] = $role->permissions;
         $res['role_name'] = [];
         foreach ($roleDescriptions as $description) {
-            $languageCode = Utilities::getLanguage(null, $description->fk_language_id)->language_code;
+            $languageCode = getLanguage(null, $description->fk_language_id)->language_code;
             $res['role_name'][$languageCode] = $description->name;
         }
         return $res;
@@ -82,7 +60,7 @@ class RolesRepository
     {
         $permissions = empty($data['permissions']) ? [] : $data['permissions'];
         Role::where('role_id', $role_id)->update(['permissions' => json_encode($permissions)]);
-        $languages = Utilities::getLanguages();
+        $languages = getLanguages();
         foreach ($languages as $language) {
             DB::table(Role::RoleDescriptionTable)->updateOrInsert(
                 ['fk_role_id' => $role_id, 'fk_language_id' => $language->language_id],

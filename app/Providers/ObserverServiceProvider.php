@@ -34,7 +34,6 @@ class ObserverServiceProvider extends ServiceProvider
         Language::observe(LanguageObserver::class);
         Translation::observe(TranslationObserver::class);
         Role::observe(RoleObserver::class);
-        Option::observe(OptionsObserver::class);
         User::observe(UserObserver::class);
         Profile::observe(ProfileObserver::class);
     }

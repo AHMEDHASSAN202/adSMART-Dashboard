@@ -1,6 +1,6 @@
 import {useState, useEffect, useRef} from "react";
 
-const CardComponent = ({title, subtitle, children, footer, icon, tabs=[]}) => {
+const CardComponent = ({title, subtitle, children, footer, icon, tabs=[], noSubheader=false}) => {
     const [activeLink, setActiveLink] = useState(tabs[0] || {});
     const tabElement = useRef(null)
 
@@ -17,7 +17,7 @@ const CardComponent = ({title, subtitle, children, footer, icon, tabs=[]}) => {
     }, [activeLink])
 
     return (
-        <div className="card card-custom mb-4">
+        <div className="card card-custom mb-4" style={{marginTop: (noSubheader ? '-60px' : 'auto')}}>
             {title ?
                 <div className={'card-header ' + (tabs.length ? 'card-header-tabs-line' : '')}>
                     <div className="card-title">

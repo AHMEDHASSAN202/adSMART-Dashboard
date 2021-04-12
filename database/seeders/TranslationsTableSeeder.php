@@ -2711,6 +2711,136 @@ class TranslationsTableSeeder extends Seeder
                 "translation_key" => "resend_verification_notification",
                 "translation_value" => "إعادة إرسال رابط التحقق",
                 "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "delete_account",
+                "translation_value" => "Deleting Account",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "delete_account",
+                "translation_value" => "حذف الحساب",
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "delete_account_desc",
+                "translation_value" => "To delete your account and all information associated with it.",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "delete_account_desc",
+                "translation_value" => 'لحذف حسابك وجميع المعلومات المرتبطة به.',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "delete_account_warn",
+                "translation_value" => "this action is irreversible.",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "delete_account_warn",
+                "translation_value" => 'هذا الإجراء لا رجوع فيه.',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "contact_us",
+                "translation_value" => "Contact us",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "contact_us",
+                "translation_value" => 'إتصل بنا',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "sitename",
+                "translation_value" => "Site name",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "sitename",
+                "translation_value" => 'اسم الموقع',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "logo",
+                "translation_value" => "Logo",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "logo",
+                "translation_value" => 'لوجو',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "dashboard_title",
+                "translation_value" => "Dashboard title",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "dashboard_title",
+                "translation_value" => 'عنوان لوحة التحكم',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "keywords",
+                "translation_value" => "Keywords",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "keywords",
+                "translation_value" => 'الكلمات المفتاحية',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "keywords",
+                "translation_value" => "Keywords",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "keywords",
+                "translation_value" => 'الكلمات المفتاحية',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "default_lang",
+                "translation_value" => "Default language",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "default_lang",
+                "translation_value" => 'اللغة الافتراضية',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "users_must_verify_email",
+                "translation_value" => "Users should verify email",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "users_must_verify_email",
+                "translation_value" => 'يجب على المستخدمين التحقق من البريد الإلكتروني',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "display_must_verify_email_msg",
+                "translation_value" => "Show email verification alert message",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "display_must_verify_email_msg",
+                "translation_value" => 'اظهار رسالة انذار التحقق من البريد الالكتروني',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "default_avatar",
+                "translation_value" => "Default user avatar",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "default_avatar",
+                "translation_value" => 'الصورة الافتراضية للمستخدم',
+                "translation_lang" => "ar",
             ]
         ]);
     }

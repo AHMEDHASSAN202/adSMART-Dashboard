@@ -3,7 +3,7 @@ import PrimaryButton from "./PrimaryButton";
 import InvalidFeedBack from "./InvalidFeedback";
 import { Inertia } from '@inertiajs/inertia'
 
-const  WriteCurrentPasswordPanel = ({isOpen, setOpen, url, data={}, onSuccess=null, onError=null}) => {
+const  WriteCurrentPasswordPanel = ({isOpen, setOpen, url, data={}, onSuccess=null, onError=null, method='post'}) => {
     const [currentPassword, setCurrentPassword] = useState('')
     const [sendFlag, setSendFlag] = useState(false)
     const [error, setError] = useState('');
@@ -11,12 +11,11 @@ const  WriteCurrentPasswordPanel = ({isOpen, setOpen, url, data={}, onSuccess=nu
         <div id="kt_quick_user" className={"offcanvas offcanvas-right p-10 offcanvas-current-password " + (isOpen ? 'offcanvas-on' : '')}>
             <div className="offcanvas-content pr-5 mr-n5">
                 <div className="form-group row">
-                    <label htmlFor="currentPassword"><strong>{translations['current_password']}</strong></label>
+                    <label><strong>{translations['current_password']}</strong></label>
                     <input className={'form-control ' + (error ? 'is-invalid' : '')}
                            type="password"
                            placeholder={translations['current_password']}
                            value={currentPassword}
-                           id="currentPassword"
                            onChange={(e) => {
                                setCurrentPassword(e.target.value);
                            }}
@@ -33,7 +32,7 @@ const  WriteCurrentPasswordPanel = ({isOpen, setOpen, url, data={}, onSuccess=nu
                             setSendFlag(false);
                             return false;
                         }
-                        Inertia.post(
+                        Inertia[method](
                             url,
                             {...data, currentPassword: currentPassword},
                             {

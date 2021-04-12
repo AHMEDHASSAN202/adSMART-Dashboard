@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Classes\Utilities;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Models\Role;
@@ -32,7 +31,7 @@ class RolesController extends Controller
     public function create()
     {
         app('document')->setTitle(_e('new_role'));
-        $permissions = Utilities::getAllPermissions();
+        $permissions = getAllPermissions();
 
         return Inertia::render('Roles/CreateEdit', compact('permissions'));
     }
@@ -41,7 +40,7 @@ class RolesController extends Controller
     {
         $result = $this->rolesRepository->addNewRole($createNewRoleRequest->all());
 
-        return redirect()->route('dashboard.roles.index')->with(Utilities::alertFromStatus($result));
+        return redirect()->route('dashboard.roles.index')->with(alertFromStatus($result));
     }
 
     public function edit(Role $role)
@@ -49,7 +48,7 @@ class RolesController extends Controller
         app('document')->setTitle(_e(['edit', 'role']));
 
         $result = $this->rolesRepository->getRole($role);
-        $permissions = Utilities::getAllPermissions();
+        $permissions = getAllPermissions();
 
         return Inertia::render('Roles/CreateEdit', ['role' => $result, 'permissions' => $permissions]);
     }
@@ -58,13 +57,13 @@ class RolesController extends Controller
     {
         $this->rolesRepository->updateRole($role->role_id, $updateRoleRequest->all());
 
-        return redirect()->route('dashboard.roles.index')->with(Utilities::alertFromStatus(true));
+        return redirect()->route('dashboard.roles.index')->with(alertFromStatus(true));
     }
 
     public function destroy(Request $request)
     {
         $this->rolesRepository->deleteRoles($request->ids);
 
-        return redirect()->route('dashboard.roles.index')->with(Utilities::alertFromStatus(true));
+        return redirect()->route('dashboard.roles.index')->with(alertFromStatus(true));
     }
 }

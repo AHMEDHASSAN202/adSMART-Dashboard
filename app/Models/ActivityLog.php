@@ -11,9 +11,18 @@ class ActivityLog extends Model
 
     protected $guarded = [];
 
+    protected $appends = ['activity_description'];
+
     protected $casts = [
         'created_at'      => 'date:Y-m-d h:i'
     ];
+
+    //========== Appends Attributes ======================\\
+    public function getActivityDescriptionAttribute()
+    {
+        return $this->getActivityDescription($this->user_activity);
+    }
+    //========== #END# Appends Attributes ===================\\
 
     //============= Relations ===============\\
     public function model()

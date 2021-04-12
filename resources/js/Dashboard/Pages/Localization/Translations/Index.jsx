@@ -4,7 +4,6 @@ import Layout from "./../../../Layout/Layout";
 import Topbar from './../../../Layout/Topbar';
 import Content from "./../../../Layout/Content";
 import Table from "./../../../Components/Table";
-import {updateAlert} from "../../../actions";
 import CardComponent from "../../../Components/CardComponent";
 
 const breadcrumb = [
@@ -42,21 +41,21 @@ const handleTranslationData = (translationsProps) => {
     })
 }
 
+const MyInput = ({inputId, translations, rowKey, languageCode, setTranslationsWord}) => {
+    return (
+        <input type="text" id={inputId} className="form-control form-control-solid" value={translations[rowKey][languageCode] || ''} onChange={(e) => {
+            let t = translations;
+            t[rowKey][languageCode] =  e.target.value;
+            setTranslationsWord({...t});
+            setTimeout(() => document.getElementById(inputId)?.focus(), 0)
+        }} />
+    )
+}
+
 const Index = (props) => {
-    const {data, dispatch} = useContext(AppContext);
+    const {data} = useContext(AppContext);
     const [translationsWord, setTranslationsWord] = useState(props.translations)
-    const [inputFocus, setInoutFocus] = useState('')
     const [status, setStatus] = useState('show')
-
-    useEffect(() => {
-        setTranslationsWord(props.translations);
-    }, [])
-
-    useEffect(() => {
-        if (inputFocus) {
-            document.getElementById(inputFocus).focus();
-        }
-    }, [translationsWord])
 
     useEffect(() => {
         if (status == 'update') {
@@ -64,22 +63,11 @@ const Index = (props) => {
             axios.put(route('dashboard.translations.update'), {translations: translationsWord})
                 .then((r) => {
                     if (r.data) {
-                        setAlert(r.data.alert);
-                        setTimeout(() => {
-                            window.location.reload();
-                        }, 1000)
-                    }
-                }).catch(({response}) => {
-                    if (response) {
-                        setAlert(response.data.alert)
+                        window.location.reload();
                     }
                 })
         }
     } , [status])
-
-    const setAlert = (alert) => {
-        dispatch(updateAlert({icon: alert.icon, class: alert.class, title: alert.title}))
-    }
 
     const columns = data.languages.map((lang) => {
         return {
@@ -94,12 +82,13 @@ const Index = (props) => {
                     <>
                         {translationsWord && (status == 'edit') ?
                             <div className="form-group mb-0">
-                                <input type="text" id={inputId} className="form-control form-control-solid" value={translationsWord[rowKey][languageCode]} onChange={(e) => {
-                                    let t = translationsWord;
-                                    t[rowKey][languageCode] =  e.target.value;
-                                    setTranslationsWord({...t});
-                                    setInoutFocus(inputId);
-                                }} />
+                               <MyInput
+                                   inputId={inputId}
+                                   translations={translationsWord}
+                                   rowKey={rowKey}
+                                   languageCode={languageCode}
+                                   setTranslationsWord={setTranslationsWord}
+                               />
                             </div> : <div>{row[languageCode]}</div>
                         }
                     </>

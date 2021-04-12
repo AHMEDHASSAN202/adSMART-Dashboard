@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Classes\Utilities;
 use App\Models\Role;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
@@ -20,7 +19,7 @@ class RolesTableSeeder extends Seeder
         Model::unguard();
 
         $role1 = Role::create([
-            'permissions' => json_encode(Utilities::getAllPermissions(false))
+            'permissions' => json_encode(getAllPermissions(false))
         ]);
         DB::table(Role::RoleDescriptionTable)->insert(
             [

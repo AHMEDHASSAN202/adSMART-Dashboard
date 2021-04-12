@@ -2,10 +2,8 @@
 
 namespace App\Http\Middleware;
 
-use App\Classes\Utilities;
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\View;
 
 class InitialVisitorInfoMiddleware
 {
@@ -28,8 +26,6 @@ class InitialVisitorInfoMiddleware
         }
 
         app()->setLocale($language->language_code);
-
-        Utilities::setLanguage($language);
 
         return $next($request);
     }

@@ -27,9 +27,8 @@ class RegisterPersonalOptionsEditActivity
     public function handle($event)
     {
         ActivityLog::createWithAgent([
-            'auth_id'        => $event->profile->user_id,
+            'auth_id'        => $event->profile->fk_user_id,
             'user_activity'  => 'update_personal_options',
-            'user_activity_desc'  => ActivityLog::getActivityDescription('update_personal_options'),
         ], true);
     }
 }

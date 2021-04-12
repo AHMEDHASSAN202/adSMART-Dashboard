@@ -157,13 +157,22 @@ class AuthRepository
         $me = $this->getAdmin();
 
         if (!Hash::check($request->current_password, $me->user_password)) {
-            $errors = new MessageBag();
-            $errors->add('current_password', _e('validation::password'));
-            return $errors;
+            return new MessageBag(['current_password' => [_e('validation::password')]]);
         }
 
         User::where('user_id', $me->user_id)->update(['user_password' => Hash::make($request->password)]);
 
         event(new AfterChangeMyProfilePassword($me));
+    }
+
+    public function deleteMyAccount($currentPassword)
+    {
+        if (!Hash::check($currentPassword, $this->getAdmin()->user_password)) {
+            return new MessageBag(['currentPassword' => [_e('validation::password')]]);
+        }
+
+        $this->getAdmin()->delete();
+
+        return Auth::guard($this->dashboardGuard)->logout();
     }
 }

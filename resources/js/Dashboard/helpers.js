@@ -29,3 +29,32 @@ export const getFromObject = (obj, el, defaultValue='') => {
 export const myIf = (obj, el, trueValue, falseValue) => {
     return obj[el] ? trueValue : falseValue;
 }
+
+export const handleOptions = (options) => {
+    let ops = {};
+    options.map((option) => {
+        ops[option.option_key] = option.option_value;
+    })
+    return ops;
+}
+
+export const assets = (url) => {
+    return `/storage/${url}`;
+}
+
+export const isTrue = (value) => {
+    if (typeof(value) === 'string'){
+        value = value.trim().toLowerCase();
+    }
+    switch(value){
+        case true:
+        case "true":
+        case 1:
+        case "1":
+        case "on":
+        case "yes":
+            return true;
+        default:
+            return false;
+    }
+}

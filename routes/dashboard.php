@@ -35,6 +35,9 @@ Route::group(['prefix' => 'roles'], function () {
 
 //settings routes
 Route::group(['prefix' => 'settings'], function () {
-    Route::get('', ['uses' => 'SettingsController@index', 'as' => 'settings.index']);
-    Route::put('cache/clear', ['uses' => 'CacheController@clearCache', 'as' => 'settings.cache.clear']);
+    Route::get('', ['uses' => 'SettingsController@index', 'as' => 'dashboard.settings.index']);
+    Route::put('general-data', ['uses' => 'SettingsController@updateGeneralData', 'as' => 'dashboard.settings.general.data.update']);
+    Route::put('contactus-data', ['uses' => 'SettingsController@updateContactUsData', 'as' => 'dashboard.settings.contactus.data.update']);
+    Route::put('dashboard-data', ['uses' => 'SettingsController@updateDashboardData', 'as' => 'dashboard.settings.dashboard.data.update']);
+//    Route::put('cache/clear', ['uses' => 'CacheController@clearCache', 'as' => 'settings.cache.clear']);
 });

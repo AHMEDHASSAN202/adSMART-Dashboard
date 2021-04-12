@@ -37,7 +37,7 @@ class UserObserver
      */
     public function deleted(User $user)
     {
-        //
+
     }
 
     /**

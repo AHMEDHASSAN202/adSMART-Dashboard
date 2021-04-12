@@ -29,7 +29,6 @@ class RegisterEditUserActivity
         ActivityLog::createWithAgent([
             'auth_id'        => $event->user->user_id,
             'user_activity'  => 'update_profile_information',
-            'user_activity_desc'  => ActivityLog::getActivityDescription('update_profile_information'),
         ], true);
     }
 }

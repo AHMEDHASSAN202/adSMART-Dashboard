@@ -17,7 +17,7 @@ class CreateOptionsTable extends Migration
             $table->id('option_id');
             $table->unsignedInteger('option_store_id')->nullable();
             $table->string('option_key');
-            $table->text('option_value');
+            $table->text('option_value')->nullable();
             $table->text('option_data')->nullable();
             $table->timestamps();
         });

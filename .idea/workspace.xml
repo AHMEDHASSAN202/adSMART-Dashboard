@@ -3,37 +3,56 @@
   <component name="ChangeListManager">
     <list default="true" id="21fb09e6-cf43-4a90-9441-cdffd365609b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Classes/Utilities.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Classes/Utilities.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Classes/Utilities.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Helpers/helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/helper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/DashboardAuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/DashboardAuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/LanguagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/LanguagesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/RolesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/RolesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/SettingsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/SettingsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/TranslationsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/TranslationsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Dashboard/HandleDashboardInertiaRequests.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Dashboard/HandleDashboardInertiaRequests.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/InitialVisitorInfoMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/InitialVisitorInfoMiddleware.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Dashboard/CreateNewRoleRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Dashboard/CreateNewRoleRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Dashboard/UpdateRoleRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Dashboard/UpdateRoleRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Listeners/dashboard/RegisterActivityAfterLoged.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/dashboard/RegisterActivityAfterLoged.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Listeners/dashboard/RegisterChangeMyProfilePasswordActivity.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/dashboard/RegisterChangeMyProfilePasswordActivity.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Listeners/dashboard/RegisterEditUserActivity.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/dashboard/RegisterEditUserActivity.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Listeners/dashboard/RegisterPersonalOptionsEditActivity.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/dashboard/RegisterPersonalOptionsEditActivity.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Listeners/dashboard/RegisterResetUserPasswordActivity.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/dashboard/RegisterResetUserPasswordActivity.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Listeners/dashboard/SendEmailVerificationNotificationDashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/dashboard/SendVerificationNotificationAfterLoggen.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Listeners/dashboard/RegisterUserAttemptedToDashboardLogin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/dashboard/RegisterUserAttemptedToDashboardLogin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/ActivityLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ActivityLog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Role.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Observers/LanguageObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/LanguageObserver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Observers/OptionsObserver.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Observers/UserObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/UserObserver.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Providers/ObserverServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/ObserverServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repositories/AuthRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/AuthRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/LocalizationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/LocalizationRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repositories/OptionRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/OptionRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/RolesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/RolesRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_11_175602_create_options_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_11_175602_create_options_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_12_013449_create_translations_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_12_013449_create_translations_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_06_134318_create_activity_logs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_06_134318_create_activity_logs_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeders/AuthTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/AuthTableSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeders/OptionsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/OptionsTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/RolesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/RolesTableSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeders/TranslationsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/TranslationsTableSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/dashboard.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/AppState.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/AppState.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Components/Alert.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Components/Alert.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Components/InvalidFeedback.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Components/InvalidFeedback.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Components/ProfileInfoPanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Components/ProfileInfoPanel.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Components/CardComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Components/CardComponent.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Components/WriteCurrentPasswordPanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Components/WriteCurrentPasswordPanel.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Layout/Layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Layout/Layout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Layout/Wrapper.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Layout/Wrapper.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Layout/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Layout/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Pages/Localization/Translations/Index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Pages/Localization/Translations/Index.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Pages/Profile/Index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Pages/Profile/Index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/helpers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/auth/dashboard-login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/auth/dashboard-login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/auth/forgot-password-request.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/auth/forgot-password-request.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/auth/forgot-password-reset-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/auth/forgot-password-reset-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/dashboard.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/dashboard.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -61,16 +80,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Index.jsx" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Index.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Pages/Profile/Index.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="210" column="131" selection-start-line="210" selection-start-column="131" selection-end-line="210" selection-end-column="131" />
+            <state relative-caret-position="40">
+              <caret line="12" selection-start-line="12" selection-end-line="17" selection-end-column="2" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
-                <element signature="e#6428#10116#0" />
-                <element signature="e#14116#16903#0" />
-                <element signature="e#16921#19781#0" />
               </folding>
             </state>
           </provider>
@@ -79,56 +95,20 @@
       <file leaf-file-name="TranslationsTableSeeder.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/seeders/TranslationsTableSeeder.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="2040" column="13" selection-start-line="2040" selection-start-column="13" selection-end-line="2040" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EventServiceProvider.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Providers/EventServiceProvider.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="65" column="30" selection-start-line="65" selection-start-column="30" selection-end-line="65" selection-end-column="30" />
+            <state relative-caret-position="9380">
+              <caret line="471" column="64" selection-start-line="471" selection-start-column="44" selection-end-line="471" selection-end-column="64" />
               <folding>
-                <element signature="e#33#87#0#PHP" expanded="true" />
+                <element signature="e#36#67#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RegisterPersonalOptionsEditActivity.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Listeners/dashboard/RegisterPersonalOptionsEditActivity.php">
+      <file leaf-file-name="dashboard.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/routes/dashboard.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="29" column="48" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="48" />
-              <folding>
-                <element signature="e#43#70#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AfterPersonalOptionsEdit.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Events/Dashboard/AfterPersonalOptionsEdit.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-              <folding>
-                <element signature="e#40#76#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Models/User.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="58" column="26" selection-start-line="58" selection-start-column="26" selection-end-line="58" selection-end-column="26" />
-              <folding>
-                <element signature="e#30#77#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="60">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
@@ -137,29 +117,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>avata</find>
-      <find>country</find>
-      <find>change</find>
-      <find>axio</find>
-      <find>required</find>
-      <find>validation::min</find>
-      <find>logoutOther</find>
-      <find>Illuminate/Auth/SessionGuard.php</find>
-      <find>back</find>
-      <find>bac</find>
-      <find>update_</find>
-      <find>avatar</find>
-      <find>email</find>
-      <find>validation::image</find>
-      <find>max</find>
-      <find>unique</find>
-      <find>close</find>
-      <find>data</find>
-      <find>browser_sessions</find>
-      <find>forgot_password</find>
-      <find>exists</find>
-      <find>integer</find>
-      <find>size</find>
       <find>numeric</find>
       <find>validation::numeric</find>
       <find>digi</find>
@@ -167,6 +124,29 @@
       <find>current_pas</find>
       <find>min</find>
       <find>confirmed</find>
+      <find>ActivityLog::createWithAgent</find>
+      <find>delete</find>
+      <find>remove</find>
+      <find>account</find>
+      <find>props.reload</find>
+      <find>not_found</find>
+      <find>recor</find>
+      <find>Utilit</find>
+      <find>LocalizationRepository</find>
+      <find>-&gt;languages</find>
+      <find>genera</find>
+      <find>cache</find>
+      <find>logo</find>
+      <find>dashboard_tit</find>
+      <find>keywords</find>
+      <find>description</find>
+      <find>default_lang</find>
+      <find>check</find>
+      <find>users_must_verify_email</find>
+      <find>display_must_verify_email_msg</find>
+      <find>dashboard</find>
+      <find>default_avatar</find>
+      <find>settings</find>
     </findStrings>
     <replaceStrings>
       <replace>xmlnsXlink</replace>
@@ -185,57 +165,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/seeders/CountrySeeder.php" />
-        <option value="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2021_03_31_124102_create_flags_table.php" />
-        <option value="$PROJECT_DIR$/database/seeders/FlagSeeder.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
-        <option value="$PROJECT_DIR$/app/Models/Profile.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2021_04_08_144116_create_profiles_table.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/js/Dashboard/Components/InvalidFeedback.jsx" />
-        <option value="$PROJECT_DIR$/resources/js/Dashboard/Components/WriteCurrentPasswordPanel.jsx" />
-        <option value="$PROJECT_DIR$/app/Events/Dashboard/AfterEditUserEvent.php" />
-        <option value="$PROJECT_DIR$/app/Observers/UserObserver.php" />
-        <option value="$PROJECT_DIR$/app/Repositories/OptionRepository.php" />
-        <option value="$PROJECT_DIR$/app/Classes/Utilities.php" />
-        <option value="$PROJECT_DIR$/database/seeders/OptionsTableSeeder.php" />
-        <option value="$PROJECT_DIR$/app/Http/Middleware/Dashboard/HandleDashboardInertiaRequests.php" />
-        <option value="$PROJECT_DIR$/resources/js/Dashboard/Components/ResendVerificationNotificationLink.jsx" />
-        <option value="$PROJECT_DIR$/resources/css/dashboard.css" />
-        <option value="$PROJECT_DIR$/resources/js/Dashboard/Reducer.js" />
-        <option value="$PROJECT_DIR$/resources/js/Dashboard/AppState.js" />
-        <option value="$PROJECT_DIR$/resources/js/Dashboard/Layout/Wrapper.jsx" />
-        <option value="$PROJECT_DIR$/resources/js/Dashboard/Layout/Layout.jsx" />
-        <option value="$PROJECT_DIR$/app/Listeners/dashboard/SendEmailVerificationNotificationDashboard.php" />
-        <option value="$PROJECT_DIR$/resources/js/Dashboard/Components/Alert.jsx" />
-        <option value="$PROJECT_DIR$/app/Listeners/dashboard/ResendVerificationNotificationIfEditEmail.php" />
-        <option value="$PROJECT_DIR$/app/Listeners/dashboard/ClearUserFiles.php" />
-        <option value="$PROJECT_DIR$/app/Models/User.php" />
-        <option value="$PROJECT_DIR$/app/Helpers/helper.php" />
-        <option value="$PROJECT_DIR$/resources/js/Dashboard/Components/ProfileInfoPanel.jsx" />
-        <option value="$PROJECT_DIR$/database/seeders/TranslationsTableSeeder.php" />
-        <option value="$PROJECT_DIR$/resources/views/dashboard/auth/dashboard-login.blade.php" />
-        <option value="$PROJECT_DIR$/database/seeders/AuthTableSeeder.php" />
-        <option value="$PROJECT_DIR$/app/Providers/ObserverServiceProvider.php" />
-        <option value="$PROJECT_DIR$/app/Http/Requests/Dashboard/UpdatePersonalOptions.php" />
-        <option value="$PROJECT_DIR$/app/Http/Requests/Dashboard/UpdatePersonalOptionsRequest.php" />
-        <option value="$PROJECT_DIR$/routes/auth.php" />
-        <option value="$PROJECT_DIR$/app/Observers/ProfileObserver.php" />
-        <option value="$PROJECT_DIR$/app/Events/Dashboard/AfterPersonalOptionsEdit.php" />
-        <option value="$PROJECT_DIR$/app/Repositories/AuthRepository.php" />
-        <option value="$PROJECT_DIR$/app/Events/Dashboard/AfterChangeMyProfilePassword.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/DashboardAuthController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Requests/Dashboard/ChangeMyPasswordRequest.php" />
-        <option value="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" />
-        <option value="$PROJECT_DIR$/app/Http/Requests/Dashboard/UpdateProfileInfoDashboardRequest.php" />
-        <option value="$PROJECT_DIR$/app/Listeners/dashboard/RegisterActivityAfterLoged.php" />
-        <option value="$PROJECT_DIR$/app/Models/ActivityLog.php" />
         <option value="$PROJECT_DIR$/app/Listeners/dashboard/RegisterResetUserPasswordActivity.php" />
-        <option value="$PROJECT_DIR$/app/Listeners/dashboard/RegisterEditUserActivity.php" />
+        <option value="$PROJECT_DIR$/app/Listeners/dashboard/RegisterUserAttemptedToDashboardLogin.php" />
+        <option value="$PROJECT_DIR$/database/seeders/AuthTableSeeder.php" />
+        <option value="$PROJECT_DIR$/app/Models/ActivityLog.php" />
+        <option value="$PROJECT_DIR$/routes/auth.php" />
+        <option value="$PROJECT_DIR$/resources/js/Dashboard/Components/WriteCurrentPasswordPanel.jsx" />
+        <option value="$PROJECT_DIR$/app/Observers/UserObserver.php" />
+        <option value="$PROJECT_DIR$/app/Repositories/AuthRepository.php" />
+        <option value="$PROJECT_DIR$/app/Events/Dashboard/AfterPersonalOptionsEdit.php" />
         <option value="$PROJECT_DIR$/app/Listeners/dashboard/RegisterPersonalOptionsEditActivity.php" />
-        <option value="$PROJECT_DIR$/app/Listeners/dashboard/RegisterChangeMyProfilePasswordActivity.php" />
+        <option value="$PROJECT_DIR$/app/Classes/Utilities.php" />
+        <option value="$PROJECT_DIR$/config/myapp.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/DashboardAuthController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Dashboard/LanguagesController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Dashboard/RolesController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Middleware/InitialVisitorInfoMiddleware.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/Dashboard/CreateNewRoleRequest.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/Dashboard/UpdateRoleRequest.php" />
+        <option value="$PROJECT_DIR$/database/seeders/RolesTableSeeder.php" />
+        <option value="$PROJECT_DIR$/resources/views/dashboard/dashboard.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/dashboard/auth/dashboard-login.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/dashboard/auth/forgot-password-request.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/dashboard/auth/forgot-password-reset-form.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2020_08_12_013449_create_translations_table.php" />
+        <option value="$PROJECT_DIR$/app/Observers/LanguageObserver.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Dashboard/TranslationsController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Middleware/Dashboard/HandleDashboardInertiaRequests.php" />
+        <option value="$PROJECT_DIR$/app/Models/Role.php" />
+        <option value="$PROJECT_DIR$/app/Models/User.php" />
+        <option value="$PROJECT_DIR$/app/Repositories/LocalizationRepository.php" />
+        <option value="$PROJECT_DIR$/resources/js/Dashboard/Pages/Localization/Translations/Index.jsx" />
+        <option value="$PROJECT_DIR$/app/Helpers/helper.php" />
+        <option value="$PROJECT_DIR$/app/Repositories/RolesRepository.php" />
+        <option value="$PROJECT_DIR$/resources/js/Dashboard/Components/CardComponent.jsx" />
+        <option value="$PROJECT_DIR$/resources/js/Dashboard/Layout/Header.jsx" />
+        <option value="$PROJECT_DIR$/resources/css/dashboard.css" />
+        <option value="$PROJECT_DIR$/resources/js/Dashboard/Components/LanguagesSelectComponent.jsx" />
+        <option value="$PROJECT_DIR$/database/seeders/OptionsTableSeeder.php" />
+        <option value="$PROJECT_DIR$/resources/js/Dashboard/Components/AccordionsComponent.jsx" />
+        <option value="$PROJECT_DIR$/database/seeders/TranslationsTableSeeder.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2020_08_11_175602_create_options_table.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/Dashboard/SettingsContactUsDataUpdatedRequest.php" />
+        <option value="$PROJECT_DIR$/routes/dashboard.php" />
         <option value="$PROJECT_DIR$/resources/js/Dashboard/Pages/Profile/Index.jsx" />
+        <option value="$PROJECT_DIR$/app/Providers/ObserverServiceProvider.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/Dashboard/SettingsGeneralDataUpdatedRequest.php" />
+        <option value="$PROJECT_DIR$/app/Repositories/OptionRepository.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Dashboard/SettingsController.php" />
+        <option value="$PROJECT_DIR$/resources/js/Dashboard/helpers.js" />
+        <option value="$PROJECT_DIR$/resources/js/Dashboard/Pages/Settings/Index.jsx" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/Dashboard/SettingsDashboardDataUpdatedRequest.php" />
       </list>
     </option>
   </component>
@@ -382,7 +362,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -399,27 +378,7 @@
               <item name="InertiaDashboard" type="b2602c69:ProjectViewProjectNode" />
               <item name="InertiaDashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Events" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="InertiaDashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InertiaDashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Events" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Dashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="InertiaDashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InertiaDashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="InertiaDashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InertiaDashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Middleware" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="InertiaDashboard" type="b2602c69:ProjectViewProjectNode" />
@@ -435,77 +394,12 @@
               <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Requests" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Dashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="InertiaDashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InertiaDashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Listeners" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="InertiaDashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InertiaDashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Listeners" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="dashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="InertiaDashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InertiaDashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Models" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="InertiaDashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InertiaDashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Observers" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="InertiaDashboard" type="b2602c69:ProjectViewProjectNode" />
               <item name="InertiaDashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Providers" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="InertiaDashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InertiaDashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="InertiaDashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InertiaDashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="database" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="InertiaDashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InertiaDashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="database" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="migrations" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="InertiaDashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InertiaDashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="database" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="seeders" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="InertiaDashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InertiaDashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="InertiaDashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InertiaDashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="storage" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="InertiaDashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InertiaDashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="storage" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="images" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="InertiaDashboard" type="b2602c69:ProjectViewProjectNode" />
@@ -536,12 +430,30 @@
             <path>
               <item name="InertiaDashboard" type="b2602c69:ProjectViewProjectNode" />
               <item name="InertiaDashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Dashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Pages" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="InertiaDashboard" type="b2602c69:ProjectViewProjectNode" />
+              <item name="InertiaDashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Dashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Pages" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Roles" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="InertiaDashboard" type="b2602c69:ProjectViewProjectNode" />
+              <item name="InertiaDashboard" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="routes" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -561,10 +473,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Laravel\InertiaDashboard\resources\js\Dashboard\Components" />
+      <recent name="E:\Laravel\InertiaDashboard\resources\js\Dashboard\Pages\Settings" />
       <recent name="E:\Laravel\InertiaDashboard\app\Models" />
       <recent name="E:\Laravel\InertiaDashboard\database\seeders" />
       <recent name="E:\Laravel\InertiaDashboard\public\dashboard-assets" />
-      <recent name="E:\Laravel\InertiaDashboard\public\dashboard-assets\js" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Laravel\InertiaDashboard\app\Events\Dashboard" />
@@ -617,15 +529,17 @@
       <workItem from="1617879783495" duration="14282000" />
       <workItem from="1617919218924" duration="8264000" />
       <workItem from="1617996692348" duration="21616000" />
+      <workItem from="1618054943242" duration="31118000" />
+      <workItem from="1618165864307" duration="16329000" />
+      <workItem from="1618189442487" duration="11000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="362521000" />
+    <option name="totallyTimeSpent" value="409979000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1040" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32843137" />
@@ -635,13 +549,13 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.4493464" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.32959184" />
-      <window_info anchor="bottom" id="TypeScript" order="7" weight="0.32843137" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.37346938" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.34183672" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" weight="0.32959184" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="TypeScript" order="7" weight="0.32843137" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -652,7 +566,6 @@
       <window_info anchor="bottom" id="Find" order="1" weight="0.32843137" />
     </layout>
     <layout-to-restore>
-      <window_info anchor="bottom" id="Version Control" order="12" show_stripe_button="false" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info id="npm" order="2" side_tool="true" />
@@ -665,12 +578,13 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="TypeScript" order="9" weight="0.32843137" />
       <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32843137" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32843137" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -684,408 +598,364 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="12" />
+      <option name="time" value="14" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Components/CardTab.jsx">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Components/Checkbox.jsx">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Components/LanguagesDropdown.jsx">
+    <entry file="file://$PROJECT_DIR$/routes/dashboard.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="440">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Components/NotificationPanel.jsx">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Layout/Aside.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Layout/Content.jsx">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Layout/Footer.jsx">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Layout/Header.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Layout/Topbar.jsx">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/AppState.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="2" lean-forward="true" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Reducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="42" column="25" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#229#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/@inertiajs/inertia-react/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="47" column="16" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Contracts/Auth/MustVerifyEmail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Classes/Utilities.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="136" column="27" selection-start-line="136" selection-start-column="27" selection-end-line="136" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Components/Alert.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Listeners/dashboard/ResendVerificationNotificationIfEditEmail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-          <folding>
-            <element signature="e#43#79#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/filesystems.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Events/Dashboard/AfterEditUserEvent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Components/WriteCurrentPasswordPanel.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Helpers/helper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="30" column="44" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Listeners/dashboard/ClearUserFiles.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
-          <folding>
-            <element signature="e#43#87#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Components/ProfileInfoPanel.jsx">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2020_08_12_013449_create_translations_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="60" column="67" selection-start-line="60" selection-start-column="67" selection-end-line="60" selection-end-column="67" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
+          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeders/AuthTableSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="26" column="97" selection-start-line="26" selection-start-column="97" selection-end-line="26" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/dashboard/auth/dashboard-login.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="57" column="33" lean-forward="true" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Providers/ObserverServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="38" column="29" lean-forward="true" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
-          <folding>
-            <element signature="e#33#56#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Observers/UserObserver.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
-          <folding>
-            <element signature="e#33#77#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php">
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
-          <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+          <caret line="404" column="20" selection-start-line="404" selection-start-column="20" selection-end-line="404" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Observers/ProfileObserver.php">
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Collections/Traits/EnumeratesValues.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="28" column="32" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
-          <folding>
-            <element signature="e#33#83#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="58" column="26" selection-start-line="58" selection-start-column="26" selection-end-line="58" selection-end-column="26" />
-          <folding>
-            <element signature="e#30#77#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="194">
+          <caret line="829" column="20" selection-start-line="829" selection-start-column="20" selection-end-line="829" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Repositories/AuthRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="167" column="5" lean-forward="true" selection-start-line="167" selection-start-column="5" selection-end-line="167" selection-end-column="5" />
-          <folding>
-            <element signature="e#84#138#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="234">
+          <caret line="91" column="65" selection-start-line="91" selection-start-column="65" selection-end-line="91" selection-end-column="65" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/Dashboard/CreateNewRoleRequest.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/Dashboard/HandleDashboardInertiaRequests.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-513">
-          <caret line="19" column="74" selection-start-line="19" selection-start-column="74" selection-end-line="19" selection-end-column="74" />
+        <state relative-caret-position="461">
+          <caret line="52" column="11" lean-forward="true" selection-start-line="52" selection-start-column="11" selection-end-line="52" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/Dashboard/ChangeMyPasswordRequest.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="35" column="23" lean-forward="true" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
+        <state relative-caret-position="193">
+          <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/DashboardAuthController.php">
+    <entry file="file://$PROJECT_DIR$/app/Repositories/LocalizationRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="161" column="1" lean-forward="true" selection-start-line="161" selection-start-column="1" selection-end-line="161" selection-end-column="1" />
-          <folding>
-            <element signature="e#45#71#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="235">
+          <caret line="190" lean-forward="true" selection-start-line="190" selection-end-line="190" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/auth.php">
+    <entry file="file://$PROJECT_DIR$/app/Observers/LanguageObserver.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="601">
+          <caret line="35" column="93" lean-forward="true" selection-start-line="35" selection-start-column="93" selection-end-line="35" selection-end-column="93" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/lang/en/validation.php">
+    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Pages/Localization/Translations/Index.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="32" column="11" lean-forward="true" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+        <state relative-caret-position="-32">
+          <caret line="43" column="89" selection-start-line="43" selection-start-column="89" selection-end-line="43" selection-end-column="89" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeders/TranslationsTableSeeder.php">
+    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Components/Table.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="2040" column="13" selection-start-line="2040" selection-start-column="13" selection-end-line="2040" selection-end-column="13" />
+        <state relative-caret-position="-60">
+          <caret line="3" column="54" selection-start-line="3" selection-start-column="54" selection-end-line="3" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/myapp.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Role.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Dashboard/TranslationsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="29" column="83" selection-start-line="29" selection-start-column="83" selection-end-line="29" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Repositories/SettingsRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Repositories/RolesRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="37" column="59" lean-forward="true" selection-start-line="37" selection-start-column="59" selection-end-line="37" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Components/CardTab.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Observers/ProfileObserver.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="26" column="45" lean-forward="true" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Observers/UserObserver.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="501">
+          <caret line="28" column="45" lean-forward="true" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Components/SubmitButton.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Layout/Header.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="29" column="33" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Pages/Roles/Index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-493" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Components/InvalidFeedback.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Helpers/helper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3160">
+          <caret line="268" column="14" selection-start-line="268" selection-start-column="14" selection-end-line="268" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Pages/Roles/CreateEdit.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="29" column="14" lean-forward="true" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/css/dashboard.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="487">
+          <caret line="101" column="1" lean-forward="true" selection-start-line="101" selection-start-column="1" selection-end-line="101" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Components/FlagsSelectComponent.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Components/LanguagesSelectComponent.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Components/PrimaryButton.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Pages/Localization/Language/CreateEdit.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="68" column="50" selection-start-line="68" selection-start-column="50" selection-end-line="68" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Components/Checkbox.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Components/AccordionsComponent.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="12" lean-forward="true" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2020_08_11_175602_create_options_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="21" column="33" lean-forward="true" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Requests/Dashboard/UpdatePersonalOptionsRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="-219" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/Dashboard/CreateNewRoleRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="21" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Auth/Listeners/SendEmailVerificationNotification.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/Dashboard/SettingsContactUsDataUpdatedRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        <state relative-caret-position="381">
+          <caret line="34" column="10" lean-forward="true" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Listeners/dashboard/SendVerificationNotificationAfterLoggen.php">
+    <entry file="file://$PROJECT_DIR$/routes/auth.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-179">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-          <folding>
-            <element signature="e#43#79#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="427">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/ActivityLog.php">
+    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Components/ProfileInfoPanel.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="44" column="35" lean-forward="true" selection-start-line="44" selection-start-column="35" selection-end-line="44" selection-end-column="35" />
-        </state>
+        <state relative-caret-position="-600" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Listeners/dashboard/RegisterActivityAfterLoged.php">
+    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Components/CardComponent.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Listeners/dashboard/RegisterUserAttemptedToDashboardLogin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-99">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/Dashboard/UpdateProfileInfoDashboardRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Listeners/dashboard/RegisterResetUserPasswordActivity.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Listeners/dashboard/RegisterEditUserActivity.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-          <folding>
-            <element signature="e#43#70#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Events/Dashboard/AfterPersonalOptionsEdit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-          <folding>
-            <element signature="e#40#76#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Listeners/dashboard/RegisterPersonalOptionsEditActivity.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="29" column="48" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="48" />
-          <folding>
-            <element signature="e#43#70#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Events/Dashboard/AfterChangeMyProfilePassword.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Listeners/dashboard/RegisterChangeMyProfilePasswordActivity.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="31" column="43" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
-          <folding>
-            <element signature="e#43#70#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Providers/EventServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="65" column="30" selection-start-line="65" selection-start-column="30" selection-end-line="65" selection-end-column="30" />
-          <folding>
-            <element signature="e#33#87#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="-80">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Pages/Profile/Index.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="210" column="131" selection-start-line="210" selection-start-column="131" selection-end-line="210" selection-end-column="131" />
+        <state relative-caret-position="40">
+          <caret line="12" selection-start-line="12" selection-end-line="17" selection-end-column="2" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
-            <element signature="e#6428#10116#0" />
-            <element signature="e#14116#16903#0" />
-            <element signature="e#16921#19781#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeders/TranslationsTableSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9380">
+          <caret line="471" column="64" selection-start-line="471" selection-start-column="44" selection-end-line="471" selection-end-column="64" />
+          <folding>
+            <element signature="e#36#67#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/ObserverServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="35" column="43" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/Dashboard/UpdateProfileInfoDashboardRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="727">
+          <caret line="51" column="21" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeders/OptionsTableSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="92" column="55" lean-forward="true" selection-start-line="92" selection-start-column="55" selection-end-line="92" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/Dashboard/SettingsDashboardDataUpdatedRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="49" column="58" selection-start-line="49" selection-start-column="58" selection-end-line="49" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/Dashboard/SettingsGeneralDataUpdatedRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="46" column="16" lean-forward="true" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/helpers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Repositories/OptionRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="53" column="5" lean-forward="true" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/Dashboard/Pages/Settings/Index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="259" column="100" selection-start-line="259" selection-start-column="100" selection-end-line="259" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Dashboard/SettingsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/dashboard.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>

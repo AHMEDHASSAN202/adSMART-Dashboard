@@ -29,7 +29,6 @@ class RegisterChangeMyProfilePasswordActivity
         ActivityLog::createWithAgent([
             'auth_id'        => $event->me->user_id,
             'user_activity'  => 'change_your_password',
-            'user_activity_desc'  => ActivityLog::getActivityDescription('change_your_password'),
         ]);
     }
 }
