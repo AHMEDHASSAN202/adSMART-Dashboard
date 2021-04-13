@@ -8,8 +8,8 @@ use App\Repositories\DashboardRepository;
 
 class DashboardController extends Controller
 {
-    protected $dashboardRepository;
-
+    private $dashboardRepository;
+    private $activeId = 'dashboard';
 
     public function __construct(DashboardRepository $dashboardRepository)
     {
@@ -21,6 +21,7 @@ class DashboardController extends Controller
         $data = $this->dashboardRepository->load($request);
         $data['pageTitle'] = _e('dashboard');
         $data['pageDescription'] = _e('dashboard_description');
+        $data['activeId'] = $this->activeId;
 
         return \Inertia\Inertia::render('Dashboard', $data);
     }

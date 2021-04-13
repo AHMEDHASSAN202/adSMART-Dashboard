@@ -14,6 +14,7 @@ use Inertia\Inertia;
 class LanguagesController extends Controller
 {
     private $localizationRepository;
+    private $activeId = 'languages';
 
     public function __construct(LocalizationRepository $localizationRepository) {
         $this->localizationRepository = $localizationRepository;
@@ -22,6 +23,7 @@ class LanguagesController extends Controller
     public function index(Request $request)
     {
         $data['languages'] = $this->localizationRepository->getLanguages($request);
+        $data['activeId'] = $this->activeId;
 
         app('document')->setTitle(_e('languages'));
 
@@ -32,7 +34,7 @@ class LanguagesController extends Controller
     {
         app('document')->setTitle(_e(['add', 'language']));
 
-        return Inertia::render('Localization/Language/CreateEdit', ['flags' => getFlags()]);
+        return Inertia::render('Localization/Language/CreateEdit', ['flags' => getFlags(), 'activeId' => $this->activeId]);
     }
 
     public function store(CreateNewLanguageRequest $createNewLanguageRequest)
@@ -46,12 +48,13 @@ class LanguagesController extends Controller
     {
         $language = $this->localizationRepository->getLanguageById($languageId);
         $flags = getFlags();
+        $activeId = $this->activeId;
 
         abort_if(is_null($language), 404);
 
         app('document')->setTitle(_e(['edit', 'language']));
 
-        return Inertia::render('Localization/Language/CreateEdit', compact('language', 'flags'));
+        return Inertia::render('Localization/Language/CreateEdit', compact('language', 'flags', 'activeId'));
     }
 
     public function update(Language $language, UpdateLanguageRequest $updateLanguageRequest)

@@ -13,6 +13,7 @@ use Inertia\Inertia;
 class SettingsController extends Controller
 {
     private $optionRepository;
+    private $activeId = 'settings';
 
     public function __construct(OptionRepository $optionRepository)
     {
@@ -24,8 +25,9 @@ class SettingsController extends Controller
         app('document')->setTitle(_e('settings'));
 
         $options = $this->optionRepository->getOptions();
+        $activeId = $this->activeId;
 
-        return Inertia::render('Settings/Index', compact('options'));
+        return Inertia::render('Settings/Index', compact('options', 'activeId'));
     }
 
     public function updateGeneralData(SettingsGeneralDataUpdatedRequest $settingsGeneralDataUpdatedRequest)

@@ -1,6 +1,7 @@
 import EditButton from "./../../../Components/EditButton";
 import Checkbox from "./../../../Components/Checkbox";
 import { Inertia } from '@inertiajs/inertia'
+import Permissions from "../../../Components/Permissions";
 
 const Columns = [
     {
@@ -21,20 +22,22 @@ const Columns = [
     {
         name: translations['display_front'],
         selector: 'language_display_front',
-        cell: (row) => <Checkbox checked={row.language_display_front} onChange={() => {
+        cell: (row) => <Permissions hasPermissions={['localization-update']}>
+            <Checkbox checked={row.language_display_front} onChange={() => {
                 Inertia.put(
-                        route('dashboard.languages.toggle_display_front', {language: row.language_id}),
-                        {
-                            preserveState: false,
-                            preserveScroll: true,
-                        }
-                    )
-        }}/>
+                    route('dashboard.languages.toggle_display_front', {language: row.language_id}),
+                    {
+                        preserveState: false,
+                        preserveScroll: true,
+                    }
+                )
+            }}/>
+        </Permissions>
     },
     {
         name: translations['actions'],
         selector: 'actions',
-        cell: (row) => <EditButton href={route('dashboard.languages.edit', {languageId: row.language_id})}/>
+        cell: (row) => <Permissions hasPermissions={['localization-update']}><EditButton href={route('dashboard.languages.edit', {languageId: row.language_id})}/></Permissions>
     },
 
 ];

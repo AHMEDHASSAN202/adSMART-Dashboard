@@ -33,12 +33,12 @@ function deleteFile($file, $disk='public') {
 function getAllPermissions($groups=true) {
     $permissions = [
         'dashboard' => ['browse'],
-        'settings' => ['browse'],
+        'settings' => ['browse', 'update'],
         'logs' => ['browse'],
         'reports' => ['browse'],
-        'roles' => ['browse', 'create', 'update'],
-        'localization' => ['browse', 'create', 'update'],
-        'users' => ['browse', 'create', 'update'],
+        'roles' => ['browse', 'create', 'update', 'delete'],
+        'localization' => ['browse', 'create', 'update', 'delete'],
+        'users' => ['browse', 'create', 'update', 'delete'],
     ];
 
     if ($groups) {
@@ -144,10 +144,12 @@ function initialDashboardData() {
         'asideMenu' => [
             // Dashboard
             [
-                'title' => _e('dashboard'),
-                'icon' => 'fas fa-qrcode',
-                'page' => route('dashboard.index'),
-                'extraClasses' => '',
+                'title'         => _e('dashboard'),
+                'icon'          => 'fas fa-qrcode',
+                'page'          => route('dashboard.index'),
+                'extraClasses'  => '',
+                'id'            => 'dashboard',
+                'permissions'   => ['dashboard-browse']
             ],
 
             // Custom
@@ -232,6 +234,8 @@ function initialDashboardData() {
                 'icon' => 'flaticon2-shield',
                 'page' => route('dashboard.roles.index'),
                 'extraClasses' => '',
+                'id'           => 'roles',
+                'permissions'   => ['roles-browse']
             ],
 
             // Localization
@@ -243,12 +247,16 @@ function initialDashboardData() {
                 'icon' => 'flaticon-squares-1',
                 'page' => route('dashboard.languages.index'),
                 'extraClasses' => '',
+                'id'           => 'languages',
+                'permissions'   => ['localization-browse']
             ],
             [
                 'title' => _e('translations'),
                 'icon' => 'flaticon-exclamation-square',
                 'page' => route('dashboard.translations.index'),
                 'extraClasses' => '',
+                'id'           => 'translations',
+                'permissions'   => ['localization-browse']
             ],
 
             // Settings
@@ -266,6 +274,8 @@ function initialDashboardData() {
                 'icon' => 'flaticon2-settings',
                 'page' => route('dashboard.settings.index'),
                 'extraClasses' => '',
+                'id'           => 'settings',
+                'permissions'   => ['settings-browse']
             ],
         ],
         'languages' => getLanguages(),

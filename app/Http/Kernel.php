@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Dashboard\Permissions;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -63,6 +64,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'dashboard.inertia.request' => \App\Http\Middleware\Dashboard\HandleDashboardInertiaRequests::class
+        'dashboard.inertia.request' => \App\Http\Middleware\Dashboard\HandleDashboardInertiaRequests::class,
+        'permissions'       => Permissions::class
     ];
 }

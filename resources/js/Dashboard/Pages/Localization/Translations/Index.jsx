@@ -5,6 +5,7 @@ import Topbar from './../../../Layout/Topbar';
 import Content from "./../../../Layout/Content";
 import Table from "./../../../Components/Table";
 import CardComponent from "../../../Components/CardComponent";
+import Permissions from "../../../Components/Permissions";
 
 const breadcrumb = [
     {
@@ -100,7 +101,9 @@ const Index = (props) => {
     return (
         <>
             <Topbar title={props.pageTitle} breadcrumb={breadcrumb} >
-                <EditButton status={status} setStatus={setStatus} />
+                <Permissions hasPermissions={['localization-update']}>
+                    <EditButton status={status} setStatus={setStatus} />
+                </Permissions>
             </Topbar>
             <Content>
                 <CardComponent title={props.pageTitle}>

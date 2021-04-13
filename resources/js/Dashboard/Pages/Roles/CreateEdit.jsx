@@ -18,7 +18,7 @@ const breadcrumb = [
         href: route('dashboard.index')
     },
     {
-        title: translations['languages'],
+        title: translations['roles'],
         href: route('dashboard.roles.index')
     }
 ];

@@ -6,38 +6,38 @@
  */
 
 //dashboard routes
-Route::get('', ['uses' => 'DashboardController@index', 'as' => 'dashboard.index']);
+Route::get('', ['uses' => 'DashboardController@index', 'as' => 'dashboard.index'])->middleware('permissions:dashboard-browse');
 
 //localization routes
 Route::group(['prefix' => 'localization'], function () {
-    Route::get('languages', ['uses' => 'LanguagesController@index', 'as' => 'dashboard.languages.index']);
-    Route::get('languages/create', ['uses' => 'LanguagesController@create', 'as' => 'dashboard.languages.create']);
-    Route::post('languages', ['uses' => 'LanguagesController@store', 'as' => 'dashboard.languages.store']);
-    Route::get('languages/{languageId}/edit', ['uses' => 'LanguagesController@edit', 'as' => 'dashboard.languages.edit']);
-    Route::put('languages/{language}', ['uses' => 'LanguagesController@update', 'as' => 'dashboard.languages.update']);
-    Route::put('languages/{language}/display-front', ['uses' => 'LanguagesController@toggleDisplayFront', 'as' => 'dashboard.languages.toggle_display_front']);
-    Route::delete('languages', ['uses' => 'LanguagesController@destroy', 'as' => 'dashboard.languages.destroy']);
-    Route::get('translations', ['uses' => 'TranslationsController@index', 'as' => 'dashboard.translations.index']);
-    Route::put('translations', ['uses' => 'TranslationsController@updateTranslate', 'as' => 'dashboard.translations.update']);
+    Route::get('languages', ['uses' => 'LanguagesController@index', 'as' => 'dashboard.languages.index'])->middleware('permissions:localization-browse');
+    Route::get('languages/create', ['uses' => 'LanguagesController@create', 'as' => 'dashboard.languages.create'])->middleware('permissions:localization-create');
+    Route::post('languages', ['uses' => 'LanguagesController@store', 'as' => 'dashboard.languages.store'])->middleware('permissions:localization-create');
+    Route::get('languages/{languageId}/edit', ['uses' => 'LanguagesController@edit', 'as' => 'dashboard.languages.edit'])->middleware('permissions:localization-update');
+    Route::put('languages/{language}', ['uses' => 'LanguagesController@update', 'as' => 'dashboard.languages.update'])->middleware('permissions:localization-update');
+    Route::put('languages/{language}/display-front', ['uses' => 'LanguagesController@toggleDisplayFront', 'as' => 'dashboard.languages.toggle_display_front'])->middleware('permissions:localization-update');
+    Route::delete('languages', ['uses' => 'LanguagesController@destroy', 'as' => 'dashboard.languages.destroy'])->middleware('permissions:localization-delete');
+    Route::get('translations', ['uses' => 'TranslationsController@index', 'as' => 'dashboard.translations.index'])->middleware('permissions:localization-browse');
+    Route::put('translations', ['uses' => 'TranslationsController@updateTranslate', 'as' => 'dashboard.translations.update'])->middleware('permissions:localization-update');
 });
 
 
 //roles routes
 Route::group(['prefix' => 'roles'], function () {
-    Route::get('', ['uses' => 'RolesController@index', 'as' => 'dashboard.roles.index']);
-    Route::post('', ['uses' => 'RolesController@store', 'as' => 'dashboard.roles.store']);
-    Route::get('create', ['uses' => 'RolesController@create', 'as' => 'dashboard.roles.create']);
-    Route::get('{role}/edit', ['uses' => 'RolesController@edit', 'as' => 'dashboard.roles.edit']);
-    Route::put('{role}', ['uses' => 'RolesController@update', 'as' => 'dashboard.roles.update']);
-    Route::delete('', ['uses' => 'RolesController@destroy', 'as' => 'dashboard.roles.destroy']);
+    Route::get('', ['uses' => 'RolesController@index', 'as' => 'dashboard.roles.index'])->middleware('permissions:roles-browse');
+    Route::post('', ['uses' => 'RolesController@store', 'as' => 'dashboard.roles.store'])->middleware('permissions:roles-create');
+    Route::get('create', ['uses' => 'RolesController@create', 'as' => 'dashboard.roles.create'])->middleware('permissions:roles-create');
+    Route::get('{role}/edit', ['uses' => 'RolesController@edit', 'as' => 'dashboard.roles.edit'])->middleware('permissions:roles-update');
+    Route::put('{role}', ['uses' => 'RolesController@update', 'as' => 'dashboard.roles.update'])->middleware('permissions:roles-update');
+    Route::delete('', ['uses' => 'RolesController@destroy', 'as' => 'dashboard.roles.destroy'])->middleware('permissions:roles-delete');
 });
 
 
 //settings routes
 Route::group(['prefix' => 'settings'], function () {
-    Route::get('', ['uses' => 'SettingsController@index', 'as' => 'dashboard.settings.index']);
-    Route::put('general-data', ['uses' => 'SettingsController@updateGeneralData', 'as' => 'dashboard.settings.general.data.update']);
-    Route::put('contactus-data', ['uses' => 'SettingsController@updateContactUsData', 'as' => 'dashboard.settings.contactus.data.update']);
-    Route::put('dashboard-data', ['uses' => 'SettingsController@updateDashboardData', 'as' => 'dashboard.settings.dashboard.data.update']);
+    Route::get('', ['uses' => 'SettingsController@index', 'as' => 'dashboard.settings.index'])->middleware('permissions:settings-browse');
+    Route::put('general-data', ['uses' => 'SettingsController@updateGeneralData', 'as' => 'dashboard.settings.general.data.update'])->middleware('permissions:settings-update');
+    Route::put('contactus-data', ['uses' => 'SettingsController@updateContactUsData', 'as' => 'dashboard.settings.contactus.data.update'])->middleware('permissions:settings-update');
+    Route::put('dashboard-data', ['uses' => 'SettingsController@updateDashboardData', 'as' => 'dashboard.settings.dashboard.data.update'])->middleware('permissions:settings-update');
 //    Route::put('cache/clear', ['uses' => 'CacheController@clearCache', 'as' => 'settings.cache.clear']);
 });

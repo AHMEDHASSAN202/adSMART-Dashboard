@@ -7,6 +7,7 @@ import DangerButton from "./../../Components/DangerButton";
 import AddButton from "../../Components/AddButton";
 import CardComponent from "../../Components/CardComponent";
 import EditButton from "./../../Components/EditButton";
+import Permissions from "../../Components/Permissions";
 
 const breadcrumb = [
     {
@@ -24,7 +25,7 @@ const Columns = [
     {
         name: translations['actions'],
         selector: 'actions',
-        cell: (row) => <EditButton href={route('dashboard.roles.edit', {role: row.role_id})}/>
+        cell: (row) => <Permissions hasPermissions={['roles-update']}><EditButton href={route('dashboard.roles.edit', {role: row.role_id})}/></Permissions>
     }
 ];
 
@@ -35,7 +36,9 @@ const Index = (props) => {
     return (
         <>
             <Topbar title={props.pageTitle} breadcrumb={breadcrumb}>
-                <AddButton href={route('dashboard.roles.create')}/>
+                <Permissions hasPermissions={['roles-create']}>
+                    <AddButton href={route('dashboard.roles.create')}/>
+                </Permissions>
             </Topbar>
             <Content>
                 <CardComponent title={props.pageTitle}>
@@ -45,7 +48,7 @@ const Index = (props) => {
                         data={roles}
                         keyField={'role_id'}
                         subHeader={true}
-                        subHeaderComponent={<DangerButton href={route('dashboard.roles.destroy')} method='DELETE' data={{ids: selected}} disabled={selected.length < 1}/>}
+                        subHeaderComponent={<Permissions hasPermissions={['roles-delete']}><DangerButton href={route('dashboard.roles.destroy')} method='DELETE' data={{ids: selected}} disabled={selected.length < 1}/></Permissions>}
                         selectableRows={true}
                         selectableRowsHighlight={true}
                         noContextMenu={true}

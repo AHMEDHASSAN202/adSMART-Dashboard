@@ -13,6 +13,7 @@ import PrimaryButton from "../../Components/PrimaryButton";
 import Checkbox from "../../Components/Checkbox";
 import Topbar from "../../Layout/Topbar";
 import {assets, handleOptions, isTrue} from "../../helpers";
+import Permissions from "../../Components/Permissions";
 
 const tabs = [
     {id: 'general', title: translations['general']},
@@ -159,15 +160,17 @@ const Index = (props) => {
 
                     <CardTab id={'general'}>
 
-                        <div className="d-flex justify-content-end mb-8">
-                            <PrimaryButton
-                                classes={generalDataProcessing ? 'spinner spinner-white spinner-left spinner-sm float-left' : ''}
-                                disabled={generalDataProcessing}
-                                onClick={() => sendGeneralData(route('dashboard.settings.general.data.update'))}
-                            >
-                                {translations['save']}
-                            </PrimaryButton>
-                        </div>
+                        <Permissions hasPermissions={['settings-update']}>
+                            <div className="d-flex justify-content-end mb-8">
+                                <PrimaryButton
+                                    classes={generalDataProcessing ? 'spinner spinner-white spinner-left spinner-sm float-left' : ''}
+                                    disabled={generalDataProcessing}
+                                    onClick={() => sendGeneralData(route('dashboard.settings.general.data.update'))}
+                                >
+                                    {translations['save']}
+                                </PrimaryButton>
+                            </div>
+                        </Permissions>
 
                         <div className="row">
 
@@ -193,16 +196,18 @@ const Index = (props) => {
 
 
                     <CardTab id={'contact_us'}>
+                        <Permissions hasPermissions={['settings-update']}>
+                            <div className="d-flex justify-content-end mb-8">
+                                <PrimaryButton
+                                    classes={contactUsDataProcessing ? 'spinner spinner-white spinner-left spinner-sm float-left' : ''}
+                                    disabled={contactUsDataProcessing}
+                                    onClick={() => sendContactUsData(route('dashboard.settings.contactus.data.update'))}
+                                >
+                                    {translations['save']}
+                                </PrimaryButton>
+                            </div>
+                        </Permissions>
 
-                        <div className="d-flex justify-content-end mb-8">
-                            <PrimaryButton
-                                classes={contactUsDataProcessing ? 'spinner spinner-white spinner-left spinner-sm float-left' : ''}
-                                disabled={contactUsDataProcessing}
-                                onClick={() => sendContactUsData(route('dashboard.settings.contactus.data.update'))}
-                            >
-                                {translations['save']}
-                            </PrimaryButton>
-                        </div>
 
                         <div className="row">
                             <div className='col-md-7'>
@@ -228,16 +233,17 @@ const Index = (props) => {
 
 
                     <CardTab id={'dashboard'}>
-
-                        <div className="d-flex justify-content-end  mb-8">
-                            <PrimaryButton
-                                classes={dashboardDataProcessing ? 'spinner spinner-white spinner-left spinner-sm float-left' : ''}
-                                disabled={dashboardDataProcessing}
-                                onClick={() => sendDashboardData(route('dashboard.settings.dashboard.data.update'))}
-                            >
-                                {translations['save']}
-                            </PrimaryButton>
-                        </div>
+                        <Permissions hasPermissions={['settings-update']}>
+                            <div className="d-flex justify-content-end  mb-8">
+                                <PrimaryButton
+                                    classes={dashboardDataProcessing ? 'spinner spinner-white spinner-left spinner-sm float-left' : ''}
+                                    disabled={dashboardDataProcessing}
+                                    onClick={() => sendDashboardData(route('dashboard.settings.dashboard.data.update'))}
+                                >
+                                    {translations['save']}
+                                </PrimaryButton>
+                            </div>
+                        </Permissions>
 
                         <div className="row">
 

@@ -13,6 +13,7 @@ use Inertia\Inertia;
 class RolesController extends Controller
 {
     private $rolesRepository;
+    private $activeId = 'roles';
 
     public function __construct(RolesRepository $rolesRepository)
     {
@@ -24,16 +25,18 @@ class RolesController extends Controller
         app('document')->setTitle(_e('roles'));
 
         $roles = $this->rolesRepository->getRoles($request);
+        $activeId = $this->activeId;
 
-        return Inertia::render('Roles/Index', compact('roles'));
+        return Inertia::render('Roles/Index', compact('roles', 'activeId'));
     }
 
     public function create()
     {
         app('document')->setTitle(_e('new_role'));
         $permissions = getAllPermissions();
+        $activeId = $this->activeId;
 
-        return Inertia::render('Roles/CreateEdit', compact('permissions'));
+        return Inertia::render('Roles/CreateEdit', compact('permissions', 'activeId'));
     }
 
     public function store(CreateNewRoleRequest $createNewRoleRequest)
@@ -50,7 +53,7 @@ class RolesController extends Controller
         $result = $this->rolesRepository->getRole($role);
         $permissions = getAllPermissions();
 
-        return Inertia::render('Roles/CreateEdit', ['role' => $result, 'permissions' => $permissions]);
+        return Inertia::render('Roles/CreateEdit', ['role' => $result, 'permissions' => $permissions, 'activeId' => $this->activeId]);
     }
 
     public function update(Role $role, UpdateRoleRequest $updateRoleRequest)

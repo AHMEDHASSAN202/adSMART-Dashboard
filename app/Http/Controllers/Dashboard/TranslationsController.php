@@ -12,6 +12,7 @@ use Inertia\Inertia;
 class TranslationsController extends Controller
 {
     private $localizationRepository;
+    private $activeId = 'translations';
 
     public function __construct(LocalizationRepository $localizationRepository)
     {
@@ -23,8 +24,9 @@ class TranslationsController extends Controller
         app('document')->setTitle(_e('translations'));
 
         $translations =  $this->localizationRepository->getTranslations($request);
+        $activeId = $this->activeId;
 
-        return Inertia::render('Localization/Translations/Index', compact('translations'));
+        return Inertia::render('Localization/Translations/Index', compact('translations', 'activeId'));
     }
 
     public function updateTranslate(UpdateTranslateRequest $updateTranslateRequest)

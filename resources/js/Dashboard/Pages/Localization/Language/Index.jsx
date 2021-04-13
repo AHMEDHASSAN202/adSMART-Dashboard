@@ -9,6 +9,7 @@ import Columns from './LanguageCoulmns';
 import AddButton from "../../../Components/AddButton";
 import {setLanguages} from "../../../actions";
 import CardComponent from "../../../Components/CardComponent";
+import Permissions from "../../../Components/Permissions";
 
 const breadcrumb = [
     {
@@ -26,7 +27,9 @@ const Index = (props) => {
     return (
         <>
             <Topbar title={props.pageTitle} breadcrumb={breadcrumb}>
-                <AddButton href={route('dashboard.languages.create')}/>
+                <Permissions hasPermissions={['localization-create']}>
+                    <AddButton href={route('dashboard.languages.create')}/>
+                </Permissions>
             </Topbar>
             <Content>
                 <CardComponent title={props.pageTitle}>
@@ -36,7 +39,7 @@ const Index = (props) => {
                         data={data.languages}
                         keyField={'language_id'}
                         subHeader={true}
-                        subHeaderComponent={<DangerButton href={route('dashboard.languages.destroy')} method='DELETE' data={{ids: selected}} disabled={selected.length < 1}/>}
+                        subHeaderComponent={<Permissions hasPermissions={['localization-delete']}><DangerButton href={route('dashboard.languages.destroy')} method='DELETE' data={{ids: selected}} disabled={selected.length < 1}/></Permissions>}
                         selectableRows={true}
                         selectableRowsHighlight={true}
                         noContextMenu={true}
