@@ -48,8 +48,9 @@ class HandleDashboardInertiaRequests extends Middleware
 
         return array_merge(parent::share($request), [
             'alert'             => $request->session()->get('alert') ?? $d,
-            'user'              => $user,
-            'user_verified'     => $userVerified
+            'auth'              => $user,
+            'auth_verified'     => $userVerified,
+            'queries'     =>    $request->query() ? $request->query() : new \stdClass(),
         ]);
     }
 }

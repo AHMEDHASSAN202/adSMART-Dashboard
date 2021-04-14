@@ -6,8 +6,9 @@ import PrimaryButton from "./PrimaryButton";
 import { usePage } from '@inertiajs/inertia-react'
 
 export default function ProfileInfoPanel() {
-    const {props: {user}} = usePage();
+    const {props: {auth}} = usePage();
     const {data, dispatch} = useContext(AppContext);
+
     const myNavi = [
         {
             title: translations['profile_info'],
@@ -57,20 +58,20 @@ export default function ProfileInfoPanel() {
 
                 <div className="d-flex align-items-center mt-5">
                     <div className="symbol symbol-100 mr-5">
-                        <div className="symbol-label" style={{backgroundImage: "url("+user.user_avatar_full_path+")"}}></div>
+                        <div className="symbol-label" style={{backgroundImage: "url("+auth.user_avatar_full_path+")"}}></div>
                         <i className="symbol-badge bg-success"></i>
                     </div>
                     <div className="d-flex flex-column">
                         <InertiaLink href={route('auth.dashboard.profile')} className="font-weight-bold font-size-h5 text-dark-75 text-capitalize text-hover-primary">
-                            {user.user_name}
+                            {auth.user_name}
                         </InertiaLink>
                         <div className="text-muted mt-1 text-capitalize">
-                            {user.role.name}
+                            {auth.role.name}
                         </div>
                         <div className="navi mt-2">
                             <InertiaLink href={route('auth.dashboard.profile')} className="navi-item">
                                 <span className="navi-link p-0 pb-2">
-                                    <span className="navi-text text-muted text-hover-primary">{user.user_email}</span>
+                                    <span className="navi-text text-muted text-hover-primary">{auth.user_email}</span>
                                 </span>
                             </InertiaLink>
                             <form action={route('auth.dashboard.logout')} method='POST'>

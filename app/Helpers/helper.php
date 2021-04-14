@@ -210,24 +210,9 @@ function initialDashboardData() {
             [
                 'title' => _e('users'),
                 'icon' => 'fas fa-user-friends',
-                'page' => '#',
+                'page' => route('dashboard.users.index'),
                 'extraClasses' => '',
-                'submenu' => [
-                    [
-                        'title' => _e('new_user'),
-                        'page'  => '#',
-                        'bullet' => 'dot',
-                        'extraClasses' => '',
-                        'icon'      => 'flaticon2-line'
-                    ],
-                    [
-                        'title' => _e('users'),
-                        'page'  => '#',
-                        'bullet' => 'dot',
-                        'extraClasses' => '',
-                        'icon'      => 'flaticon2-line'
-                    ]
-                ],
+                'id'           => 'users',
             ],
             [
                 'title' => _e('roles'),

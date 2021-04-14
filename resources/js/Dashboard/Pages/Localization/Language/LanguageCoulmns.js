@@ -27,7 +27,6 @@ const Columns = [
                 Inertia.put(
                     route('dashboard.languages.toggle_display_front', {language: row.language_id}),
                     {
-                        preserveState: false,
                         preserveScroll: true,
                     }
                 )

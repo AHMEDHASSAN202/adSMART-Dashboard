@@ -36,7 +36,7 @@ export const Reducer = (state, action) => {
             props.alert = action.payload;
             return {...state, props: props}
         case SET_CURRENT_USER:
-            return {...state, user: action.payload}
+            return {...state, auth: action.payload}
         case SET_PAGE_PROPS:
             return {...state, props: action.payload}
         default:

@@ -100,4 +100,10 @@ html[dir=rtl] * {
 .my-accordion .svg-icon.svg-icon-primary svg g [fill]  {
     fill: var(--info) !important;
 }
+.card-body > header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin-bottom: 15px;
+}
 

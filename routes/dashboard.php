@@ -41,3 +41,14 @@ Route::group(['prefix' => 'settings'], function () {
     Route::put('dashboard-data', ['uses' => 'SettingsController@updateDashboardData', 'as' => 'dashboard.settings.dashboard.data.update'])->middleware('permissions:settings-update');
 //    Route::put('cache/clear', ['uses' => 'CacheController@clearCache', 'as' => 'settings.cache.clear']);
 });
+
+
+//users routes
+Route::group(['prefix' => 'users'], function () {
+    Route::get('', ['uses' => 'UsersController@index', 'as' => 'dashboard.users.index'])->middleware('permissions:users-browse');
+    Route::get('create', ['uses' => 'UsersController@create', 'as' => 'dashboard.users.create'])->middleware('permissions:users-create');
+    Route::post('', ['uses' => 'UsersController@store', 'as' => 'dashboard.users.store'])->middleware('permissions:users-create');
+    Route::get('{user}', ['uses' => 'UsersController@edit', 'as' => 'dashboard.users.edit'])->middleware('permissions:users-update');
+    Route::put('{user}', ['uses' => 'UsersController@update', 'as' => 'dashboard.users.update'])->middleware('permissions:users-update');
+    Route::delete('', ['uses' => 'UsersController@destroy', 'as' => 'dashboard.users.destroy'])->middleware('permissions:users-delete');
+});

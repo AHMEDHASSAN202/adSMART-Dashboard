@@ -50,7 +50,9 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
 
     public function getUserAvatarFullPathAttribute()
     {
-        return asset("storage/$this->user_avatar");
+        $avatar = $this->user_avatar ?? getOptionValue('default_avatar');
+
+        return asset("storage/$avatar");
     }
     //========== #END# Appends Attributes ===================\\
 
@@ -67,6 +69,14 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
     }
     //========== #END# Relations ======================\\
 
+    //=========== Scopes =============================\\
+    public function scopeSearch($query, $request)
+    {
+        if ($s = $request->query('s')) {
+            return $query->where('user_name', 'LIKE', '%' . $s . '%')->orWhere('user_email', 'LIKE', '%' . $s . '%');
+        }
+    }
+    //=========== #END# Scopes =============================\\
 
     public function hasPermissions($permission)
     {

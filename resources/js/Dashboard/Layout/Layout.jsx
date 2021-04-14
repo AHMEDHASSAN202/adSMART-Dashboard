@@ -14,7 +14,7 @@ InertiaProgress.init({showSpinner: true})
 
 export default function Layout ({children}) {
     const [data, dispatch] = React.useReducer(Reducer, {...AppState});
-    const {activeId} = usePage().props;
+    const {activeId } = usePage().props;
 
     useEffect(() => {
         document.querySelector(`#menu-nav .menu-item.menu-item-active`)?.classList.remove('menu-item-active');

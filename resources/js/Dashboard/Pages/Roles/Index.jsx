@@ -47,7 +47,6 @@ const Index = (props) => {
                         columns={Columns}
                         data={roles}
                         keyField={'role_id'}
-                        subHeader={true}
                         subHeaderComponent={<Permissions hasPermissions={['roles-delete']}><DangerButton href={route('dashboard.roles.destroy')} method='DELETE' data={{ids: selected}} disabled={selected.length < 1}/></Permissions>}
                         selectableRows={true}
                         selectableRowsHighlight={true}

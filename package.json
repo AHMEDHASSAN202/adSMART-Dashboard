@@ -24,7 +24,6 @@
     "dependencies": {
         "@inertiajs/inertia": "^0.8.5",
         "@inertiajs/inertia-react": "^0.5.4",
-        "@inertiajs/progress": "^0.2.4",
-        "react-data-table-component-extensions": "^1.5.2"
+        "@inertiajs/progress": "^0.2.4"
     }
 }

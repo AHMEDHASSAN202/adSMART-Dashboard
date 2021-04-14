@@ -2,7 +2,6 @@ import {useEffect, useContext} from 'react';
 import Layout from "./../../Layout/Layout";
 import Topbar from './../../Layout/Topbar';
 import Content from "./../../Layout/Content";
-import SubmitButton from "../../Components/SubmitButton";
 import InvalidFeedBack from "../../Components/InvalidFeedback";
 import CardComponent from "../../Components/CardComponent";
 import { useForm } from '@inertiajs/inertia-react'
@@ -10,6 +9,7 @@ import {AppContext} from "../../AppContext";
 import CardTab from "../../Components/CardTab";
 import {formBuilder, getFromObject, getLanguagesTabs, myIf} from "../../helpers";
 import Checkbox from "../../Components/Checkbox";
+import PrimaryButton from "../../Components/PrimaryButton";
 
 
 const breadcrumb = [
@@ -24,9 +24,8 @@ const breadcrumb = [
 ];
 
 const CreateEdit = (props) => {
-    const {data} = useContext(AppContext)
-    const {languages} = data;
-    const { data: formData, setData} = useForm(
+    const {data: {languages}} = useContext(AppContext)
+    const { data: formData, setData, processing, post, put} = useForm(
         formBuilder(languages, {role_name: '', permissions: []}, ['role_name'])
     );
     const tabs = getLanguagesTabs(languages);
@@ -38,18 +37,28 @@ const CreateEdit = (props) => {
             const {role_name, permissions} = role;
             setData({role_name, permissions});
         }
+
+        return () => {
+            setData({});
+        }
     }, [])
 
     return (
         <>
             <Topbar title={props.pageTitle} breadcrumb={breadcrumb} >
-                <SubmitButton href={role ? route('dashboard.roles.update', role.role_id) : route('dashboard.roles.store')}
-                              data={formData}
-                              method={role ? 'PUT' : 'POST'}
-                              title={translations['save']}
-                              form='roleForm'
-                              disabled={Object.values(formData.role_name).includes('')}
-                />
+                <PrimaryButton
+                    classes={processing ? 'spinner spinner-white spinner-left spinner-sm' : ''}
+                    onClick={() => {
+                        if (role) {
+                            put(route('dashboard.roles.update', role.role_id));
+                        }else {
+                            post(route('dashboard.roles.store'));
+                        }
+                    }}
+                    disabled={processing || Object.values(formData.role_name).includes('')}
+                >
+                    {translations['save']}
+                </PrimaryButton>
             </Topbar>
 
             <Content>

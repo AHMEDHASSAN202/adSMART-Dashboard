@@ -19,11 +19,13 @@ const breadcrumb = [
 ];
 
 const Index = (props) => {
-    const {data, dispatch} = useContext(AppContext);
+    const {dispatch} = useContext(AppContext);
     const [selected, setSelected] = useState([]);
+
     useEffect(() => {
         dispatch(setLanguages(props.languages));
     }, [props.languages])
+
     return (
         <>
             <Topbar title={props.pageTitle} breadcrumb={breadcrumb}>
@@ -36,9 +38,8 @@ const Index = (props) => {
                     <Table
                         noHeader={true}
                         columns={Columns}
-                        data={data.languages}
+                        data={props.languages}
                         keyField={'language_id'}
-                        subHeader={true}
                         subHeaderComponent={<Permissions hasPermissions={['localization-delete']}><DangerButton href={route('dashboard.languages.destroy')} method='DELETE' data={{ids: selected}} disabled={selected.length < 1}/></Permissions>}
                         selectableRows={true}
                         selectableRowsHighlight={true}
