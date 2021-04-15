@@ -740,7 +740,7 @@ class TranslationsTableSeeder extends Seeder
             ],
             [
                 'translation_key'       => 'hi',
-                'translation_value'     => 'He',
+                'translation_value'     => 'Hi',
                 'translation_lang'      => 'en',
             ],
             [
@@ -2840,6 +2840,26 @@ class TranslationsTableSeeder extends Seeder
             [
                 "translation_key" => "default_avatar",
                 "translation_value" => 'الصورة الافتراضية للمستخدم',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "send_user_notification_about_their_account",
+                "translation_value" => "Send User Notification",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "send_user_notification_about_their_account",
+                "translation_value" => 'إرسال إشعار المستخدم',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "send_user_notification_about_their_account_msg",
+                "translation_value" => "Send the new user an email about their account.",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "send_user_notification_about_their_account_msg",
+                "translation_value" => 'أرسل إلى المستخدم الجديد بريدًا إلكترونيًا حول حسابه.',
                 "translation_lang" => "ar",
             ]
         ]);

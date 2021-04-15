@@ -2,7 +2,9 @@
 
 namespace App\Observers;
 
+use App\Events\Dashboard\AfterCreateUserEvent;
 use App\Events\Dashboard\AfterEditUserEvent;
+use App\Events\Dashboard\AfterRemoveUserEvent;
 use App\Models\User;
 
 class UserObserver
@@ -15,7 +17,7 @@ class UserObserver
      */
     public function created(User $user)
     {
-        //
+        event(new AfterCreateUserEvent($user));
     }
 
     /**
@@ -37,7 +39,7 @@ class UserObserver
      */
     public function deleted(User $user)
     {
-
+        event(new AfterRemoveUserEvent($user));
     }
 
     /**

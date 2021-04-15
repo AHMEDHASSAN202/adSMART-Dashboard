@@ -24,7 +24,7 @@ class AuthTableSeeder extends Seeder
             'user_email'    => 'testelbhai@gmail.com',
             'email_verified_at' => now(),
             'user_password' => password_hash(123456, PASSWORD_DEFAULT),
-            'user_avatar'   => 'images/users/avatars/ehaS7YB1IHA4fpIEtjafp4AzFWcxJnhUrSQ6sCin.jpg'
+            'user_avatar'   => 'images/users/avatars/default.jpg'
         ]);
 
         Profile::insert([
@@ -38,7 +38,8 @@ class AuthTableSeeder extends Seeder
             'fk_role_id' => 2,
             'user_name' => 'user',
             'user_email'    => 'user@gmail.com',
-            'user_password' => password_hash(123456, PASSWORD_DEFAULT)
+            'user_password' => password_hash(123456, PASSWORD_DEFAULT),
+             'user_avatar'   => 'images/users/avatars/default.jpg'
         ]);
     }
 }

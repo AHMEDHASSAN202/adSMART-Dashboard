@@ -84,7 +84,7 @@ const breadcrumb = [
 
 const Index = (props) => {
     const {data: {languages}} = useContext(AppContext);
-    const options = handleOptions(props.options);
+    const {options} = props
 
     const generalFields = generateSettingsFields(languages, ['site_name', 'logo', 'keywords', 'description', 'default_lang'], ['site_name', 'logo', 'keywords', 'description'], options);
     const {
@@ -151,6 +151,14 @@ const Index = (props) => {
         }
         return {...data};
     })
+
+    useEffect(() => {
+        return () => {
+            setGeneralData({});
+            setContactUsData({});
+            setDashboardData({});
+        }
+    }, [])
 
     return (
         <>

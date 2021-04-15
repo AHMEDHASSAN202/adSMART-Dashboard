@@ -47,11 +47,11 @@ class DashboardAuthController extends AuthController
     {
         $emailVerificationRequest->fulfill();
 
-        if ($this->authRepository->isLoggedToDashboard()) {
+        if ($this->authRepository->isUserLoggedToDashboard($emailVerificationRequest->user)) {
             return redirect()->route('dashboard.index')->with(makeAlert('info', _e('success_verify_msg'), 'flaticon-like'));
         }
 
-        return redirect()->route('auth.dashboard.login')->with(['success' => _e('success_verify_msg')])->withInput(['email' => $emailVerificationRequest->user->user_email]);
+        return redirect('/');
     }
 
     public function verificationNotification()

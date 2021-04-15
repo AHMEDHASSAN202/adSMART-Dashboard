@@ -14,28 +14,18 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
 
     protected $primaryKey = 'user_id';
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
         'email_verified_at',
-        'user_password'
+        'user_password',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    protected $casts = ['email_verified_at' => 'datetime'];
 
     protected $appends = ['permissions', 'user_avatar_full_path'];
+
+    protected $guarded = [];
 
     //========== Appends Attributes ======================\\
     public function getPermissionsAttribute()
@@ -65,7 +55,7 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
     public function personalInfo()
     {
         return $this->hasOne(Profile::class, 'fk_user_id', 'user_id')
-                    ->join('flags', 'fk_user_country', '=', 'flag_id');
+                    ->leftJoin('flags', 'fk_user_country', '=', 'flag_id');
     }
     //========== #END# Relations ======================\\
 

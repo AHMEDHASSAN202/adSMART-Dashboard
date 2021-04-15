@@ -66,6 +66,7 @@ export function setUser(payload) {
     }
 }
 
+
 export function setPageProps(payload) {
     if (payload.reload) {
         window.location.reload();

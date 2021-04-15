@@ -91,8 +91,8 @@ const Index = (props) => {
                             }
                         >
                             <div className="form-group row">
-                                <label className="col-xl-3 col-lg-3 col-form-label">{translations['avatar']}</label>
-                                <div className="col-lg-9 col-xl-6">
+                                <label className="col-xl-2 col-lg-3 col-form-label">{translations['avatar']}</label>
+                                <div className="col-lg-10 col-xl-6">
                                     <OneImageUploaderComponent defaultImage={{dataURL: profile.user_avatar_full_path}} onImagesChange={(image) => profileInfoSetData('user_avatar', image['file'])} acceptType={['png', 'jpg', 'jpeg']}/>
                                     <span className="form-text text-muted">Allowed file types:  png, jpg, jpeg.</span>
                                     <InvalidFeedBack msg={profileInfoErrors.user_avatar}/>
@@ -105,7 +105,7 @@ const Index = (props) => {
                                         min={3}
                                         max={100}
                                         required
-                                        className={'form-control' + (profileInfoErrors.user_name ? ' in-invalid' : '')}
+                                        className={'form-control' + (profileInfoErrors.user_name ? ' is-invalid' : '')}
                                         type="text"
                                         value={profileInfoData.user_name}
                                         id="user_name"
@@ -121,7 +121,7 @@ const Index = (props) => {
                                         min={3}
                                         max={100}
                                         required
-                                        className={'form-control' + (profileInfoErrors.user_email ? ' in-invalid' : '')}
+                                        className={'form-control' + (profileInfoErrors.user_email ? ' is-invalid' : '')}
                                         type="email"
                                         value={profileInfoData.user_email}
                                         id="email"
@@ -175,9 +175,9 @@ const Index = (props) => {
                                     <input
                                         min={11}
                                         max={11}
-                                        className={'form-control' + (personalInfoErrors.user_phone ? ' in-invalid' : '')}
+                                        className={'form-control' + (personalInfoErrors.user_phone ? ' is-invalid' : '')}
                                         type="number"
-                                        value={personalInfoData.user_phone}
+                                        value={personalInfoData.user_phone || ''}
                                         id="phone"
                                         onChange={(e) => personalInfoSetData('user_phone', e.target.value)}
                                     />
@@ -191,9 +191,9 @@ const Index = (props) => {
                                         min={3}
                                         max={200}
                                         required
-                                        className={'form-control' + (personalInfoErrors.user_address ? ' in-invalid' : '')}
+                                        className={'form-control' + (personalInfoErrors.user_address ? ' is-invalid' : '')}
                                         type="text"
-                                        value={personalInfoData.user_address}
+                                        value={personalInfoData.user_address || ''}
                                         id="address"
                                         onChange={(e) => personalInfoSetData('user_address', e.target.value)}
                                     />
@@ -231,7 +231,7 @@ const Index = (props) => {
                                         min={6}
                                         max={100}
                                         required
-                                        className={'form-control' + (changePasswordData.current_password ? ' in-invalid' : '')}
+                                        className={'form-control' + (changePasswordData.current_password ? ' is-invalid' : '')}
                                         type="password"
                                         value={changePasswordData.current_password}
                                         onChange={e => changePasswordSetData('current_password', e.target.value)}
@@ -246,7 +246,7 @@ const Index = (props) => {
                                     <input
                                         min={6}
                                         max={100}
-                                        className={'form-control' + (changePasswordData.password ? ' in-invalid' : '')}
+                                        className={'form-control' + (changePasswordData.password ? ' is-invalid' : '')}
                                         type="password"
                                         value={changePasswordData.password}
                                         onChange={e => changePasswordSetData('password', e.target.value)}
@@ -261,7 +261,7 @@ const Index = (props) => {
                                     <input
                                         min={6}
                                         max={100}
-                                        className={'form-control' + (changePasswordData.password_confirmation ? ' in-invalid' : '')}
+                                        className={'form-control' + (changePasswordData.password_confirmation ? ' is-invalid' : '')}
                                         type="password"
                                         value={changePasswordData.password_confirmation}
                                         onChange={e => changePasswordSetData('password_confirmation', e.target.value)}

@@ -1,9 +1,10 @@
 import {useEffect} from 'react';
-import { InertiaLink } from '@inertiajs/inertia-react'
+import { InertiaLink, usePage } from '@inertiajs/inertia-react'
 import AsideMenuLi from './../Components/AsideMenuLi';
 
 export default function Aside () {
     const Pages = window.asideMenu;
+    const {options} = usePage().props;
     //handle submenus
     useEffect(() => {
         let parentsItems = document.querySelectorAll('#menu-nav .menu-item-submenu');
@@ -26,10 +27,8 @@ export default function Aside () {
 
             <div className="brand flex-column-auto " id="kt_brand">
                 <InertiaLink href='/dashboard'  className="brand-logo">
-                    {/*<img alt="Logo" src="dashboard-assets/media/logos/logo-light.png"/>*/}
-                    <h2 className='display-4 font-weight-boldest text-light'>InertiaJs</h2>
+                    <h2 className='display-4 font-weight-boldest text-light'>{options['dashboard_title:' + window.currentLanguage.language_code]}</h2>
                 </InertiaLink>
-                <button className="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">+</button>
             </div>
 
             <div className="aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper">

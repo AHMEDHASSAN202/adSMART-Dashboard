@@ -69,7 +69,7 @@ const Index = (props) => {
                         onSelectedRowsChange={(s) => {
                             let selectedRowsId = []
                             if (s.selectedCount) {
-                                selectedRowsId = s.selectedRows.map((r) => r.role_id)
+                                selectedRowsId = s.selectedRows.map((r) => r.user_id)
                             }
                             setSelected(selectedRowsId);
                         }}

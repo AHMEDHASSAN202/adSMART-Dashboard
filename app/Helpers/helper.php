@@ -103,7 +103,7 @@ function getLanguageTranslations($lang=null) {
     $lang = is_null($lang) ? app()->getLocale() : $lang;
     $translations = app(\App\Repositories\LocalizationRepository::class)->getTranslations();
     $languageTranslations = $translations->map(function ($trans, $key) use ($lang) {
-        return $trans[$lang];
+        return @$trans[$lang];
     });
     return $languageTranslations;
 }

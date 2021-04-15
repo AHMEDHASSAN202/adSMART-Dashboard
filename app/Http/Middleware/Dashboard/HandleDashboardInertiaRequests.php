@@ -3,6 +3,7 @@
 namespace App\Http\Middleware\Dashboard;
 
 use App\Repositories\AuthRepository;
+use App\Repositories\OptionRepository;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -51,6 +52,7 @@ class HandleDashboardInertiaRequests extends Middleware
             'auth'              => $user,
             'auth_verified'     => $userVerified,
             'queries'     =>    $request->query() ? $request->query() : new \stdClass(),
+            'options'     =>    app(OptionRepository::class)->getOptions()->pluck('option_value', 'option_key'),
         ]);
     }
 }

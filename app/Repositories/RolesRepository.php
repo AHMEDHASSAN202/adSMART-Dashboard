@@ -25,6 +25,11 @@ class RolesRepository
             )->orderBy('role_id', 'DESC')->roleDescription()->search($request)->paginate($perPage);
     }
 
+    public function getRolesForSelectable()
+    {
+        return Role::select('roles.role_id', 'roles.created_at', 'name', 'fk_language_id')->orderBy('role_id', 'DESC')->roleDescription()->get();
+    }
+
     public function addNewRole($data)
     {
         $permissions = empty($data['permissions']) ? [] : $data['permissions'];

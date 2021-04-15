@@ -2,10 +2,11 @@ import react, {useContext} from 'react';
 import {toggleProfilePanel} from './../actions';
 import {AppContext} from "../AppContext";
 import LanguagesDropdown from "../Components/LanguagesDropdown";
-import { InertiaLink } from '@inertiajs/inertia-react'
+import { InertiaLink, usePage } from '@inertiajs/inertia-react'
 
 export default function Header() {
     const {data, dispatch} = useContext(AppContext);
+    const {auth:{user_name}} = usePage().props;
 
     return (
         <div id="kt_header" className="header  header-fixed ">
@@ -59,12 +60,10 @@ export default function Header() {
                             id="kt_quick_user_toggle"
                             onClick={() => dispatch(toggleProfilePanel(true))}
                         >
-                            <span
-                                className="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
-                            <span
-                                className="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">Sean</span>
+                            <span className="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">{translations['hi']},</span>
+                            <span className="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3 text-capitalize">{user_name}</span>
                             <span className="symbol symbol-lg-35 symbol-25 symbol-light-success">
-		                        <span className="symbol-label font-size-h5 font-weight-bold">S</span>
+		                        <span className="symbol-label font-size-h5 font-weight-bold text-uppercase">{user_name[0]}</span>
 		                    </span>
                         </button>
                     </div>

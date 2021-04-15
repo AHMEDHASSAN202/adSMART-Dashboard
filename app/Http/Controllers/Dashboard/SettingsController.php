@@ -20,14 +20,11 @@ class SettingsController extends Controller
         $this->optionRepository = $optionRepository;
     }
 
-    public function index(OptionRepository $optionRepository)
+    public function index()
     {
         app('document')->setTitle(_e('settings'));
 
-        $options = $this->optionRepository->getOptions();
-        $activeId = $this->activeId;
-
-        return Inertia::render('Settings/Index', compact('options', 'activeId'));
+        return Inertia::render('Settings/Index', ['activeId' => $this->activeId]);
     }
 
     public function updateGeneralData(SettingsGeneralDataUpdatedRequest $settingsGeneralDataUpdatedRequest)

@@ -27,7 +27,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 class AuthRepository
 {
-    private $dashboardGuard = 'dashboard';
+    public $dashboardGuard = 'dashboard';
     protected $dashboardPermission = 'dashboard-browse';
 
     public function loginToDashboard($loginToDashboardRequest)
@@ -94,9 +94,15 @@ class AuthRepository
         return $profile;
     }
 
-    public function isLoggedToDashboard()
+    public function isUserLoggedToDashboard($user)
     {
-        return auth($this->dashboardGuard)->check();
+        $u = $this->getAdmin();
+        if (!$u) return false;
+        if ($u->user_id !== $user->user_id) {
+            $this->logoutFromDashboard();
+            return false;
+        }
+        return true;
     }
 
     public function logoutOtherDevices($password)
