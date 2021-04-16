@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import DataTable from 'react-data-table-component';
 import {PaginationPerPageDefault} from "../Constants";
 import { Inertia } from '@inertiajs/inertia'
@@ -17,6 +17,9 @@ const SubHeaderComponent = ({subHeaderComponent='', ...props}) => {
 const Table = ({data: d, columns, paginationServer=false, searchServer=false, subHeaderComponent, ...props}) => {
     const {props: {queries}} = usePage();
     const [data, setData] = useState(d);
+    useEffect(() => {
+        setData(d);
+    }, [d])
     return (
         <>
             <DataTable

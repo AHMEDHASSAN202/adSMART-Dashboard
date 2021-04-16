@@ -20,11 +20,11 @@ class RolesController extends Controller
         $this->rolesRepository = $rolesRepository;
     }
 
-    public function index(Request $request)
+    public function index()
     {
         app('document')->setTitle(_e('roles'));
 
-        $roles = $this->rolesRepository->getRoles($request);
+        $roles = $this->rolesRepository->getRoles();
         $activeId = $this->activeId;
 
         return Inertia::render('Roles/Index', compact('roles', 'activeId'));

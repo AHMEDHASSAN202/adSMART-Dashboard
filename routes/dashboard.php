@@ -52,3 +52,25 @@ Route::group(['prefix' => 'users'], function () {
     Route::put('{user}', ['uses' => 'UsersController@update', 'as' => 'dashboard.users.update'])->middleware('permissions:users-update');
     Route::delete('', ['uses' => 'UsersController@destroy', 'as' => 'dashboard.users.destroy'])->middleware('permissions:users-delete');
 });
+
+
+//pages routes
+Route::group(['prefix' => 'pages'], function () {
+    Route::get('', ['uses' => 'PagesController@index', 'as' => 'dashboard.pages.index'])->middleware('permissions:pages-browse');
+    Route::get('create', ['uses' => 'PagesController@create', 'as' => 'dashboard.pages.create'])->middleware('permissions:pages-create');
+    Route::post('', ['uses' => 'PagesController@store', 'as' => 'dashboard.pages.store'])->middleware('permissions:pages-create');
+    Route::get('{page_id}', ['uses' => 'PagesController@edit', 'as' => 'dashboard.pages.edit'])->middleware('permissions:pages-update');
+    Route::put('{page_id}', ['uses' => 'PagesController@update', 'as' => 'dashboard.pages.update'])->middleware('permissions:pages-update');
+    Route::delete('', ['uses' => 'PagesController@destroy', 'as' => 'dashboard.pages.destroy'])->middleware('permissions:pages-delete');
+});
+
+
+//types routes
+Route::group(['prefix' => 'types'], function () {
+    Route::get('{type_key}', ['uses' => 'TypesController@index', 'as' => 'dashboard.types.index'])->middleware('permissions:types-browse');
+    Route::post('', ['uses' => 'TypesController@store', 'as' => 'dashboard.types.store'])->middleware('permissions:types-create');
+    Route::put('{type_id}', ['uses' => 'TypesController@update', 'as' => 'dashboard.types.update'])->middleware('permissions:types-update');
+    Route::delete('', ['uses' => 'TypesController@destroy', 'as' => 'dashboard.types.destroy'])->middleware('permissions:types-delete');
+});
+
+

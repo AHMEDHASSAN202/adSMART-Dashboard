@@ -1,26 +1,9 @@
-import {useEffect} from 'react';
 import { InertiaLink, usePage } from '@inertiajs/inertia-react'
 import AsideMenuLi from './../Components/AsideMenuLi';
 
 export default function Aside () {
     const Pages = window.asideMenu;
     const {options} = usePage().props;
-    //handle submenus
-    useEffect(() => {
-        let parentsItems = document.querySelectorAll('#menu-nav .menu-item-submenu');
-        parentsItems.forEach((i) => {
-            i.addEventListener('click', (e) => {
-                parentsItems.forEach((p) => {
-                    if (p != i) {
-                        if (p.classList.contains('menu-item-open')) {
-                            p.classList.remove('menu-item-open');
-                        }
-                    }
-                })
-                i.classList.toggle('menu-item-open');
-            })
-        })
-    }, [])
 
     return (
         <div className="aside aside-left  aside-fixed  d-flex flex-column flex-row-auto" id="kt_aside">

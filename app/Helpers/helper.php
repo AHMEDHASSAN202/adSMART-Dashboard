@@ -39,6 +39,8 @@ function getAllPermissions($groups=true) {
         'roles' => ['browse', 'create', 'update', 'delete'],
         'localization' => ['browse', 'create', 'update', 'delete'],
         'users' => ['browse', 'create', 'update', 'delete'],
+        'pages' => ['browse', 'create', 'update', 'delete'],
+        'types' => ['browse', 'create', 'update', 'delete'],
     ];
 
     if ($groups) {
@@ -161,40 +163,12 @@ function initialDashboardData() {
                 'icon' => 'fas fa-user-friends',
                 'page' => '#',
                 'extraClasses' => '',
-                'submenu' => [
-                    [
-                        'title' => _e('new_category'),
-                        'page'  => '#',
-                        'extraClasses' => '',
-                        'icon'      => 'flaticon2-line'
-                    ],
-                    [
-                        'title' => _e('categories'),
-                        'page'  => '#',
-                        'extraClasses' => '',
-                        'icon'      => 'flaticon2-line'
-                    ]
-                ]
             ],
             [
-                'title' => _e('pages'),
-                'icon' => 'fas fa-user-friends',
+                'title' => _e('new_category'),
+                'page'  => '#',
                 'extraClasses' => '',
-                'page' => '#',
-                'submenu' => [
-                    [
-                        'title' => _e('new_page'),
-                        'page'  => '#',
-                        'extraClasses' => '',
-                        'icon'      => 'flaticon2-line'
-                    ],
-                    [
-                        'title' => _e('pages'),
-                        'page'  => '#',
-                        'extraClasses' => '',
-                        'icon'      => 'flaticon2-line'
-                    ]
-                ]
+                'icon'      => 'fas fa-user-friends'
             ],
             [
                 'title' => _e('media'),
@@ -202,14 +176,30 @@ function initialDashboardData() {
                 'page' => '#',
                 'extraClasses' => '',
             ],
-
+            [
+                'section' => _e('pages'),
+            ],
+            [
+                'title' => _e('pages'),
+                'page'  => route('dashboard.pages.index'),
+                'extraClasses' => '',
+                'icon'      => 'flaticon2-document',
+                'id'           => 'pages',
+            ],
+            [
+                'title' => _e(['pages', 'types']),
+                'page'  => route('dashboard.types.index', ['type_key' => 'page_type']),
+                'extraClasses' => '',
+                'icon'      => 'flaticon2-medical-records',
+                'id'           => 'page_type',
+            ],
             // Users
             [
                 'section' => _e('users'),
             ],
             [
                 'title' => _e('users'),
-                'icon' => 'fas fa-user-friends',
+                'icon' => 'flaticon2-avatar',
                 'page' => route('dashboard.users.index'),
                 'extraClasses' => '',
                 'id'           => 'users',

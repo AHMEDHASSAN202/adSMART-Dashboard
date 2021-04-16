@@ -28,6 +28,7 @@ const Columns = [
                     route('dashboard.languages.toggle_display_front', {language: row.language_id}),
                     {
                         preserveScroll: true,
+                        preserveState: false
                     }
                 )
             }}/>

@@ -58,7 +58,7 @@ const Index = (props) => {
                             }
                             setSelected(selectedRowsId);
                         }}
-                        paginationServer={true}
+                        paginationServer={false}
                     />
                 </CardComponent>
             </Content>

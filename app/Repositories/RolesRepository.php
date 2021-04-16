@@ -8,26 +8,31 @@ namespace App\Repositories;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use App\Models\Role;
 
 class RolesRepository
 {
-    public function getRoles(Request $request)
+    public function getRoles()
     {
-        $perPage = $request->query('perpage', config('myapp.paginationPerPage'));
+        $cacheKey = 'roles:' . app()->getLocale();
 
-        return Role::select(
-                'roles.role_id',
-                'roles.created_at',
-                'name',
-                'fk_language_id'
-            )->orderBy('role_id', 'DESC')->roleDescription()->search($request)->paginate($perPage);
+        $roles = Cache::rememberForever($cacheKey, function () {
+            return Role::orderBy('role_id', 'DESC')->roleDescription()->get();
+        });
+
+        return $roles;
+    }
+
+    private function clearCache()
+    {
+        return Cache::forget('roles:' . app()->getLocale());
     }
 
     public function getRolesForSelectable()
     {
-        return Role::select('roles.role_id', 'roles.created_at', 'name', 'fk_language_id')->orderBy('role_id', 'DESC')->roleDescription()->get();
+        return $this->getRoles();
     }
 
     public function addNewRole($data)
@@ -35,6 +40,7 @@ class RolesRepository
         $permissions = empty($data['permissions']) ? [] : $data['permissions'];
         $role = Role::create(['permissions' => json_encode($permissions)]);
         if (!$role) return false;
+
         $d = [];
         $languages = getLanguages();
         foreach ($languages as $language) {
@@ -45,7 +51,12 @@ class RolesRepository
                 'created_at' => now()
             ];
         }
-        return DB::table('roles_description')->insert($d);
+
+        DB::table('roles_description')->insert($d);
+
+        $this->clearCache();
+
+        return true;
     }
 
     public function getRole($role)
@@ -72,6 +83,8 @@ class RolesRepository
                 ['name' => $data['role_name'][$language->language_code]]
             );
         }
+
+        $this->clearCache();
     }
 
     public function deleteRoles($ids)
@@ -81,5 +94,7 @@ class RolesRepository
         foreach ($ids as $role_id) {
             Role::findOrFail($role_id)->delete();
         }
+
+        $this->clearCache();
     }
 }

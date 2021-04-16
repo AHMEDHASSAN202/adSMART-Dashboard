@@ -289,6 +289,26 @@ class TranslationsTableSeeder extends Seeder
                 'translation_lang'      => 'ar',
             ],
             [
+                'translation_key'       => 'types',
+                'translation_value'     => 'Types',
+                'translation_lang'      => 'en',
+            ],
+            [
+                'translation_key'       => 'types',
+                'translation_value'     => 'أنواع',
+                'translation_lang'      => 'ar',
+            ],
+            [
+                'translation_key'       => 'type',
+                'translation_value'     => 'Type',
+                'translation_lang'      => 'en',
+            ],
+            [
+                'translation_key'       => 'type',
+                'translation_value'     => 'نوع',
+                'translation_lang'      => 'ar',
+            ],
+            [
                 'translation_key'       => 'media',
                 'translation_value'     => 'Media',
                 'translation_lang'      => 'en',
@@ -2793,13 +2813,13 @@ class TranslationsTableSeeder extends Seeder
                 "translation_lang" => "ar",
             ],
             [
-                "translation_key" => "keywords",
-                "translation_value" => "Keywords",
+                "translation_key" => "title",
+                "translation_value" => "Title",
                 "translation_lang" => "en",
             ],
             [
-                "translation_key" => "keywords",
-                "translation_value" => 'الكلمات المفتاحية',
+                "translation_key" => "title",
+                "translation_value" => 'العنوان',
                 "translation_lang" => "ar",
             ],
             [
@@ -2860,6 +2880,16 @@ class TranslationsTableSeeder extends Seeder
             [
                 "translation_key" => "send_user_notification_about_their_account_msg",
                 "translation_value" => 'أرسل إلى المستخدم الجديد بريدًا إلكترونيًا حول حسابه.',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "slug",
+                "translation_value" => "slug",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "slug",
+                "translation_value" => 'سلج',
                 "translation_lang" => "ar",
             ]
         ]);

@@ -58,3 +58,24 @@ export const isTrue = (value) => {
             return false;
     }
 }
+
+export const generateSlug = (text) => {
+    return text.toLowerCase().replace(/[^\w ]+/g,'-').replace(/ +/g,'-');
+}
+
+export const isEmptyObject = (object) => {
+    return Object.keys(object).length == 0;
+}
+
+export const getParents = (el, parentSelector) => {
+    var parents = [];
+    var p = el?.parentNode;
+    while (p) {
+        if (p == document) break;
+        if (p.classList.contains(parentSelector)) {
+            parents.push(p);
+        }
+        p = p.parentNode;
+    }
+    return parents;
+}

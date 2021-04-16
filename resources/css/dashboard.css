@@ -106,3 +106,6 @@ html[dir=rtl] * {
     padding: 0;
     margin-bottom: 15px;
 }
+#kt_aside {
+    overflow-y: scroll;
+}

@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(FlagSeeder::class);
         $this->call(RolesTableSeeder::class);
         $this->call(AuthTableSeeder::class);
+        $this->call(PagesTableSeeder::class);
     }
 }

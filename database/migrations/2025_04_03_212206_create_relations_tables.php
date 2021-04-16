@@ -21,6 +21,15 @@ class CreateRelationsTables extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->foreign('fk_role_id')->references('role_id')->on('roles')->onDelete(null);
         });
+
+        Schema::table('pages_description', function (Blueprint $table) {
+            $table->foreign('fk_page_id')->references('page_id')->on('pages')->onDelete('cascade');
+            $table->foreign('fk_language_id')->references('language_id')->on('languages')->onDelete(null);
+        });
+
+        Schema::table('pages', function (Blueprint $table) {
+            $table->foreign('fk_type_id')->references('type_id')->on('types')->onDelete(null);
+        });
     }
 
     /**

@@ -18,8 +18,32 @@ export default function Layout ({children}) {
 
     useEffect(() => {
         document.querySelector(`#menu-nav .menu-item.menu-item-active`)?.classList.remove('menu-item-active');
-        document.getElementById(activeId)?.closest('.menu-item').classList.add('menu-item-active');
+        let el = document.getElementById(activeId)?.closest('.menu-item').classList.add('menu-item-active');
+        // let parents = getParents(el, 'menu-item');
+        // parents.forEach((e) => {
+        //     e.classList.add('menu-item-active');
+        //     if (e.classList.contains('menu-item-submenu')) {
+        //         e.classList.add('menu-item-open');
+        //     }
+        // })
     })
+
+    //handle submenus
+    // useEffect(() => {
+    //     let parentsItems = document.querySelectorAll('#menu-nav .menu-item-submenu');
+    //     parentsItems.forEach((i) => {
+    //         i.addEventListener('click', (e) => {
+    //             parentsItems.forEach((p) => {
+    //                 if (p != i) {
+    //                     if (p.classList.contains('menu-item-open')) {
+    //                         p.classList.remove('menu-item-open');
+    //                     }
+    //                 }
+    //             })
+    //             i.classList.toggle('menu-item-open');
+    //         })
+    //     })
+    // }, [])
 
     return (
         <AppContext.Provider value={{data, dispatch}}>
