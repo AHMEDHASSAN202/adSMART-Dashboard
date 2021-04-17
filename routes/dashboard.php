@@ -8,6 +8,10 @@
 //dashboard routes
 Route::get('', ['uses' => 'DashboardController@index', 'as' => 'dashboard.index'])->middleware('permissions:dashboard-browse');
 
+//images
+Route::post('dashboard/tiny-editor-images/{module}', ['uses' => 'ImageController@uploadImage', 'as' => 'dashboard.images.uploaded']);
+
+
 //localization routes
 Route::group(['prefix' => 'localization'], function () {
     Route::get('languages', ['uses' => 'LanguagesController@index', 'as' => 'dashboard.languages.index'])->middleware('permissions:localization-browse');
@@ -72,5 +76,3 @@ Route::group(['prefix' => 'types'], function () {
     Route::put('{type_id}', ['uses' => 'TypesController@update', 'as' => 'dashboard.types.update'])->middleware('permissions:types-update');
     Route::delete('', ['uses' => 'TypesController@destroy', 'as' => 'dashboard.types.destroy'])->middleware('permissions:types-delete');
 });
-
-

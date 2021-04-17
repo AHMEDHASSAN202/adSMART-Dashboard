@@ -41,14 +41,14 @@ class PagesTableSeeder extends Seeder
         DB::table(Page::PageDescriptionTable)->insert(
             [
                 [
-                    'fk_page_id'      => $page1->id,
+                    'fk_page_id'      => $page1->page_id,
                     'fk_language_id'  => 1,
                     'page_slug'       => 'first-page',
                     'page_title'      => 'First Page',
                     'page_content'    => 'First Page First Page First Page ',
                 ],
                 [
-                    'fk_page_id'      => $page1->id,
+                    'fk_page_id'      => $page1->page_id,
                     'fk_language_id'  => 2,
                     'page_slug'       => 'الصفحة-الاولى',
                     'page_title'      => 'الصفحه الاولى',
@@ -62,14 +62,14 @@ class PagesTableSeeder extends Seeder
         DB::table(Page::PageDescriptionTable)->insert(
             [
                 [
-                    'fk_page_id'      => $page2->id,
+                    'fk_page_id'      => $page2->page_id,
                     'fk_language_id'  => 1,
                     'page_slug'       => 'second-page',
                     'page_title'      => 'Second Page',
                     'page_content'    => 'Second Page Second Page Second Page ',
                 ],
                 [
-                    'fk_page_id'      => $page2->id,
+                    'fk_page_id'      => $page2->page_id,
                     'fk_language_id'  => 2,
                     'page_slug'       => 'الصفحة-الثانية',
                     'page_title'      => 'الصفحه الثانية',

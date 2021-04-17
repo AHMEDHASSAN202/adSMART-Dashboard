@@ -27,7 +27,7 @@ class RolesRepository
 
     private function clearCache()
     {
-        return Cache::forget('roles:' . app()->getLocale());
+        return clearCacheAllLanguages('roles');
     }
 
     public function getRolesForSelectable()
@@ -37,26 +37,29 @@ class RolesRepository
 
     public function addNewRole($data)
     {
-        $permissions = empty($data['permissions']) ? [] : $data['permissions'];
-        $role = Role::create(['permissions' => json_encode($permissions)]);
-        if (!$role) return false;
+        try {
+            $permissions = empty($data['permissions']) ? [] : $data['permissions'];
+            $role = Role::create(['permissions' => json_encode($permissions)]);
+            if (!$role) return false;
 
-        $d = [];
-        $languages = getLanguages();
-        foreach ($languages as $language) {
-            $d[] = [
-                'fk_role_id'     => $role->role_id,
-                'fk_language_id' => $language->language_id,
-                'name' => $data['role_name'][$language->language_code],
-                'created_at' => now()
-            ];
+            $d = [];
+            $languages = getLanguages();
+            foreach ($languages as $language) {
+                $d[] = [
+                    'fk_role_id'     => $role->role_id,
+                    'fk_language_id' => $language->language_id,
+                    'name' => $data['role_name'][$language->language_code],
+                    'created_at' => now()
+                ];
+            }
+
+            DB::table('roles_description')->insert($d);
+
+            $this->clearCache();
+            return true;
+        }catch (\Exception $exception) {
+            return false;
         }
-
-        DB::table('roles_description')->insert($d);
-
-        $this->clearCache();
-
-        return true;
     }
 
     public function getRole($role)
@@ -65,9 +68,10 @@ class RolesRepository
         $res['role_id'] = $role->role_id;
         $res['permissions'] = $role->permissions;
         $res['role_name'] = [];
-        foreach ($roleDescriptions as $description) {
-            $languageCode = getLanguage(null, $description->fk_language_id)->language_code;
-            $res['role_name'][$languageCode] = $description->name;
+        $languages = getLanguages();
+        foreach ($languages as $language) {
+            $description = $roleDescriptions->where('fk_language_id', $language->language_id)->first();
+            $res['role_name'][$language->language_code] = $description ? $description->name : '';
         }
         return $res;
     }

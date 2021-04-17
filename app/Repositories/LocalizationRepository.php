@@ -126,6 +126,10 @@ class LocalizationRepository
 
             $languageCode = $language->language_code;
 
+            if ($languageCode == app()->getLocale()) {
+                app(VisitorsInformationRepository::class)->removeVisitorData();
+            }
+
             $language->delete();
 
             $this->removeLanguageTranslations($languageCode);

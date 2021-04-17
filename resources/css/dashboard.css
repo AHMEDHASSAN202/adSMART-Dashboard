@@ -109,3 +109,6 @@ html[dir=rtl] * {
 #kt_aside {
     overflow-y: scroll;
 }
+.full-width {
+    width: 100% !important;
+}

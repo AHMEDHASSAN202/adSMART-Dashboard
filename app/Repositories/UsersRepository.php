@@ -23,7 +23,7 @@ class UsersRepository
     public function getUserForEdit($userId)
     {
         return User::select('user_id', 'fk_role_id', 'user_name', 'user_email', 'user_avatar', 'fk_user_id', 'user_phone', 'fk_user_country', 'user_address', 'flag_id', 'phone_code')
-                    ->join('profiles', 'user_id', '=', 'fk_user_id')
+                    ->leftJoin('profiles', 'user_id', '=', 'fk_user_id')
                     ->leftJoin('flags', 'flag_id', '=', 'fk_user_country')
                     ->where('user_id', $userId)
                     ->first();
@@ -69,7 +69,7 @@ class UsersRepository
         }
         $user->save();
 
-        $userProfile = Profile::where('fk_user_id', $user->user_id)->firstOrFail();
+        $userProfile = Profile::where('fk_user_id', $user->user_id)->first() ?? new Profile(['fk_user_id' => $user->user_id]);
         $userProfile->user_phone = $request->user_phone;
         $userProfile->user_address = $request->user_address;
         $userProfile->fk_user_country = $request->fk_user_country;

@@ -11,6 +11,10 @@ class Page extends Model
 
     protected $guarded = [];
 
+    protected $primaryKey = 'page_id';
+
+    protected $appends = ['feature_image_full_path'];
+
     const PageDescriptionTable = 'pages_description';
 
     public function scopePageDescription($query)
@@ -24,5 +28,10 @@ class Page extends Model
     public function scopePageType($query)
     {
         return $query->join('types', 'pages.fk_type_id', '=', 'types.type_id');
+    }
+
+    public function getFeatureImageFullPathAttribute()
+    {
+        return asset("storage/$this->feature_image");
     }
 }

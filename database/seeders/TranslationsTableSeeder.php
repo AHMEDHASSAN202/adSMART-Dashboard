@@ -279,6 +279,16 @@ class TranslationsTableSeeder extends Seeder
                 'translation_lang'      => 'ar',
             ],
             [
+                'translation_key'       => 'page',
+                'translation_value'     => 'Page',
+                'translation_lang'      => 'en',
+            ],
+            [
+                'translation_key'       => 'page',
+                'translation_value'     => 'الصفحة',
+                'translation_lang'      => 'ar',
+            ],
+            [
                 'translation_key'       => 'new_page',
                 'translation_value'     => 'New Page',
                 'translation_lang'      => 'en',
@@ -2890,6 +2900,16 @@ class TranslationsTableSeeder extends Seeder
             [
                 "translation_key" => "slug",
                 "translation_value" => 'سلج',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "feature_image",
+                "translation_value" => "Feature image",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "feature_image",
+                "translation_value" => 'الصورة المميزة',
                 "translation_lang" => "ar",
             ]
         ]);

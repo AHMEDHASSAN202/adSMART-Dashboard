@@ -265,3 +265,10 @@ function getFlags() {
 
     return $flags;
 }
+
+function clearCacheAllLanguages($key) {
+    $languages = getLanguages();
+    foreach ($languages as $language) {
+        \Illuminate\Support\Facades\Cache::forget($key . ':' . $language->language_code);
+    }
+}

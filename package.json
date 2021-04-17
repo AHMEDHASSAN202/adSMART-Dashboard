@@ -24,6 +24,7 @@
     "dependencies": {
         "@inertiajs/inertia": "^0.8.5",
         "@inertiajs/inertia-react": "^0.5.4",
-        "@inertiajs/progress": "^0.2.4"
+        "@inertiajs/progress": "^0.2.4",
+        "@tinymce/tinymce-react": "^3.12.2"
     }
 }

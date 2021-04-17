@@ -28,7 +28,7 @@ const generateSettingsFields = (languages, fields, translationsFields, options) 
             if (!translationsFields.includes(field)) {
                 return inputsFields[field] = options[field];
             }
-            return inputsFields[field + ':' + language.language_code] = options[field + ':' + language.language_code];
+            return inputsFields[field + ':' + language.language_code] = options[field + ':' + language.language_code] || '';
         })
     });
     return inputsFields;

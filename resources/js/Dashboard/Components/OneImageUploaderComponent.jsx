@@ -1,7 +1,7 @@
 import React from 'react';
 import ImageUploading from 'react-images-uploading';
 
-const OneImageUploaderComponent = ({defaultImage={}, onImagesChange, ...props}) => {
+const OneImageUploaderComponent = ({defaultImage={}, onImagesChange, full_width, ...props}) => {
     const [images, setImages] = React.useState([defaultImage]);
     const onChange = (imageList) => {
         setImages(imageList);
@@ -33,9 +33,9 @@ const OneImageUploaderComponent = ({defaultImage={}, onImagesChange, ...props}) 
                         {errors.resolution && <span>Selected file is not match your desired resolution</span>}
                     </div>
                     }
-                    <div className="upload__image-wrapper">
+                    <div className={'upload__image-wrapper' + (full_width ? ' full-width' : '')}>
 
-                        <div className="d-inline-block position-relative">
+                        <div className={'d-inline-block position-relative' + (full_width ? ' full-width' : '')}>
                             <button type='button'
                                     className='btn btn-icon btn-xs btn-circle btn-white btn-hover-text-primary btn-shadow btn-image-delete'
                                     style={isDragging ? { color: 'red' } : undefined}
@@ -44,8 +44,8 @@ const OneImageUploaderComponent = ({defaultImage={}, onImagesChange, ...props}) 
                             >
                                 <i className='flaticon2-pen text-muted icon-sm'></i>
                             </button>
-                            <div className='image-input image-input-outline'>
-                                <div className='image-input-wrapper d-inline-block m-2' style={{backgroundImage: 'url('+images[0]['dataURL']+')'}}></div>
+                            <div className={'image-input image-input-outline' + (full_width ? ' full-width' : '')}>
+                                <div className={'image-input-wrapper d-inline-block m-2' + (full_width ? ' full-width' : '')} style={{backgroundImage: 'url('+images[0]['dataURL']+')'}}></div>
                             </div>
                         </div>
                     </div>

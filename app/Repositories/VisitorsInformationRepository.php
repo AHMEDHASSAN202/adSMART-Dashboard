@@ -85,4 +85,13 @@ class VisitorsInformationRepository
     {
         return 'visitor_' . $ip;
     }
+
+    public function removeVisitorData($ip=null)
+    {
+        if (!$ip) $ip = request()->ip();
+
+        $cacheName = $this->getVisitorCacheName($ip);
+
+        Cache::forget($cacheName);
+    }
 }

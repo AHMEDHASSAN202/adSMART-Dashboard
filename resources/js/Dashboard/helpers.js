@@ -60,7 +60,7 @@ export const isTrue = (value) => {
 }
 
 export const generateSlug = (text) => {
-    return text.toLowerCase().replace(/[^\w ]+/g,'-').replace(/ +/g,'-');
+    return text.toLowerCase().replace(/([^أ-يA-Za-z0-9]|-)+/g,'-').replace(/ +/g,'-');
 }
 
 export const isEmptyObject = (object) => {

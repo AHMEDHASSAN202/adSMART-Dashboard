@@ -15,7 +15,7 @@ class CreateRelationsTables extends Migration
     {
         Schema::table('roles_description', function (Blueprint $table) {
             $table->foreign('fk_role_id')->references('role_id')->on('roles')->onDelete('cascade');
-            $table->foreign('fk_language_id')->references('language_id')->on('languages')->onDelete(null);
+            $table->foreign('fk_language_id')->references('language_id')->on('languages')->onDelete('cascade');
         });
 
         Schema::table('users', function (Blueprint $table) {
@@ -24,7 +24,7 @@ class CreateRelationsTables extends Migration
 
         Schema::table('pages_description', function (Blueprint $table) {
             $table->foreign('fk_page_id')->references('page_id')->on('pages')->onDelete('cascade');
-            $table->foreign('fk_language_id')->references('language_id')->on('languages')->onDelete(null);
+            $table->foreign('fk_language_id')->references('language_id')->on('languages')->onDelete('cascade');
         });
 
         Schema::table('pages', function (Blueprint $table) {

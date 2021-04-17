@@ -7,9 +7,11 @@ import CardComponent from "../../Components/CardComponent";
 import { useForm } from '@inertiajs/inertia-react'
 import {AppContext} from "../../AppContext";
 import CardTab from "../../Components/CardTab";
-import {formBuilder, getFromObject, getLanguagesTabs, myIf} from "../../helpers";
-import Checkbox from "../../Components/Checkbox";
+import {assets, formBuilder, generateSlug, getLanguagesTabs, myIf} from "../../helpers";
 import PrimaryButton from "../../Components/PrimaryButton";
+import SelectComponent from "../../Components/Select";
+import OneImageUploaderComponent from "../../Components/OneImageUploaderComponent";
+import TinyEditor from "../../Components/TinyEditor";
 
 
 const breadcrumb = [
@@ -18,26 +20,25 @@ const breadcrumb = [
         href: route('dashboard.index')
     },
     {
-        title: translations['roles'],
-        href: route('dashboard.roles.index')
+        title: translations['pages'],
+        href: route('dashboard.pages.index')
     }
 ];
 
 const CreateEdit = (props) => {
     const {data: {languages}} = useContext(AppContext)
-    const { data: formData, setData, processing, post, put} = useForm(
-        formBuilder(languages, {role_name: '', permissions: []}, ['role_name'])
+    const { data: formData, setData, processing, post, errors} = useForm(
+        formBuilder(languages, {
+            fk_type_id: null, feature_image: null, page_slug: '', page_title: '', page_content:''
+        }, ['page_slug', 'page_title', 'page_content'])
     );
     const tabs = getLanguagesTabs(languages);
-    const {permissions, role} = props
-
+    const {types, page} = props
     useEffect(() => {
-        if (role) {
+        if (page) {
             //when edit
-            const {role_name, permissions} = role;
-            setData({role_name, permissions});
+            setData({...page, _method: "PUT", feature_image: null});
         }
-
         return () => {
             setData({});
         }
@@ -49,67 +50,71 @@ const CreateEdit = (props) => {
                 <PrimaryButton
                     classes={processing ? 'spinner spinner-white spinner-left spinner-sm' : ''}
                     onClick={() => {
-                        if (role) {
-                            put(route('dashboard.roles.update', role.role_id));
+                        if (page) {
+                            post(route('dashboard.pages.update', page.page_id));
                         }else {
-                            post(route('dashboard.roles.store'));
+                            post(route('dashboard.pages.store'));
                         }
                     }}
-                    disabled={processing || Object.values(formData.role_name).includes('')}
+                    disabled={processing}
                 >
                     {translations['save']}
                 </PrimaryButton>
             </Topbar>
 
             <Content>
-                <form id='roleForm' >
+                <form>
                      <div className='row'>
 
-                         <div className="col-md-5">
-                             <CardComponent title={translations['role']} tabs={tabs}>
+                         <div className="col-md-8">
+                             <CardComponent title={translations['page']} tabs={tabs}>
                                  {tabs.map((tab, i) => (
                                      <CardTab key={i} id={tab.id}>
                                          <div className="form-group">
-                                             <label>{translations['name']}</label>
-                                             <input required min={3} max={100} type="text" onChange={(e) => setData('role_name', {...formData.role_name, [tab.id]: e.target.value}) } value={formData.role_name[tab.id]} className={'form-control ' + myIf(props.errors, 'role_name.'+tab.id, 'is-invalid', '')} />
-                                             <InvalidFeedBack msg={getFromObject(props.errors, 'role_name.'+tab.id)} />
+                                             <label>{translations['title']}</label>
+                                             <input type="text" onChange={(e) => {
+                                                 let o = formData;
+                                                 o.page_title[tab.id] = e.target.value;
+                                                 o.page_slug[tab.id] = generateSlug(e.target.value);
+                                                 setData({...o});
+                                             } } value={formData.page_title[tab.id]} className={'form-control ' + myIf(errors, 'page_title.'+tab.id, 'is-invalid', '')} />
+                                             <InvalidFeedBack msg={errors['page_title.'+tab.id]} />
+                                         </div>
+                                         <div className="form-group">
+                                             <label>{translations['slug']}</label>
+                                             <input type="text" onChange={(e) => setData('page_slug', {...formData.page_slug, [tab.id]: generateSlug(e.target.value)}) } value={formData.page_slug[tab.id]} className={'form-control ' + myIf(errors, 'page_title.'+tab.id, 'is-invalid', '')} />
+                                             <InvalidFeedBack msg={errors['page_slug.'+tab.id]} />
+                                         </div>
+                                         <div className="form-group">
+                                             <label>{translations['content']}</label>
+                                             <TinyEditor module={'pages'} value={formData.page_content[tab.id]} handleEditorChange={(e) => setData('page_content', {...formData.page_content, [tab.id]: e})}/>
+                                             <InvalidFeedBack msg={errors['page_content.'+tab.id]} />
                                          </div>
                                      </CardTab>
                                  ))}
+
                              </CardComponent>
                          </div>
 
-                        <div className='d-inline-block' style={{width: '20px'}}></div>
-
-                         <div className="col-md-6">
-                             <CardComponent title={translations['permissions']}>
-                                 <div className="row">
-                                     {Object.keys(permissions).map((permissionsGroup, i) => (
-                                         <div className="col-md-6" key={permissionsGroup+i}>
-                                             <div className="form-group">
-                                                 <label>{translations[permissionsGroup] || permissionsGroup}</label>
-                                                 <div className="checkbox-list">
-                                                     {permissions[permissionsGroup].map((permission, ii) => (
-                                                         <Checkbox
-                                                             key={permissionsGroup+permission+ii}
-                                                             checked={formData.permissions.includes(permissionsGroup + '-' + permission)}
-                                                             label={translations[permission] || permission}
-                                                             onChange={(e) => {
-                                                                 let prs = formData.permissions;
-                                                                 let index = prs.indexOf(permissionsGroup + '-' + permission);
-                                                                 if (index == -1) {
-                                                                     prs.push(permissionsGroup + '-' + permission);
-                                                                 }else {
-                                                                     prs.splice(index, 1);
-                                                                 }
-                                                                 setData('permissions', [...prs])
-                                                             }}
-                                                         />
-                                                     ))}
-                                                 </div>
-                                             </div>
-                                         </div>
-                                     ))}
+                         <div className="col-md-4">
+                             <CardComponent title={translations['feature_image']}>
+                                 <div className="row pr-4">
+                                     <OneImageUploaderComponent full_width={true} defaultImage={{dataURL: page?.feature_image_full_path}} onImagesChange={(image) => setData('feature_image', image['file'])} acceptType={['png', 'jpg', 'jpeg']}/>
+                                     <span className="form-text text-muted d-block">Allowed file types:  png, jpg, jpeg.</span>
+                                     <InvalidFeedBack msg={errors.feature_image}/>
+                                 </div>
+                             </CardComponent>
+                             <CardComponent title={translations['options']}>
+                                 <div className='form-group'>
+                                     <label>{translations['type']}</label>
+                                     <SelectComponent
+                                         getOptionLabel={(option) => option.type_value}
+                                         getOptionValue={(option) => option.type_id}
+                                         onChange={(e) => setData('fk_type_id', e.type_id)}
+                                         options={types}
+                                         value={types.filter(option => option.type_id == formData.fk_type_id)}
+                                     />
+                                     <InvalidFeedBack msg={errors.fk_type_id}/>
                                  </div>
                              </CardComponent>
                          </div>
