@@ -37,43 +37,67 @@ class PagesTableSeeder extends Seeder
         ]);
 
         $page1 = Page::create(['fk_type_id' => 1]);
-
-        DB::table(Page::PageDescriptionTable)->insert(
-            [
-                [
-                    'fk_page_id'      => $page1->page_id,
-                    'fk_language_id'  => 1,
-                    'page_slug'       => 'first-page',
-                    'page_title'      => 'First Page',
-                    'page_content'    => 'First Page First Page First Page ',
-                ],
-                [
-                    'fk_page_id'      => $page1->page_id,
-                    'fk_language_id'  => 2,
-                    'page_slug'       => 'الصفحة-الاولى',
-                    'page_title'      => 'الصفحه الاولى',
-                    'page_content'    => 'الصفحه الاولى الصفحه الاولى الصفحه الاولى',
-                ]
-            ]
-        );
-
         $page2 = Page::create(['fk_type_id' => 1]);
+        $page3 = Page::create(['fk_type_id' => 2]);
+        $page4 = Page::create(['fk_type_id' => 2]);
 
         DB::table(Page::PageDescriptionTable)->insert(
             [
                 [
+                    'fk_page_id'      => $page1->page_id,
+                    'fk_language_id'  => 1,
+                    'page_slug'       => 'about-us',
+                    'page_title'      => 'About us',
+                    'page_content'    => 'About us About us',
+                ],
+                [
+                    'fk_page_id'      => $page1->page_id,
+                    'fk_language_id'  => 2,
+                    'page_slug'       => 'من-نحن',
+                    'page_title'      => 'من نحن',
+                    'page_content'    => 'من نحن',
+                ],
+                [
                     'fk_page_id'      => $page2->page_id,
                     'fk_language_id'  => 1,
-                    'page_slug'       => 'second-page',
-                    'page_title'      => 'Second Page',
-                    'page_content'    => 'Second Page Second Page Second Page ',
+                    'page_slug'       => 'terms',
+                    'page_title'      => 'Terms',
+                    'page_content'    => 'Terms Terms Terms',
                 ],
                 [
                     'fk_page_id'      => $page2->page_id,
                     'fk_language_id'  => 2,
-                    'page_slug'       => 'الصفحة-الثانية',
-                    'page_title'      => 'الصفحه الثانية',
-                    'page_content'    => 'الصفحه الثانية الصفحه الثانية الصفحه الثانية',
+                    'page_slug'       => 'شروط-الخدمة',
+                    'page_title'      => 'شروط الخدمة',
+                    'page_content'    => 'شروط الخدمة شروط الخدمة',
+                ],
+                [
+                    'fk_page_id'      => $page3->page_id,
+                    'fk_language_id'  => 1,
+                    'page_slug'       => 'privacy',
+                    'page_title'      => 'Privacy',
+                    'page_content'    => 'privacy privacy',
+                ],
+                [
+                    'fk_page_id'      => $page3->page_id,
+                    'fk_language_id'  => 2,
+                    'page_slug'       => 'الخصوصية',
+                    'page_title'      => 'الخصوصية',
+                    'page_content'    => 'الخصوصية الخصوصية الخصوصية ',
+                ],
+                [
+                    'fk_page_id'      => $page4->page_id,
+                    'fk_language_id'  => 1,
+                    'page_slug'       => 'security',
+                    'page_title'      => 'Security',
+                    'page_content'    => 'Security Security',
+                ],
+                [
+                    'fk_page_id'      => $page4->page_id,
+                    'fk_language_id'  => 2,
+                    'page_slug'       => 'الامان',
+                    'page_title'      => 'الامان',
+                    'page_content'    => 'الامان الامان',
                 ]
             ]
         );

@@ -41,6 +41,7 @@ function getAllPermissions($groups=true) {
         'users' => ['browse', 'create', 'update', 'delete'],
         'pages' => ['browse', 'create', 'update', 'delete'],
         'types' => ['browse', 'create', 'update', 'delete'],
+        'categories' => ['browse', 'create', 'update', 'delete'],
     ];
 
     if ($groups) {
@@ -161,20 +162,10 @@ function initialDashboardData() {
             [
                 'title' => _e('categories'),
                 'icon' => 'fas fa-user-friends',
-                'page' => '#',
+                'page' => route('dashboard.categories.index'),
                 'extraClasses' => '',
-            ],
-            [
-                'title' => _e('new_category'),
-                'page'  => '#',
-                'extraClasses' => '',
-                'icon'      => 'fas fa-user-friends'
-            ],
-            [
-                'title' => _e('media'),
-                'icon' => 'fas fa-user-friends',
-                'page' => '#',
-                'extraClasses' => '',
+                'id'            => 'categories',
+                'permissions'   => ['categories-browse']
             ],
             [
                 'section' => _e('pages'),

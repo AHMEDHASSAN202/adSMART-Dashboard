@@ -30,6 +30,11 @@ class CreateRelationsTables extends Migration
         Schema::table('pages', function (Blueprint $table) {
             $table->foreign('fk_type_id')->references('type_id')->on('types')->onDelete(null);
         });
+
+        Schema::table('categories_description', function (Blueprint $table) {
+            $table->foreign('fk_category_id')->references('category_id')->on('categories')->onDelete('cascade');
+            $table->foreign('fk_language_id')->references('language_id')->on('languages')->onDelete('cascade');
+        });
     }
 
     /**

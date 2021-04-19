@@ -119,6 +119,16 @@ class TranslationsTableSeeder extends Seeder
                 'translation_lang'      => 'ar',
             ],
             [
+                'translation_key'       => 'category',
+                'translation_value'     => 'Category',
+                'translation_lang'      => 'en',
+            ],
+            [
+                'translation_key'       => 'category',
+                'translation_value'     => 'قسم',
+                'translation_lang'      => 'ar',
+            ],
+            [
                 'translation_key'       => 'brands',
                 'translation_value'     => 'Brands',
                 'translation_lang'      => 'en',
@@ -2910,6 +2920,36 @@ class TranslationsTableSeeder extends Seeder
             [
                 "translation_key" => "feature_image",
                 "translation_value" => 'الصورة المميزة',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "parent",
+                "translation_value" => "Parent",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "parent",
+                "translation_value" => 'الأب',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "sort",
+                "translation_value" => "Sort",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "sort",
+                "translation_value" => 'ترتيب',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "toggle_collapse",
+                "translation_value" => "Toggle collapse",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "toggle_collapse",
+                "translation_value" => 'تغيير الطي',
                 "translation_lang" => "ar",
             ]
         ]);

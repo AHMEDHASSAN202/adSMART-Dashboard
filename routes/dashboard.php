@@ -76,3 +76,15 @@ Route::group(['prefix' => 'types'], function () {
     Route::put('{type_id}', ['uses' => 'TypesController@update', 'as' => 'dashboard.types.update'])->middleware('permissions:types-update');
     Route::delete('', ['uses' => 'TypesController@destroy', 'as' => 'dashboard.types.destroy'])->middleware('permissions:types-delete');
 });
+
+
+//categories routes
+Route::group(['prefix' => 'categories'], function () {
+    Route::get('', ['uses' => 'CategoriesController@index', 'as' => 'dashboard.categories.index'])->middleware('permissions:categories-browse');
+    Route::get('create', ['uses' => 'CategoriesController@create', 'as' => 'dashboard.categories.create'])->middleware('permissions:categories-create');
+    Route::post('', ['uses' => 'CategoriesController@store', 'as' => 'dashboard.categories.store'])->middleware('permissions:categories-create');
+    Route::put('sort', ['uses' => 'CategoriesController@sort', 'as' => 'dashboard.categories.sort'])->middleware('permissions:categories-update');
+    Route::get('{category_id}', ['uses' => 'CategoriesController@edit', 'as' => 'dashboard.categories.edit'])->middleware('permissions:categories-update');
+    Route::put('{category_id}', ['uses' => 'CategoriesController@update', 'as' => 'dashboard.categories.update'])->middleware('permissions:categories-update');
+    Route::delete('', ['uses' => 'CategoriesController@destroy', 'as' => 'dashboard.categories.destroy'])->middleware('permissions:categories-delete');
+});
