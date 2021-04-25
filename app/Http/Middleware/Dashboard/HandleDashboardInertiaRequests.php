@@ -38,7 +38,7 @@ class HandleDashboardInertiaRequests extends Middleware
      */
     public function share(Request $request)
     {
-        $user = app(AuthRepository::class)->getAdmin();
+        $user = app(AuthRepository::class)->getAdmin()->makeVisible('user_token');
 
         $userVerified = $user->hasVerifiedEmail();
         $d = null;

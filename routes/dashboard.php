@@ -88,3 +88,15 @@ Route::group(['prefix' => 'categories'], function () {
     Route::put('{category_id}', ['uses' => 'CategoriesController@update', 'as' => 'dashboard.categories.update'])->middleware('permissions:categories-update');
     Route::delete('', ['uses' => 'CategoriesController@destroy', 'as' => 'dashboard.categories.destroy'])->middleware('permissions:categories-delete');
 });
+
+
+//chat routes
+Route::group(['prefix' => 'chat'], function () {
+    Route::get('', ['uses' => 'ChatController@index', 'as' => 'dashboard.chat.index'])->middleware('permissions:chats-browse');
+});
+
+
+//services routes
+Route::group(['prefix' => 'services'], function () {
+    Route::get('', ['uses' => 'ServicesController@settingsPage', 'as' => 'dashboard.services.settings'])->middleware('permissions:services-browse');
+});

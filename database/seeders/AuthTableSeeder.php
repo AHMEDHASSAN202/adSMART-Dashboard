@@ -6,6 +6,7 @@ use App\Models\Profile;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use Illuminate\Support\Str;
 
 class AuthTableSeeder extends Seeder
 {
@@ -24,7 +25,8 @@ class AuthTableSeeder extends Seeder
             'user_email'    => 'testelbhai@gmail.com',
             'email_verified_at' => now(),
             'user_password' => password_hash(123456, PASSWORD_DEFAULT),
-            'user_avatar'   => 'images/users/avatars/default.jpg'
+            'user_avatar'   => 'images/users/avatars/default.jpg',
+            'user_token'    => Str::random(100)
         ]);
 
         Profile::insert([
@@ -39,7 +41,8 @@ class AuthTableSeeder extends Seeder
             'user_name' => 'user',
             'user_email'    => 'user@gmail.com',
             'user_password' => password_hash(123456, PASSWORD_DEFAULT),
-             'user_avatar'   => 'images/users/avatars/default.jpg'
+            'user_avatar'   => 'images/users/avatars/default.jpg',
+            'user_token'    => Str::random(100)
         ]);
     }
 }

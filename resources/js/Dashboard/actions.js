@@ -9,6 +9,9 @@ export const SET_LANGUAGES = 'SET_LANGUAGES';
 export const UPDATE_ALERT = 'UPDATE_ALERT';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const SET_PAGE_PROPS = 'SET_PAGE_PROPS';
+export const SET_SOCKET = 'SET_SOCKET';
+export const SET_USERS_GROUPS = 'SET_USERS_GROUPS';
+export const SET_CHAT = 'SET_CHAT';
 
 export function pageLoader(status) {
   return {
@@ -66,7 +69,6 @@ export function setUser(payload) {
     }
 }
 
-
 export function setPageProps(payload) {
     if (payload.reload) {
         window.location.reload();
@@ -77,3 +79,23 @@ export function setPageProps(payload) {
     }
 }
 
+export function setSocket(socket) {
+    return {
+        TYPE: SET_SOCKET,
+        payload: socket
+    }
+}
+
+export function setUsersAndGroups(usersGroups=[]) {
+    return {
+        TYPE: SET_USERS_GROUPS,
+        payload: usersGroups
+    }
+}
+
+export function setChat(chat = {messages: [], user: {}}) {
+    return {
+        TYPE: SET_CHAT,
+        payload: chat
+    }
+}

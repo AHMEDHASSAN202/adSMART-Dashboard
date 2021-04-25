@@ -106,9 +106,65 @@ html[dir=rtl] * {
     padding: 0;
     margin-bottom: 15px;
 }
+.aside {
+    width: 245px;
+}
 #kt_aside {
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
 }
 .full-width {
     width: 100% !important;
+}
+@media (max-width: 1199.98px){
+    html, body {
+        font-size: 10px !important;
+    }
+}
+@media (min-width: 992px) {
+    .header.header-fixed {
+        height: 55px;
+    }
+    .header-fixed.subheader-fixed .subheader {
+        height: 55px !important;
+    }
+    .container, .container-fluid, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
+        padding: 0 15px !important;
+    }
+    .content {
+        padding: 15px 0 !important;
+    }
+    .header-fixed.subheader-fixed .subheader {
+        top: 55px;
+    }
+    .aside-enabled .header.header-fixed,
+    .aside-enabled.subheader-fixed .subheader {
+        left: 245px;
+    }
+    .aside-fixed .wrapper {
+        padding-left: 245px;
+    }
+}
+.card.card-custom > .card-header {
+    min-height: 55px !important;
+}
+.fRHOyh, .gQHdOi {
+    font-size: 11px !important;
+}
+.bmkkvw {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+.input-group-text {
+    padding: 0.65rem .5rem;
+}
+.col-form-label {
+    padding: calc(0.65rem + 1px) 5px;
+}
+.jpnrBA {
+    font-size: 11px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+.my-scroll {
+    overflow-y: scroll;
 }

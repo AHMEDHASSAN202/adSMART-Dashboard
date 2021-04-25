@@ -79,3 +79,31 @@ export const getParents = (el, parentSelector) => {
     }
     return parents;
 }
+
+export class ChatItem {
+    constructor(item) {
+        this.model_type = item.model_type;
+        this.title = '';
+        this.subTitle = '';
+        this.imageComponent = '';
+        this.text = '';
+        this.chatUrl = '';
+        this.chat = [];
+
+        switch (item.model_type) {
+            case 'user' :
+                this.title = item.user_name;
+                this.subTitle = item.name + ' / ' + item.user_email;
+                this.text = '25 mins';
+                this.imageComponent = <img alt={this.title} src={assets(item.user_avatar)}/>;
+                break;
+            case 'group' :
+                this.title = item.group_name;
+                this.subTitle = translations['group'] || 'group';
+                this.imageComponent = <span className={'symbol-label font-size-h5 font-weight-bold text-uppercase'}>{this.title[0]}</span>;
+                break
+        }
+    }
+
+
+}

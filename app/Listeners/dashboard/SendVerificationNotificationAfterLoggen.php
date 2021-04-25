@@ -31,7 +31,7 @@ class SendVerificationNotificationAfterLoggen
             return;
         }
         if ($event->user instanceof MustVerifyEmail && ! $event->user->hasVerifiedEmail()) {
-            app(AuthRepository::class)->sendVerifyEmail();
+            app(AuthRepository::class)->sendVerifyEmail($event->user);
             $errors = new MessageBag();
             $errors->add('need_verify_email', _e('need_verify_email_msg'));
             abort(redirect()->route('auth.dashboard.login')->withInput(['email'])->withErrors($errors));

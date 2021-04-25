@@ -156,13 +156,13 @@ const CreateEdit = (props) => {
                                              <label className="col-3 col-form-label" htmlFor="phone">{translations['phone']}</label>
                                              <div className="col-9 input-group">
                                                  <div className="input-group-prepend">
-                                                    <span className="input-group-text" style={{width: 60}}>
+                                                    <span className="input-group-text" style={{width: 40}}>
                                                         +{phoneCode}
                                                     </span>
                                                  </div>
                                                  <input
                                                      className={'form-control' + (errors.user_phone ? ' is-invalid' : '')}
-                                                     type="number"
+                                                     type="text"
                                                      value={formData.user_phone || ''}
                                                      id="phone"
                                                      onChange={(e) => setFormData('user_phone', e.target.value)}

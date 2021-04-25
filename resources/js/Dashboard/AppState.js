@@ -5,4 +5,7 @@ export const AppState = {
     openProfilePanel: false,
     currentUrl: window.location.href,
     languages: window.languages,
+    socket: null,
+    usersGroups: [],
+    chat: {message: [], user: {}}
 };

@@ -2951,6 +2951,66 @@ class TranslationsTableSeeder extends Seeder
                 "translation_key" => "toggle_collapse",
                 "translation_value" => 'تغيير الطي',
                 "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "settings_chat",
+                "translation_value" => "Settings Chat",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "settings_chat",
+                "translation_value" => 'اعدادات الشات',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "groups",
+                "translation_value" => "Groups",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "groups",
+                "translation_value" => 'المجموعات',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "group",
+                "translation_value" => "Group",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "group",
+                "translation_value" => 'مجموعة',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "relations",
+                "translation_value" => "Relations",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "relations",
+                "translation_value" => 'العلاقات',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "services",
+                "translation_value" => "Services",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "services",
+                "translation_value" => 'الخدمات',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "chat",
+                "translation_value" => "Chat",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "chat",
+                "translation_value" => 'الشات',
+                "translation_lang" => "ar",
             ]
         ]);
     }

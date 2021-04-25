@@ -40,7 +40,7 @@ class OptionsTableSeeder extends Seeder
             ],
             [
                 'option_key'        => 'dashboard_title:en',
-                'option_value'      => 'Dashboard',
+                'option_value'      => 'adSMART',
                 'option_data'       => '',
             ],
             [

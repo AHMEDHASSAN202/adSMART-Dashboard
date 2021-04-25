@@ -10,6 +10,7 @@ use App\Models\Profile;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UsersRepository
 {
@@ -38,7 +39,7 @@ class UsersRepository
         }
 
         $userData['user_password'] = Hash::make($userData['user_password']);
-
+        $userData['user_token'] = Str::random(100);
         $newUser = User::create($userData);
 
         if (!$newUser) return false;

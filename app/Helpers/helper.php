@@ -42,6 +42,8 @@ function getAllPermissions($groups=true) {
         'pages' => ['browse', 'create', 'update', 'delete'],
         'types' => ['browse', 'create', 'update', 'delete'],
         'categories' => ['browse', 'create', 'update', 'delete'],
+        'chats' => ['browse'],
+        'services' => ['browse', 'update'],
     ];
 
     if ($groups) {
@@ -76,7 +78,7 @@ function deleteHtmlButton($action, $deleteId)
                 <button class="btn btn-icon btn-light btn-hover-danger btn-sm mx-3">
                     <i class="flaticon2-rubbish-bin"></i>
                 </button>
-            </form>      
+            </form>
         '))->toHtml();
 }
 
@@ -224,16 +226,30 @@ function initialDashboardData() {
                 'id'           => 'translations',
                 'permissions'   => ['localization-browse']
             ],
+            // Chat
+            [
+                'section' => _e('chat'),
+            ],
+            [
+                'title' => _e('chat'),
+                'icon' => 'flaticon2-talk',
+                'page' => route('dashboard.chat.index'),
+                'extraClasses' => '',
+                'id'           => 'chat',
+                'permissions'   => ['chats-browse']
+            ],
 
             // Settings
             [
                 'section' => _e('settings'),
             ],
             [
-                'title' => _e('reports'),
-                'icon' => 'fas fa-user-friends',
-                'page' => '#',
+                'title' => _e('services'),
+                'icon' => 'flaticon2-email',
+                'page' => route('dashboard.services.settings'),
                 'extraClasses' => '',
+                'id'           => 'services',
+                'permissions'   => ['services-browse']
             ],
             [
                 'title' => _e('settings'),
