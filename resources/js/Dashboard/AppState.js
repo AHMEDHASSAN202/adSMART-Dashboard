@@ -7,5 +7,6 @@ export const AppState = {
     languages: window.languages,
     socket: null,
     usersGroups: [],
-    chat: {message: [], user: {}}
+    chatItem: null,
+    chatBoxLoading: false,
 };

@@ -9,9 +9,8 @@ import Header from './Header';
 import ProfileInfoPanel from './../Components/ProfileInfoPanel';
 import NotificationPanel from './../Components/NotificationPanel';
 import { InertiaProgress } from '@inertiajs/progress';
-InertiaProgress.init({showSpinner: true})
+InertiaProgress.init({showSpinner: true, color: '#8950fc'})
 import WebSocket from "./WebSocket";
-import Scroll from "../Components/Scroll";
 
 export default function Layout ({children}) {
     const [data, dispatch] = React.useReducer(Reducer, {...AppState});

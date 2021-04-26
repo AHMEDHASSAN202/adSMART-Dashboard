@@ -1,3 +1,6 @@
+import {ChatItem} from "./helpers";
+
+
 export const ALL_CHECKED = "ALL_CHECKED";
 export const PAGE_LOADING = "PAGE_LOADING";
 export const SECTION_LOADING = "SECTION_LOADING";
@@ -12,6 +15,7 @@ export const SET_PAGE_PROPS = 'SET_PAGE_PROPS';
 export const SET_SOCKET = 'SET_SOCKET';
 export const SET_USERS_GROUPS = 'SET_USERS_GROUPS';
 export const SET_CHAT = 'SET_CHAT';
+export const SET_CHAT_BOX_LOADING = 'SET_CHAT_BOX_LOADING';
 
 export function pageLoader(status) {
   return {
@@ -93,9 +97,19 @@ export function setUsersAndGroups(usersGroups=[]) {
     }
 }
 
-export function setChat(chat = {messages: [], user: {}}) {
+export function setChat(chat) {
+    if (!(chat instanceof ChatItem)) {
+        return new Error('chat most be instance of ChatItem class');
+    }
     return {
         TYPE: SET_CHAT,
         payload: chat
+    }
+}
+
+export function setChatBoxLoading(s) {
+    return {
+        TYPE: SET_CHAT_BOX_LOADING,
+        payload: s
     }
 }

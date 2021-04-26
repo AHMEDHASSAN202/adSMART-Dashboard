@@ -6,3 +6,5 @@ export const WebSocketServerOptions = {
     path: '/socket.io',
 };
 export const GET_USERS_AND_GROUPS_URL = window.WS_SERVICE_DOMAIN + 'chat/get-users-and-groups';
+export const GET_MESSAGES_CHAT_URL = window.WS_SERVICE_DOMAIN + 'chat/get-messages';
+export const LIMIT_USERS_GROUPS_LIST_ITEMS = 200;

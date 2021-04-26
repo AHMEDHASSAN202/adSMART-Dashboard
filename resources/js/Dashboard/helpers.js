@@ -1,3 +1,5 @@
+import {GET_MESSAGES_CHAT_URL} from "./Constants";
+
 export const formBuilder = (languages, formInputs={}, translatableInputs=[]) => {
     let keys = Object.keys(formInputs);
     let formBuilder = {};
@@ -42,6 +44,40 @@ export const assets = (url) => {
     return `/storage/${url}`;
 }
 
+function timeSinceFromNow(date) {
+
+    if (date == '' || date == null) return '';
+
+    let seconds = Math.floor((new Date() - date) / 1000);
+
+    let interval = seconds / 31536000;
+    if (interval > 1) {
+        return Math.floor(interval) + " years";
+    }
+
+    interval = seconds / 2592000;
+    if (interval > 1) {
+        return Math.floor(interval) + " months";
+    }
+
+    interval = seconds / 86400;
+    if (interval > 1) {
+        return Math.floor(interval) + " days";
+    }
+
+    interval = seconds / 3600;
+    if (interval > 1) {
+        return Math.floor(interval) + " hours";
+    }
+
+    interval = seconds / 60;
+    if (interval > 1) {
+        return Math.floor(interval) + " minutes";
+    }
+
+    return Math.floor(seconds) + " seconds";
+}
+
 export const isTrue = (value) => {
     if (typeof(value) === 'string'){
         value = value.trim().toLowerCase();
@@ -81,7 +117,7 @@ export const getParents = (el, parentSelector) => {
 }
 
 export class ChatItem {
-    constructor(item) {
+    constructor(item, auth) {
         this.model_type = item.model_type;
         this.title = '';
         this.subTitle = '';
@@ -89,21 +125,58 @@ export class ChatItem {
         this.text = '';
         this.chatUrl = '';
         this.chat = [];
+        this.messagesUrl = '';
 
         switch (item.model_type) {
             case 'user' :
                 this.title = item.user_name;
                 this.subTitle = item.name + ' / ' + item.user_email;
-                this.text = '25 mins';
                 this.imageComponent = <img alt={this.title} src={assets(item.user_avatar)}/>;
+                this.messagesUrl = GET_MESSAGES_CHAT_URL + '?auth_token=' + auth.user_token + '&lang=' + currentLanguage.language_id + '&user_id=' + item.user_id;
                 break;
             case 'group' :
                 this.title = item.group_name;
                 this.subTitle = translations['group'] || 'group';
                 this.imageComponent = <span className={'symbol-label font-size-h5 font-weight-bold text-uppercase'}>{this.title[0]}</span>;
+                this.messagesUrl = GET_MESSAGES_CHAT_URL + '?auth_token=' + auth.user_token + '&lang=' + currentLanguage.language_id + '&group_id=' + item.group_id;
                 break
         }
+
+        let lastMessage = new Message(item, auth.user_id);
+        this.text = lastMessage.created_at;
+        this.chat.push(lastMessage);
     }
 
+    getLastMessage(prop) {
+        if (this.chat.length == 0) return '';
+        return prop ? this.chat[(this.chat.length-1)][prop] : this.chat[(this.chat.length-1)];
+    }
 
+    setMessages(messages=[], auth_id) {
+        let msgs = [];
+        messages.forEach((msg) => msgs.push(new Message(msg, auth_id)));
+        this.chat = msgs;
+    }
+}
+
+export class Message {
+    constructor(message, auth_id) {
+        this.message_id = message.message_id || '';
+        this.message_type = message.message_type || 'text';
+        this.message_content = message.message_content || '';
+        this.created_at = message.created_at ? timeSinceFromNow(new Date(message.created_at)) : '';
+        this.file_id = '';
+        this.file_path = '';
+        this.original_name = '';
+        this.user_id = message.user_id || '';
+        this.user_name = message.user_name || '';
+        this.user_avatar = message.user_avatar ? assets(message.user_avatar) : '';
+        this.myMessage = (this.user_id === auth_id);
+        if (this.message_type != 'text') {
+            this.file_id = message.file_id || '';
+            this.file_path = assets(message.file_path) || '';
+            this.original_name = message.original_name || '';
+            this.message_content = this.original_name;
+        }
+    }
 }

@@ -39,6 +39,10 @@ html[dir=rtl] #nprogress .spinner {
     top: 50% !important;
     right: 60% !important;
 }
+#nprogress .spinner-icon {
+    width: 15px !important;
+    height: 15px !important;
+}
 .btn-image-delete {
     position: absolute;
     top: -15px;
@@ -167,5 +171,17 @@ html[dir=rtl] * {
 }
 .my-scroll {
     overflow-y: scroll;
+}
+.my-spinner {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.my-spinner:before {
+    left: 50%;
+    margin-left: -2rem;
+    top: 35%
 }
 
