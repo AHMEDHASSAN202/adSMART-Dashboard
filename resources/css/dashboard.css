@@ -21,7 +21,9 @@ body {
 .aside-menu .menu-nav > .menu-item.menu-item-active > .menu-heading .menu-icon, .aside-menu .menu-nav > .menu-item.menu-item-active > .menu-link .menu-icon,
 .aside-menu .menu-nav > .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-heading .menu-icon, .aside-menu .menu-nav > .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-link .menu-icon,
 .aside-menu .menu-nav > .menu-item.menu-item-open > .menu-heading .menu-icon, .aside-menu .menu-nav > .menu-item.menu-item-open > .menu-link .menu-icon,
-.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-heading .menu-icon, .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-link .menu-icon {
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-heading .menu-icon, .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-link .menu-icon,
+.btn.btn-clean:hover:not(.btn-text):not(:disabled):not(.disabled) i, .btn.btn-clean:focus:not(.btn-text) i, .btn.btn-clean.focus:not(.btn-text) i,
+.navi .navi-item .navi-link:hover .navi-icon i {
     color: var(--info) !important;
 }
 .header-menu .menu-nav > .menu-item .menu-submenu > .menu-subnav > .menu-item:hover:not(.menu-item-here):not(.menu-item-active) > .menu-link .menu-icon.svg-icon svg g [fill], .header-menu .menu-nav > .menu-item .menu-submenu > .menu-subnav > .menu-item.menu-item-hover:not(.menu-item-here):not(.menu-item-active) > .menu-link .menu-icon.svg-icon svg g [fill] {
@@ -183,4 +185,33 @@ html[dir=rtl] * {
     left: 50%;
     margin-left: -2rem;
     top: 35%
+}
+.chat-item-active img,
+.chat-item-active .symbol-label {
+    border: 5px solid;
+    border-color: var(--info);
+}
+.online-label {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border: 2px solid #fff;
+    height: 12px !important;
+    width: 12px !important;
+}
+.is-offline {
+    background-color: #b5b5c3
+}
+.is-online {
+    background-color: #1BC5BD;
+}
+.my-dropdown-menu.show {
+    position: absolute;
+    transform: translate3d(-203px, 28px, 0px);
+    top: 0px;
+    left: 0px;
+    will-change: transform;
+}
+.rst__rowContents {
+    min-width: 100px !important;
 }

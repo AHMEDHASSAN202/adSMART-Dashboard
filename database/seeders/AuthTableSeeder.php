@@ -44,5 +44,23 @@ class AuthTableSeeder extends Seeder
             'user_avatar'   => 'images/users/avatars/default.jpg',
             'user_token'    => Str::random(100)
         ]);
+
+        User::create([
+            'fk_role_id' => 1,
+            'user_name' => 'admin',
+            'user_email'    => 'admin@gmail.com',
+            'user_password' => password_hash(123456, PASSWORD_DEFAULT),
+            'user_avatar'   => 'images/users/avatars/default.jpg',
+            'user_token'    => Str::random(100)
+        ]);
+
+        User::create([
+            'fk_role_id' => 2,
+            'user_name' => 'Mohamed User',
+            'user_email'    => 'mohamed@gmail.com',
+            'user_password' => password_hash(123456, PASSWORD_DEFAULT),
+            'user_avatar'   => 'images/users/avatars/default.jpg',
+            'user_token'    => Str::random(100)
+        ]);
     }
 }

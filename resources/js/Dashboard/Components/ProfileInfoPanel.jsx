@@ -20,7 +20,7 @@ export default function ProfileInfoPanel() {
             title: translations['my_messages'],
             desc: translations['my_messages_desc'],
             icon: <i className="flaticon2-analytics text-danger icon-lg"></i>,
-            href: '#'
+            href: route('dashboard.chat.index')
         },
         {
             title: translations['my_notification'],
@@ -32,7 +32,7 @@ export default function ProfileInfoPanel() {
             title: translations['settings'],
             desc: translations['settings_description'],
             icon: <i className="flaticon2-gear text-primary icon-lg"></i>,
-            href: '#'
+            href: route('dashboard.settings.index')
         }
     ];
 

@@ -2393,6 +2393,16 @@ class TranslationsTableSeeder extends Seeder
                 "translation_lang" => "ar",
             ],
             [
+                "translation_key" => "created_by",
+                "translation_value" => "Created by",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "created_by",
+                "translation_value" => "انشأ من قبل",
+                "translation_lang" => "ar",
+            ],
+            [
                 "translation_key" => "updated_at",
                 "translation_value" => "Updated_at",
                 "translation_lang" => "en",
@@ -2963,6 +2973,16 @@ class TranslationsTableSeeder extends Seeder
                 "translation_lang" => "ar",
             ],
             [
+                "translation_key" => "chat_groups",
+                "translation_value" => "Chat Groups",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "chat_groups",
+                "translation_value" => 'مجموعات المحادثة',
+                "translation_lang" => "ar",
+            ],
+            [
                 "translation_key" => "groups",
                 "translation_value" => "Groups",
                 "translation_lang" => "en",
@@ -3010,6 +3030,46 @@ class TranslationsTableSeeder extends Seeder
             [
                 "translation_key" => "chat",
                 "translation_value" => 'الشات',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "members",
+                "translation_value" => "Members",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "members",
+                "translation_value" => 'الاعضاء',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "count",
+                "translation_value" => "Count",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "count",
+                "translation_value" => 'عدد',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "leave_group",
+                "translation_value" => "Leave group",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "leave_group",
+                "translation_value" => 'غادر المجموعة',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "join_members",
+                "translation_value" => "Join members",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "join_members",
+                "translation_value" => 'انضمام الى المجموعة',
                 "translation_lang" => "ar",
             ]
         ]);

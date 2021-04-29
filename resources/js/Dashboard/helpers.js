@@ -117,32 +117,49 @@ export const getParents = (el, parentSelector) => {
 }
 
 export class ChatItem {
-    constructor(item, auth) {
-        this.model_type = item.model_type;
+    constructor(item, user_token, user_id, onlineUsers=[]) {
+        this.randomId = '';
         this.title = '';
         this.subTitle = '';
         this.imageComponent = '';
         this.text = '';
-        this.chatUrl = '';
         this.chat = [];
         this.messagesUrl = '';
+        this.created_by = '';
+        this.created_by_name = '';
+        this.isGroup = false;
+        this.isMyGroup = false;
+        this.isUser = false;
+        this.span = '';
+        this.id = '';
 
         switch (item.model_type) {
             case 'user' :
                 this.title = item.user_name;
-                this.subTitle = item.name + ' / ' + item.user_email;
+                this.span = item.name;
+                this.subTitle = item.user_email;
                 this.imageComponent = <img alt={this.title} src={assets(item.user_avatar)}/>;
-                this.messagesUrl = GET_MESSAGES_CHAT_URL + '?auth_token=' + auth.user_token + '&lang=' + currentLanguage.language_id + '&user_id=' + item.user_id;
+                this.messagesUrl = GET_MESSAGES_CHAT_URL + '?auth_token=' + user_token + '&lang=' + currentLanguage.language_id + '&user_id=' + item.user_id;
+                this.id = item.user_id;
+                this.isUser = true;
+                this.randomId = 'user-' + item.user_id;
                 break;
             case 'group' :
                 this.title = item.group_name;
-                this.subTitle = translations['group'] || 'group';
+                this.span = translations['group'] || 'group';
+                this.subTitle = 'created by: ' + item.created_by_name;
                 this.imageComponent = <span className={'symbol-label font-size-h5 font-weight-bold text-uppercase'}>{this.title[0]}</span>;
-                this.messagesUrl = GET_MESSAGES_CHAT_URL + '?auth_token=' + auth.user_token + '&lang=' + currentLanguage.language_id + '&group_id=' + item.group_id;
+                this.messagesUrl = GET_MESSAGES_CHAT_URL + '?auth_token=' + user_token + '&lang=' + currentLanguage.language_id + '&group_id=' + item.group_id;
+                this.created_by = item.fk_created_by;
+                this.created_by_name = item.created_by_name;
+                this.isGroup = true;
+                this.id = item.group_id;
+                this.isMyGroup = (item.fk_created_by === user_id);
+                this.randomId = 'group-' + item.group_id;
                 break
         }
 
-        let lastMessage = new Message(item, auth.user_id);
+        let lastMessage = new Message(item, user_id);
         this.text = lastMessage.created_at;
         this.chat.push(lastMessage);
     }
@@ -154,7 +171,13 @@ export class ChatItem {
 
     setMessages(messages=[], auth_id) {
         let msgs = [];
-        messages.forEach((msg) => msgs.push(new Message(msg, auth_id)));
+        messages.forEach((msg) => {
+            if (msg instanceof Message) {
+                msgs.push(msg)
+            }else {
+                msgs.push(new Message(msg, auth_id))
+            }
+        });
         this.chat = msgs;
     }
 }
@@ -178,5 +201,13 @@ export class Message {
             this.original_name = message.original_name || '';
             this.message_content = this.original_name;
         }
+    }
+}
+
+export class Group {
+    constructor() {
+        this.group_id = null;
+        this.group_name = '';
+        this.members = [];
     }
 }

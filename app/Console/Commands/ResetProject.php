@@ -41,6 +41,6 @@ class ResetProject extends Command
         Artisan::call('cache:clear');
         Artisan::call('migrate:fresh');
         Artisan::call('db:seed');
-        Artisan::call('config:cache');
+        Artisan::call('config:clear');
     }
 }

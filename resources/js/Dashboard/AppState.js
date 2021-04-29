@@ -9,4 +9,5 @@ export const AppState = {
     usersGroups: [],
     chatItem: null,
     chatBoxLoading: false,
+    onlineUsers: []
 };

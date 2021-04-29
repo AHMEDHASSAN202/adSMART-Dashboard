@@ -93,6 +93,7 @@ Route::group(['prefix' => 'categories'], function () {
 //chat routes
 Route::group(['prefix' => 'chat'], function () {
     Route::get('', ['uses' => 'ChatController@index', 'as' => 'dashboard.chat.index'])->middleware('permissions:chats-browse');
+    Route::get('groups', ['uses' => 'ChatController@chatGroupsIndex', 'as' => 'dashboard.chat_groups.index'])->middleware('permissions:chat_groups-browse');
 });
 
 

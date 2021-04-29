@@ -1,58 +1,67 @@
 import {useContext, useEffect, useState} from "react";
 import Scroll from "./Scroll";
 import {usePage} from '@inertiajs/inertia-react';
-import {GET_USERS_AND_GROUPS_URL, LIMIT_USERS_GROUPS_LIST_ITEMS} from "../Constants";
 import {ChatItem} from "../helpers";
 import Loading from "./Loading";
 import {AppContext} from "../AppContext";
 import {setChat, setChatBoxLoading} from "../actions";
+import Service from "../Service";
 
-const ChatList = () => {
-    const {auth} = usePage().props;
-    const {dispatch} = useContext(AppContext);
+const ChatList = ({refreshList}) => {
+    const {auth: {user_token, user_id}} = usePage().props;
+    const {data:{chatItem, onlineUsers}, dispatch} = useContext(AppContext);
     const [loading, setLoading] = useState(true);
     const [listItems, setListItems] = useState([]);
     const [originalItems, setOriginalItems] = useState([]);
     const [page, setPage] = useState();
     const [hiddenPaginate, setHiddenPaginate] = useState();
 
+    //set current page for paginate
     useEffect(() => setPage(1), []);
 
-    useEffect(() => {
-        axiosInstanceWithoutCommonHeaders
-            .get(GET_USERS_AND_GROUPS_URL + '?auth_token=' + auth.user_token + '&lang=' + currentLanguage.language_id + '&page=' + page)
-            .then((r) => {
-                const {data: {usersAndGroups=[]}} = r;
-                if (usersAndGroups.length == 0) {
-                    setHiddenPaginate(true);
-                }
-                let items = usersAndGroups.map((value) => {
-                    return new ChatItem(value, auth);
-                });
-                setListItems([...listItems, ...items]);
-                setOriginalItems([...originalItems, ...items]);
-            })
-            .catch((e) => {
-                    setListItems([]);
-            })
-            .finally(() => setLoading(false));
-    }, [page]);
-
-    const handleItemClick = (e, item) => {
-        e.preventDefault();
-        dispatch(setChat(item));
-        dispatch(setChatBoxLoading(true));
-        axiosInstanceWithoutCommonHeaders
-            .get(item.messagesUrl)
-            .then((r) => {
-                const {data:{messages}} = r;
-                item.setMessages(messages, auth.user_id);
-                dispatch(setChat(item));
-            })
-            .catch((e) => console.log(e))
-            .finally(() => dispatch(setChatBoxLoading(false)));
+    const getListOfUsersAndGroups = (refresh=false) => {
+        Service.getListOfUsersAndGroups(user_token, page)
+                .then((r) => {
+                    const {data: {usersAndGroups=[]}} = r;
+                    if (usersAndGroups.length == 0) {
+                        setHiddenPaginate(true);
+                    }
+                    let items = usersAndGroups.map((value) => {
+                        return new ChatItem(value, user_token, user_id);
+                    });
+                    if (refresh) {
+                        setListItems(items);
+                        setOriginalItems(items);
+                    }else {
+                        setListItems([...listItems, ...items]);
+                        setOriginalItems([...originalItems, ...items]);
+                    }
+                })
+                .finally(() => setLoading(false));
     }
 
+    //when page change
+    //we will send new users and groups request
+    //store users and groups in same list and show same it
+    useEffect(() => { getListOfUsersAndGroups() }, [page]);
+
+    useEffect(() => { getListOfUsersAndGroups(true) }, [refreshList]);
+
+    //handle click item
+    //we will get messages for this item chat
+    const handleItemClick = (e, item) => {
+        e.preventDefault();
+        dispatch(setChatBoxLoading(true));
+        Service.getMessages(item.messagesUrl)
+                .then((r) => {
+                    const {data:{messages}} = r;
+                    item.setMessages(messages, user_id);
+                    dispatch(setChat(item));
+                })
+                .finally(() => dispatch(setChatBoxLoading(false)));
+    }
+
+    //handle client search list items (users, groups)
     const handleChangeSearch = (e) => {
         let items = originalItems.filter((item) => {
             return item.title.toLowerCase().includes((e.target.value).toLowerCase());
@@ -60,6 +69,8 @@ const ChatList = () => {
         setListItems(items);
     }
 
+    //load more item
+    //simple change page and useEffect hook sended request
     const loadMoreItems = (e) => {
         e.preventDefault();
         setPage((page + 1));
@@ -92,25 +103,29 @@ const ChatList = () => {
                                 <>
                                     {
                                         listItems.map((item, index) => (
-                                            <div className="d-flex align-items-center justify-content-between mb-5" key={index}>
+                                            <div className={'d-flex align-items-center justify-content-between mb-5' + (item.randomId == chatItem?.randomId ? ' chat-item-active' : '')} key={index}>
                                                 <div className="d-flex align-items-center">
                                                     <div className="symbol symbol-circle symbol-50 mr-3 symbol-light-success">
+                                                        {item.isUser && <span className={'label label-lg label-dot online-label ' + (onlineUsers.includes(item.id) ? 'is-online' : 'is-offline')}></span>}
                                                         {item.imageComponent}
                                                     </div>
                                                     <div className="d-flex flex-column">
                                                         <a
                                                             href='#'
-                                                            className="text-dark-75 text-hover-primary font-weight-bold font-size-lg text-capitalize"
+                                                            className="text-dark-75 text-hover-primary font-weight-bold font-size-lg text-capitalize chat-title"
                                                             onClick={(e) => { handleItemClick(e, item) }}
                                                         >
                                                             {item.title}
+                                                            <span className="text-muted font-weight-bold font-size-sm mx-2">
+                                                                 {item.span}
+                                                            </span>
                                                         </a>
                                                         <span className="text-muted font-weight-bold font-size-sm">
-                                                    {item.subTitle}
-                                                </span>
+                                                            {item.subTitle}
+                                                        </span>
                                                         <span className="text-muted font-weight-bold font-size-sm">
-                                                    {item.getLastMessage('message_content')}
-                                                </span>
+                                                            {item.getLastMessage('message_content')}
+                                                        </span>
                                                     </div>
                                                 </div>
 
@@ -121,7 +136,7 @@ const ChatList = () => {
                                         ))
                                     }
                                     {
-                                        (listItems.length > LIMIT_USERS_GROUPS_LIST_ITEMS && !hiddenPaginate) ? <a onClick={loadMoreItems} href='#' className='d-block text-center py-3'>load more!</a> : ''
+                                        (!hiddenPaginate && !loading) ? <a onClick={loadMoreItems} href='#' className='d-block text-center py-3'>load more!</a> : ''
                                     }
                                 </>
                             )

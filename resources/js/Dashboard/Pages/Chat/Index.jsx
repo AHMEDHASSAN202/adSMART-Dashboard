@@ -13,16 +13,17 @@ const breadcrumb = [
 ];
 
 const Index = (props) => {
+    const [refreshList, setRefreshList] = useState();
     return (
         <>
             <Topbar title={props.pageTitle} breadcrumb={breadcrumb} />
             <Content>
                 <div className="row">
                     <div className="col-md-7 col-sm-12" id='kt_chat_aside'>
-                        <ChatList />
+                        <ChatList refreshList={refreshList} />
                     </div>
                     <div className="col-md-5 col-sm-12" id="kt_chat_content">
-                        <ChatBox />
+                        <ChatBox setRefreshList={setRefreshList} />
                     </div>
                 </div>
             </Content>

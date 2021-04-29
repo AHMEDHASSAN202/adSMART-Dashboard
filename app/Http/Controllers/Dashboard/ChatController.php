@@ -13,4 +13,11 @@ class ChatController extends Controller
 
         return Inertia::render('Chat/Index', ['activeId' => 'chat']);
     }
+
+    public function chatGroupsIndex()
+    {
+        app('document')->setTitle(_e('chat_groups'));
+
+        return Inertia::render('Chat/Groups/Index', ['activeId' => 'chat_groups']);
+    }
 }

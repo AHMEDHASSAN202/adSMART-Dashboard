@@ -43,6 +43,7 @@ function getAllPermissions($groups=true) {
         'types' => ['browse', 'create', 'update', 'delete'],
         'categories' => ['browse', 'create', 'update', 'delete'],
         'chats' => ['browse'],
+        'chat_groups' => ['browse', 'create'],
         'services' => ['browse', 'update'],
     ];
 
@@ -237,6 +238,14 @@ function initialDashboardData() {
                 'extraClasses' => '',
                 'id'           => 'chat',
                 'permissions'   => ['chats-browse']
+            ],
+            [
+                'title' => _e('chat_groups'),
+                'icon' => 'flaticon2-group',
+                'page' => route('dashboard.chat_groups.index'),
+                'extraClasses' => '',
+                'id'           => 'chat_groups',
+                'permissions'   => ['chat_groups-browse']
             ],
 
             // Settings

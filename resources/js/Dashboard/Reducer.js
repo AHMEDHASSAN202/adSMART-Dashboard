@@ -13,7 +13,7 @@ import {
     SET_SOCKET,
     SET_USERS_GROUPS,
     SET_CHAT,
-    SET_CHAT_BOX_LOADING
+    SET_CHAT_BOX_LOADING, SET_ONLINE_USERS
 } from "./actions";
 
 export const Reducer = (state, action) => {
@@ -41,9 +41,10 @@ export const Reducer = (state, action) => {
             return {...state, usersGroups: action.payload}
         case SET_CHAT:
             return {...state, chatItem: action.payload}
-        case SET_CHAT_BOX_LOADING: {
+        case SET_CHAT_BOX_LOADING:
             return {...state, chatBoxLoading: action.payload}
-        }
+        case SET_ONLINE_USERS:
+            return {...state, onlineUsers: action.payload}
         default:
             return state;
     }
