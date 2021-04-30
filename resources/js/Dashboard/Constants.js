@@ -1,3 +1,5 @@
+import io from "socket.io-client";
+
 export const PaginationPerPageDefault = 10;
 export const WebSocketServer = 'ws://127.0.0.1:1215';
 export const WebSocketServerOptions = {
@@ -10,3 +12,4 @@ export const GET_USERS_AND_GROUPS_URL = window.WS_SERVICE_DOMAIN + 'chat/get-use
 export const GET_MESSAGES_CHAT_URL = window.WS_SERVICE_DOMAIN + 'chat/get-messages';
 export const GROUPS_URL = window.WS_SERVICE_DOMAIN + 'groups';
 export const LIMIT_MESSAGES_CHAT = 100;
+export const SOCKET = io(WebSocketServer, {...WebSocketServerOptions, query: {auth_token: window.USER_TOKEN}})

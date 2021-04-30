@@ -3,27 +3,28 @@
   <component name="ChangeListManager">
     <list default="true" id="21fb09e6-cf43-4a90-9441-cdffd365609b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Commands/ResetProject.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/ResetProject.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Helpers/helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/ChatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/ChatController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/AuthTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/AuthTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/TranslationsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/TranslationsTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Dashboard/LoginToDashboardRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Dashboard/LoginToDashboardRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/dashboard.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/dashboard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Common/HTTP.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Common/HTTP.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/AppState.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/AppState.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Components/Alert.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Components/Alert.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Components/AsideMenuLi.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Components/AsideMenuLi.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Components/ChatBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Components/ChatBox.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Components/ChatList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Components/ChatList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Components/ProfileInfoPanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Components/ProfileInfoPanel.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Components/Scroll.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Components/Scroll.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Layout/Layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Layout/Layout.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Layout/WebSocket.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Layout/WebSocket.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Pages/Categories/Index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Pages/Categories/Index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Pages/Chat/Index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Pages/Chat/Index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Pages/Chat/Groups/Index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Pages/Chat/Groups/Index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Pages/Settings/Index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Pages/Settings/Index.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Reducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/actions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/helpers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/dashboard.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -361,6 +362,23 @@
       <recent name="E:\Laravel\InertiaDashboard\resources\views\dashboard" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="watch" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="watch" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.watch" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
@@ -420,7 +438,9 @@
       <workItem from="1619354283062" duration="30879000" />
       <workItem from="1619444114958" duration="18042000" />
       <workItem from="1619527306217" duration="17331000" />
-      <workItem from="1619605475005" duration="26198000" />
+      <workItem from="1619605475005" duration="26305000" />
+      <workItem from="1619695941141" duration="34753000" />
+      <workItem from="1619789119901" duration="3048000" />
     </task>
     <servers />
   </component>

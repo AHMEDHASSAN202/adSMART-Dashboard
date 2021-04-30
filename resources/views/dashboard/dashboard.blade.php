@@ -53,6 +53,7 @@
             window.currentLanguage = @json($language);
             window.csrfToken = @json(csrf_token());
             window.WS_SERVICE_DOMAIN = @json(env('WS_SERVICE_DOMAIN'));
+            window.USER_TOKEN = @json($initialData['user_token']);
         </script>
 
     </head>

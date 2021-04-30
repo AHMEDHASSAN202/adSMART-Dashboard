@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useContext} from "react";
 import { InertiaLink } from '@inertiajs/inertia-react'
 import Permissions from "./Permissions";
+import {AppContext} from "../AppContext";
 
 export default function AsideMenuLi({menu}) {
-
+    const {data: {newMessagesCount}} = useContext(AppContext);
     if (typeof menu.section != 'undefined') {
         return (
             <li className="menu-section">
@@ -31,6 +32,7 @@ export default function AsideMenuLi({menu}) {
                     >
                         <i className={'menu-icon '+ menu.icon}></i>
                         <span className="menu-text">{menu.title}</span>
+                       {menu.id == 'chat' && newMessagesCount != 0 && <span className="new-messages-count label label-md font-weight-bold label-danger d-flex align-self-center">{newMessagesCount}</span>}
                     </InertiaLink>
                 }
                 {

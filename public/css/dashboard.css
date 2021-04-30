@@ -6,7 +6,7 @@ body {
     border: 0;
     color: var(--info) !important;
 }
-.as-a:hover {
+.as-a:not(.no-underline-hover):hover {
     text-decoration: underline;
 }
 .header .menu-item-active > .menu-link .menu-text,
@@ -214,5 +214,24 @@ html[dir=rtl] * {
 }
 .rst__rowContents {
     min-width: 100px !important;
+}
+.emoji-container .emoji-mart-bar {
+    display: none;
+}
+.emoji-container .emoji-mart {
+    width: 285px !important;
+    height: 353px !important;
+}
+.emoji-container {
+    position: absolute;
+    top: 48px;
+    left: -32px;
+}
+.cancel-chat-image {
+    width: 18px !important;
+    height: 18px !important;
+}
+.cancel-chat-image i {
+    color: #fff;
 }
 

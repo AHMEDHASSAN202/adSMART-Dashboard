@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import Layout from "./../../../Layout/Layout";
 import Topbar from './../../../Layout/Topbar';
 import Content from "./../../../Layout/Content";
@@ -11,8 +11,10 @@ import Loading from "../../../Components/Loading";
 import EditIconButton from "../../../Components/EditIconButton";
 import DeleteIconButton from "../../../Components/DeleteIconButton";
 import UsersSelectComponent from "../../../Components/UsersSelectComponent";
-import {Group} from "../../../helpers";
+import {Group, successAlert} from "../../../helpers";
 import Service from "../../../Service";
+import {AppContext} from "../../../AppContext";
+import {updateAlert} from "../../../actions";
 
 const breadcrumb = [
     {
@@ -60,6 +62,7 @@ const Columns = (auth_id, editFunction, deleteFunction) => {
 };
 
 const Index = (props) => {
+    const {dispatch} = useContext(AppContext);
     const {auth: {user_token, ...auth}} = usePage().props;
     const { data: formData, setData, errors, reset} = useForm(new Group());
     const [groups, setGroups] = useState([]);
@@ -69,7 +72,7 @@ const Index = (props) => {
     const [updatedList, setUpdatedList] = useState(false);
 
     const refreshList = () => setUpdatedList(!updatedList);
-    const deleteGroup = (row) => Service.deleteGroup(user_token, row.group_id).then(r => refreshList());
+    const deleteGroup = (row) => Service.deleteGroup(user_token, row.group_id).then(r => {refreshList(); dispatch(updateAlert(successAlert))});
     const editGroup = (row) => {
         let edit = new Group();
         edit.group_id = row.group_id;
@@ -87,13 +90,17 @@ const Index = (props) => {
     const addGroup = () => {
         setProcessing(true);
         Service.addGroup(user_token, formData)
-                .then(r => {reset(); refreshList();})
+                .then(r => {reset(); refreshList(); dispatch(updateAlert(successAlert))})
                 .finally(() => setProcessing(false))
     }
     const updateGroup = () => {
         setProcessing(true);
         Service.updateGroup(user_token, formData.group_id, formData)
-                .then(r => {reset(); refreshList();})
+                .then((r) => {
+                    reset();
+                    refreshList();
+                    dispatch(updateAlert(successAlert));
+                })
                 .finally(() => setProcessing(false))
     }
 

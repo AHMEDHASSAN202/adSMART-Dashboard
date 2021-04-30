@@ -5,9 +5,9 @@ export const AppState = {
     openProfilePanel: false,
     currentUrl: window.location.href,
     languages: window.languages,
-    socket: null,
-    usersGroups: [],
+    clientAlert: null,
     chatItem: null,
     chatBoxLoading: false,
-    onlineUsers: []
+    onlineUsers: [],
+    newMessagesCount: 0
 };

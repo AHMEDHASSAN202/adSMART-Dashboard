@@ -12,7 +12,7 @@ import LanguagesSelectComponent from "../../Components/LanguagesSelectComponent"
 import PrimaryButton from "../../Components/PrimaryButton";
 import Checkbox from "../../Components/Checkbox";
 import Topbar from "../../Layout/Topbar";
-import {assets, handleOptions, isTrue} from "../../helpers";
+import {assets, isTrue} from "../../helpers";
 import Permissions from "../../Components/Permissions";
 
 const tabs = [

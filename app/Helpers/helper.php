@@ -1,6 +1,8 @@
 <?php
 
 
+use App\Repositories\AuthRepository;
+
 function _e($key, $lang=null) {
     $lang = $lang ?: app()->getLocale();
 
@@ -178,6 +180,7 @@ function initialDashboardData() {
                 'page'  => route('dashboard.pages.index'),
                 'extraClasses' => '',
                 'icon'      => 'flaticon2-document',
+                'permissions'   => ['pages-browse'],
                 'id'           => 'pages',
             ],
             [
@@ -185,6 +188,7 @@ function initialDashboardData() {
                 'page'  => route('dashboard.types.index', ['type_key' => 'page_type']),
                 'extraClasses' => '',
                 'icon'      => 'flaticon2-medical-records',
+                'permissions'   => ['types-browse'],
                 'id'           => 'page_type',
             ],
             // Users
@@ -196,6 +200,7 @@ function initialDashboardData() {
                 'icon' => 'flaticon2-avatar',
                 'page' => route('dashboard.users.index'),
                 'extraClasses' => '',
+                'permissions'   => ['users-browse'],
                 'id'           => 'users',
             ],
             [
@@ -270,7 +275,8 @@ function initialDashboardData() {
             ],
         ],
         'languages' => getLanguages(),
-        'translations' => getLanguageTranslations()
+        'translations' => getLanguageTranslations(),
+        'user_token' => app(AuthRepository::class)->getAdmin()->user_token
     ];
 }
 

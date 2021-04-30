@@ -1,4 +1,14 @@
+import {updateAlert} from "../Dashboard/actions";
+import {dangerAlert} from "../Dashboard/helpers";
+
 class HTTP {
+    static interceptors (dispatch) {
+        axiosInstanceWithoutCommonHeaders.interceptors.response.use(undefined, (e) => {
+            dispatch(updateAlert(dangerAlert));
+            return Promise.reject(e);
+        });
+    }
+
     static get(url, params= {}, config={}) {
         let queryParams = HTTP.handleParams(params);
         return axiosInstanceWithoutCommonHeaders.get(url + queryParams, config)

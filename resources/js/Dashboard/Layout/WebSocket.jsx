@@ -1,23 +1,33 @@
 import {useEffect, useContext} from 'react';
-import {WebSocketServer, WebSocketServerOptions} from "../Constants";
-import io from "socket.io-client";
+import {SOCKET } from "../Constants";
 import {AppContext} from "../AppContext";
-import {setOnlineUsers, setSocket} from "../actions";
+import {setOnlineUsers} from "../actions";
 import { usePage } from '@inertiajs/inertia-react'
+import {Message} from "../helpers";
+import Hooks from "../../Common/Hooks";
 
 const WebSocket = () => {
-    const {dispatch} = useContext(AppContext);
-    const {props} = usePage();
+    const {data, dispatch} = useContext(AppContext);
+    const {auth:{user_id}} = usePage().props;
+
+    const newMessage = (msg) => {
+        let message = new Message(msg, user_id);
+        Hooks.do_action('new_message', message, data, dispatch)
+    }
 
     useEffect(() => {
 
-        const socket = io(WebSocketServer, {...WebSocketServerOptions, query: {auth_token: props.auth.user_token}});
-
-        dispatch(setSocket(socket));
-
-        socket.on('onlineUsers', (data) => dispatch(setOnlineUsers(data)));
+        SOCKET.on('onlineUsers', (data) => dispatch(setOnlineUsers(data)));
 
     }, [])
+
+    useEffect(() => {
+
+        SOCKET.on('private_message', newMessage);
+
+        return () => SOCKET.off('private_message');
+
+    }, [data.chatItem])
 
     return ('');
 }

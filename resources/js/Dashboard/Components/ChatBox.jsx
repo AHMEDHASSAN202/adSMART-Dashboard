@@ -2,14 +2,17 @@ import Scroll from "./Scroll";
 import {useContext, useEffect, useState} from "react";
 import {AppContext} from "../AppContext";
 import Loading from "./Loading";
-import {LIMIT_MESSAGES_CHAT} from "../Constants";
-import {setChat, setChatBoxLoading} from "../actions";
+import {LIMIT_MESSAGES_CHAT, SOCKET} from "../Constants";
+import {setChat, setChatBoxLoading, updateAlert} from "../actions";
 import {InertiaLink, usePage} from "@inertiajs/inertia-react";
 import Dropdown from "./Dropdown";
 import Permissions from "./Permissions";
 import UsersSelectComponent from "./UsersSelectComponent";
 import PrimaryButton from "./PrimaryButton";
 import Service from "../Service";
+import {successAlert} from "../helpers";
+import Emoji from "./Emoji";
+import ChatInputFile from "./ChatInputFile";
 
 const ChatBox = ({setRefreshList}) => {
     const {auth: {user_token, user_id}} = usePage().props;
@@ -17,6 +20,45 @@ const ChatBox = ({setRefreshList}) => {
     const [page, setPage] = useState(1);
     const [hiddenPaginate, setHiddenPaginate] = useState(true);
     const [autoBottom, setAutoBottom] = useState(true);
+    const [toggleEmoji, setToggleEmoji] = useState(false);
+    const [text, setText] = useState('');
+    const [images, setImages] = useState([]);
+
+    const handleToggleEmoji = () => setToggleEmoji(!toggleEmoji);
+
+    const handleChangeTextarea = (e) => {
+        setText(e.target.value);
+    }
+
+    const onImageRemove = (index) => {
+        let imgs = [...images];
+        imgs.splice(index, 1);
+        setImages(imgs);
+    }
+
+    const handleChangeEmojiSelect = (emoji) => {
+        let txt = text + emoji.native;
+        setText(txt);
+    }
+
+    const handleSendMessage = () => {
+        if (text != '') {
+            let textData = {text: text, [chatItem.identify]: chatItem.id};
+            SOCKET.emit('message', textData);
+        }
+        if (images.length) {
+            let files = images.map((image) => {
+                return {
+                    name: image.file.name,
+                    base64: image.data_url
+                };
+            });
+            let imagesData = {[chatItem.identify]: chatItem.id, files: files};
+            SOCKET.emit('message_files', imagesData);
+        }
+        setText('');
+        setImages([]);
+    }
 
     /**
      * Load More Messages
@@ -125,18 +167,45 @@ const ChatBox = ({setRefreshList}) => {
                     </div>
 
                     <div className="card-footer align-items-center" style={{padding: '1rem 2.25rem'}}>
-                        <textarea className="form-control border-0 p-0" rows="2" placeholder="Type a message"></textarea>
+                        {images.length ? <div className='container-chat-images'>
+                            <div className="symbol-list d-flex flex-wrap">
+                                {images.map((image, index) => (
+                                    <div key={index} className="symbol mr-3">
+                                        <img src={image.data_url}/>
+                                        <button
+                                            className='symbol-badge bg-danger btn btn-icon btn-sm as-a no-underline-hover cancel-chat-image'
+                                            onClick={() => onImageRemove(index)}
+                                        >
+                                            <i className="flaticon2-cancel-music icon-sm"></i>
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        </div> : ''}
+                        <textarea
+                            style={{minHeight: 40}}
+                            onChange={handleChangeTextarea}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                    e.preventDefault();
+                                    handleSendMessage();
+                                }
+                            }}
+                            value={text}
+                            className="form-control border-0 p-0"
+                            rows="2"
+                            placeholder="Aa"
+                        ></textarea>
                         <div className="d-flex align-items-center justify-content-between mt-5">
                             <div className="mr-3">
-                                <a href="#" className="btn btn-clean btn-icon btn-md mr-1"><i
-                                    className="flaticon2-photograph icon-lg"></i></a>
-                                <a href="#" className="btn btn-clean btn-icon btn-md"><i
-                                    className="flaticon2-photo-camera  icon-lg"></i></a>
+                                <ChatInputFile images={images} onChange={(imagesList) => setImages(imagesList)} />
+                                <button onClick={handleToggleEmoji} className="btn btn-clean btn-icon btn-md as-a no-underline-hover">
+                                    <i className="far fa-laugh icon-lg"></i>
+                                </button>
+                                {toggleEmoji && <Emoji onSelect={handleChangeEmojiSelect} />}
                             </div>
                             <div>
-                                <button type="button"
-                                        className="btn btn-primary btn-md text-uppercase font-weight-bold chat-send py-2 px-6">Send
-                                </button>
+                                <PrimaryButton onClick={handleSendMessage}>Send</PrimaryButton>
                             </div>
                         </div>
                     </div>
@@ -167,13 +236,17 @@ const GroupMenu = ({user_token, group, setRefreshList}) => {
     const handleJoinMembersUpdateClick = (e) => {
         e.preventDefault()
         setProcessing(true);
-        Service.updateGroup(user_token, group.id, {members}).then(r => {setProcessing(false); setOpenJoinMembers(false)})
+        Service.updateGroup(user_token, group.id, {members}).then(r => {
+            setOpenJoinMembers(false);
+            dispatch(updateAlert(successAlert))
+        }).finally(() => setProcessing(false))
     }
 
     const handleDeleteGroupClick = () => {
         Service.deleteGroup(user_token, group.id).finally(() => {
             dispatch(setChat(null))
             setRefreshList(Math.random() * 100);
+            dispatch(updateAlert(successAlert))
         })
     }
 

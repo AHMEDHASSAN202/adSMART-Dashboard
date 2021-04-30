@@ -1,6 +1,4 @@
 import {ChatItem} from "./helpers";
-
-
 export const ALL_CHECKED = "ALL_CHECKED";
 export const PAGE_LOADING = "PAGE_LOADING";
 export const SECTION_LOADING = "SECTION_LOADING";
@@ -17,6 +15,7 @@ export const SET_USERS_GROUPS = 'SET_USERS_GROUPS';
 export const SET_CHAT = 'SET_CHAT';
 export const SET_CHAT_BOX_LOADING = 'SET_CHAT_BOX_LOADING';
 export const SET_ONLINE_USERS = 'SET_ONLINE_USERS';
+export const SET_NEW_MESSAGES_COUNT = 'SET_NEW_MESSAGES_COUNT';
 
 export function pageLoader(status) {
   return {
@@ -84,28 +83,11 @@ export function setPageProps(payload) {
     }
 }
 
-export function setSocket(socket) {
-    return {
-        TYPE: SET_SOCKET,
-        payload: socket
-    }
-}
-
-export function setUsersAndGroups(usersGroups=[]) {
-    return {
-        TYPE: SET_USERS_GROUPS,
-        payload: usersGroups
-    }
-}
-
 export function setChat(chat) {
-    if (chat instanceof ChatItem || chat === null) {
-        return {
-            TYPE: SET_CHAT,
-            payload: chat
-        }
+    return {
+        TYPE: SET_CHAT,
+        payload: chat
     }
-    return new Error('chat most be instance of ChatItem class');
 }
 
 export function setChatBoxLoading(s) {
@@ -119,5 +101,12 @@ export function setOnlineUsers(users) {
     return {
         TYPE: SET_ONLINE_USERS,
         payload: users
+    }
+}
+
+export function setNewMessagesCount(payload) {
+    return {
+        TYPE: SET_NEW_MESSAGES_COUNT,
+        payload: payload
     }
 }

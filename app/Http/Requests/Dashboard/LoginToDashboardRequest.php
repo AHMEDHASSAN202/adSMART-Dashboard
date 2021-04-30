@@ -14,8 +14,8 @@ class LoginToDashboardRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'     => 'required|email|max:99',
-            'password'  => 'required|max:12'
+            'email'     => 'required|email',
+            'password'  => 'required'
         ];
     }
 

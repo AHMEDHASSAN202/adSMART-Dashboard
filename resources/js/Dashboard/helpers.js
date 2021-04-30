@@ -40,6 +40,18 @@ export const handleOptions = (options) => {
     return ops;
 }
 
+export const successAlert = {
+    class: 'info',
+    icon: 'flaticon-like',
+    title: translations['success_message']
+}
+
+export const dangerAlert = {
+    class: 'danger',
+    icon: 'flaticon-warning',
+    title: translations['error_message']
+}
+
 export const assets = (url) => {
     return `/storage/${url}`;
 }
@@ -117,7 +129,7 @@ export const getParents = (el, parentSelector) => {
 }
 
 export class ChatItem {
-    constructor(item, user_token, user_id, onlineUsers=[]) {
+    constructor(item, user_token, user_id) {
         this.randomId = '';
         this.title = '';
         this.subTitle = '';
@@ -132,6 +144,7 @@ export class ChatItem {
         this.isUser = false;
         this.span = '';
         this.id = '';
+        this.identify = '';
 
         switch (item.model_type) {
             case 'user' :
@@ -143,6 +156,7 @@ export class ChatItem {
                 this.id = item.user_id;
                 this.isUser = true;
                 this.randomId = 'user-' + item.user_id;
+                this.identify = 'user_id';
                 break;
             case 'group' :
                 this.title = item.group_name;
@@ -154,6 +168,7 @@ export class ChatItem {
                 this.created_by_name = item.created_by_name;
                 this.isGroup = true;
                 this.id = item.group_id;
+                this.identify = 'group_id';
                 this.isMyGroup = (item.fk_created_by === user_id);
                 this.randomId = 'group-' + item.group_id;
                 break
@@ -162,23 +177,6 @@ export class ChatItem {
         let lastMessage = new Message(item, user_id);
         this.text = lastMessage.created_at;
         this.chat.push(lastMessage);
-    }
-
-    getLastMessage(prop) {
-        if (this.chat.length == 0) return '';
-        return prop ? this.chat[(this.chat.length-1)][prop] : this.chat[(this.chat.length-1)];
-    }
-
-    setMessages(messages=[], auth_id) {
-        let msgs = [];
-        messages.forEach((msg) => {
-            if (msg instanceof Message) {
-                msgs.push(msg)
-            }else {
-                msgs.push(new Message(msg, auth_id))
-            }
-        });
-        this.chat = msgs;
     }
 }
 
@@ -191,6 +189,8 @@ export class Message {
         this.file_id = '';
         this.file_path = '';
         this.original_name = '';
+        this.group_id = message.fk_group_id;
+        this.reciever_id = message.fk_receiver_id;
         this.user_id = message.user_id || '';
         this.user_name = message.user_name || '';
         this.user_avatar = message.user_avatar ? assets(message.user_avatar) : '';

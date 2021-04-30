@@ -1,7 +1,7 @@
 import {useContext, useEffect, useState} from "react";
 import Scroll from "./Scroll";
 import {usePage} from '@inertiajs/inertia-react';
-import {ChatItem} from "../helpers";
+import {ChatItem, Message} from "../helpers";
 import Loading from "./Loading";
 import {AppContext} from "../AppContext";
 import {setChat, setChatBoxLoading} from "../actions";
@@ -55,8 +55,11 @@ const ChatList = ({refreshList}) => {
         Service.getMessages(item.messagesUrl)
                 .then((r) => {
                     const {data:{messages}} = r;
-                    item.setMessages(messages, user_id);
-                    dispatch(setChat(item));
+                    let msgs = [];
+                    messages.forEach((msg) => {
+                        msgs.push(new Message(msg, user_id));
+                    });
+                    dispatch(setChat({...item, chat: msgs}));
                 })
                 .finally(() => dispatch(setChatBoxLoading(false)));
     }
@@ -102,38 +105,43 @@ const ChatList = ({refreshList}) => {
                             : (
                                 <>
                                     {
-                                        listItems.map((item, index) => (
-                                            <div className={'d-flex align-items-center justify-content-between mb-5' + (item.randomId == chatItem?.randomId ? ' chat-item-active' : '')} key={index}>
-                                                <div className="d-flex align-items-center">
-                                                    <div className="symbol symbol-circle symbol-50 mr-3 symbol-light-success">
-                                                        {item.isUser && <span className={'label label-lg label-dot online-label ' + (onlineUsers.includes(item.id) ? 'is-online' : 'is-offline')}></span>}
-                                                        {item.imageComponent}
-                                                    </div>
-                                                    <div className="d-flex flex-column">
-                                                        <a
-                                                            href='#'
-                                                            className="text-dark-75 text-hover-primary font-weight-bold font-size-lg text-capitalize chat-title"
-                                                            onClick={(e) => { handleItemClick(e, item) }}
-                                                        >
-                                                            {item.title}
-                                                            <span className="text-muted font-weight-bold font-size-sm mx-2">
+                                        listItems.map((item, index) => {
+                                            if (chatItem?.randomId == item.randomId) {
+                                                item = chatItem;
+                                            }
+                                            return (
+                                                <div className={'d-flex align-items-center justify-content-between mb-5' + (item.randomId == chatItem?.randomId ? ' chat-item-active' : '')} key={index}>
+                                                    <div className="d-flex align-items-center">
+                                                        <div className="symbol symbol-circle symbol-50 mr-3 symbol-light-success">
+                                                            {item.isUser && <span className={'label label-lg label-dot online-label ' + (onlineUsers.includes(item.id) ? 'is-online' : 'is-offline')}></span>}
+                                                            {item.imageComponent}
+                                                        </div>
+                                                        <div className="d-flex flex-column">
+                                                            <a
+                                                                href='#'
+                                                                className="text-dark-75 text-hover-primary font-weight-bold font-size-lg text-capitalize chat-title"
+                                                                onClick={(e) => { handleItemClick(e, item) }}
+                                                            >
+                                                                {item.title}
+                                                                <span className="text-muted font-weight-bold font-size-sm mx-2">
                                                                  {item.span}
                                                             </span>
-                                                        </a>
-                                                        <span className="text-muted font-weight-bold font-size-sm">
+                                                            </a>
+                                                            <span className="text-muted font-weight-bold font-size-sm">
                                                             {item.subTitle}
                                                         </span>
-                                                        <span className="text-muted font-weight-bold font-size-sm">
-                                                            {item.getLastMessage('message_content')}
-                                                        </span>
+                                                            <span className="text-muted font-weight-bold font-size-sm">
+                                                                {item.chat.length == 0 ? '' : item.chat[(item.chat.length-1)].message_content}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="d-flex flex-column align-items-end">
+                                                        <span className="text-muted font-weight-bold font-size-sm">{item.text}</span>
                                                     </div>
                                                 </div>
-
-                                                <div className="d-flex flex-column align-items-end">
-                                                    <span className="text-muted font-weight-bold font-size-sm">{item.text}</span>
-                                                </div>
-                                            </div>
-                                        ))
+                                            )
+                                        })
                                     }
                                     {
                                         (!hiddenPaginate && !loading) ? <a onClick={loadMoreItems} href='#' className='d-block text-center py-3'>load more!</a> : ''
