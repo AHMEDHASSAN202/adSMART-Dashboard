@@ -1,23 +1,34 @@
-import {useEffect, useContext} from 'react';
+import {useEffect, useContext, useRef} from 'react';
 import {SOCKET } from "../Constants";
 import {AppContext} from "../AppContext";
-import {setOnlineUsers} from "../actions";
+import {setNewMessagesCount, setOnlineUsers} from "../actions";
 import { usePage } from '@inertiajs/inertia-react'
-import {Message} from "../helpers";
 import Hooks from "../../Common/Hooks";
 
 const WebSocket = () => {
-    const {data, dispatch} = useContext(AppContext);
+    const countMessagesRef = useRef(0)
+    const {data:{chatItem}, dispatch} = useContext(AppContext);
     const {auth:{user_id}} = usePage().props;
 
     const newMessage = (msg) => {
-        let message = new Message(msg, user_id);
-        Hooks.do_action('new_message', message, data, dispatch)
+        if (msg.fk_sender_id !== user_id) {
+            if (!chatItem || (route('dashboard.chat.index') != window.location.href)) {
+                countMessagesRef.current += 1;
+                dispatch(setNewMessagesCount((countMessagesRef.current)));
+            }
+        }
+    }
+
+    const totalUnreadMessages = (total) => {
+        countMessagesRef.current = +total;
+        Hooks.do_action('total_unread_messages', countMessagesRef.current, dispatch)
     }
 
     useEffect(() => {
 
         SOCKET.on('onlineUsers', (data) => dispatch(setOnlineUsers(data)));
+
+        SOCKET.on('total_unread_messages', totalUnreadMessages);
 
     }, [])
 
@@ -25,9 +36,9 @@ const WebSocket = () => {
 
         SOCKET.on('private_message', newMessage);
 
-        return () => SOCKET.off('private_message');
+        return () => SOCKET.off('private_message', newMessage);
 
-    }, [data.chatItem])
+    }, [chatItem])
 
     return ('');
 }

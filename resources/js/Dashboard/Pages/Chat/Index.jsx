@@ -1,9 +1,10 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import Layout from "./../../Layout/Layout";
 import Topbar from './../../Layout/Topbar';
 import Content from "./../../Layout/Content";
 import ChatList from "../../Components/ChatList";
 import ChatBox from "../../Components/ChatBox";
+import {SOCKET} from "../../Constants";
 
 const breadcrumb = [
     {
@@ -13,7 +14,12 @@ const breadcrumb = [
 ];
 
 const Index = (props) => {
-    const [refreshList, setRefreshList] = useState();
+    const [refreshList, setRefreshList] = useState(false);
+
+    useEffect(() => {
+        SOCKET.emit('unread_messages', {});
+    }, [])
+
     return (
         <>
             <Topbar title={props.pageTitle} breadcrumb={breadcrumb} />

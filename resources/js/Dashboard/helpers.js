@@ -173,10 +173,11 @@ export class ChatItem {
                 this.randomId = 'group-' + item.group_id;
                 break
         }
-
-        let lastMessage = new Message(item, user_id);
-        this.text = lastMessage.created_at;
-        this.chat.push(lastMessage);
+        if (item.message_id) {
+            let lastMessage = new Message(item, user_id);
+            this.text = lastMessage.created_at;
+            this.chat.push(lastMessage);
+        }
     }
 }
 
@@ -191,13 +192,16 @@ export class Message {
         this.original_name = '';
         this.group_id = message.fk_group_id;
         this.reciever_id = message.fk_receiver_id;
-        this.user_id = message.user_id || '';
+        this.sender_id = message.fk_sender_id;
+        // this.user_id = message.user_id || '';
         this.user_name = message.user_name || '';
         this.user_avatar = message.user_avatar ? assets(message.user_avatar) : '';
-        this.myMessage = (this.user_id === auth_id);
+        this.myMessage = (message.fk_sender_id === auth_id);
+        this.isText = this.message_type === 'text';
         if (this.message_type != 'text') {
-            this.file_id = message.file_id || '';
-            this.file_path = assets(message.file_path) || '';
+            this.file_id = message.fk_file_id || '';
+            let serviceDomain = WS_SERVICE_DOMAIN.charAt(WS_SERVICE_DOMAIN.length - 1) == '/' ? WS_SERVICE_DOMAIN.slice(0, -1) : WS_SERVICE_DOMAIN;
+            this.file_path = serviceDomain + assets(message.file_path);
             this.original_name = message.original_name || '';
             this.message_content = this.original_name;
         }

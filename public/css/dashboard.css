@@ -234,4 +234,8 @@ html[dir=rtl] * {
 .cancel-chat-image i {
     color: #fff;
 }
+.img-message {
+    max-width: 80px !important;
+    height: 80px !important;
+}
 

@@ -3071,6 +3071,16 @@ class TranslationsTableSeeder extends Seeder
                 "translation_key" => "join_members",
                 "translation_value" => 'انضمام الى المجموعة',
                 "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "unread_message",
+                "translation_value" => "unread message",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "unread_message",
+                "translation_value" => 'رسالة غير مقروءة',
+                "translation_lang" => "ar",
             ]
         ]);
     }

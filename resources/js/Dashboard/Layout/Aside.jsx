@@ -2,7 +2,7 @@ import { InertiaLink, usePage } from '@inertiajs/inertia-react'
 import AsideMenuLi from './../Components/AsideMenuLi';
 import Scroll from "../Components/Scroll";
 
-export default function Aside () {
+const Aside = () => {
     const Pages = window.asideMenu;
     const {options} = usePage().props;
 
@@ -34,3 +34,5 @@ export default function Aside () {
             </div>
     );
 }
+
+export default Aside;

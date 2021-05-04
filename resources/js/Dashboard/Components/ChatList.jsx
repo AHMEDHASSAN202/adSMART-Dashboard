@@ -6,6 +6,8 @@ import Loading from "./Loading";
 import {AppContext} from "../AppContext";
 import {setChat, setChatBoxLoading} from "../actions";
 import Service from "../Service";
+import Hooks from "../../Common/Hooks";
+import {SOCKET} from "../Constants";
 
 const ChatList = ({refreshList}) => {
     const {auth: {user_token, user_id}} = usePage().props;
@@ -13,11 +15,9 @@ const ChatList = ({refreshList}) => {
     const [loading, setLoading] = useState(true);
     const [listItems, setListItems] = useState([]);
     const [originalItems, setOriginalItems] = useState([]);
-    const [page, setPage] = useState();
+    const [page, setPage] = useState(1);
     const [hiddenPaginate, setHiddenPaginate] = useState();
-
-    //set current page for paginate
-    useEffect(() => setPage(1), []);
+    const [unreadMessages, setUnreadMessages] = useState([]);
 
     const getListOfUsersAndGroups = (refresh=false) => {
         Service.getListOfUsersAndGroups(user_token, page)
@@ -40,12 +40,39 @@ const ChatList = ({refreshList}) => {
                 .finally(() => setLoading(false));
     }
 
+    const onUnreadMessages = (result) => setUnreadMessages(result);
+
     //when page change
     //we will send new users and groups request
     //store users and groups in same list and show same it
-    useEffect(() => { getListOfUsersAndGroups() }, [page]);
+    useEffect(() => {
+        getListOfUsersAndGroups()
+    }, [page]);
 
-    useEffect(() => { getListOfUsersAndGroups(true) }, [refreshList]);
+    useEffect(() => {
+        SOCKET.on('unread_messages', onUnreadMessages);
+
+        return () => {
+            SOCKET.off('unread_messages', onUnreadMessages);
+            setListItems([]);
+        }
+    }, [])
+
+    const newMessage = (msg) => {
+        let message = new Message(msg, user_id);
+        Hooks.do_action('new_message', message, chatItem, listItems, setListItems, dispatch)
+    }
+
+    useEffect(() => {
+        SOCKET.on('private_message', newMessage);
+        return () => SOCKET.off('private_message', newMessage)
+    }, [listItems, chatItem])
+
+    useEffect(() => {
+        if (refreshList) {
+            getListOfUsersAndGroups(true);
+        }
+    }, [refreshList]);
 
     //handle click item
     //we will get messages for this item chat
@@ -62,6 +89,10 @@ const ChatList = ({refreshList}) => {
                     dispatch(setChat({...item, chat: msgs}));
                 })
                 .finally(() => dispatch(setChatBoxLoading(false)));
+
+        if (item.chat.length) {
+            SOCKET.emit('unread_messages', {[item.identify]: item.id, last_message_id: item.chat[item.chat.length - 1].message_id});
+        }
     }
 
     //handle client search list items (users, groups)
@@ -106,9 +137,6 @@ const ChatList = ({refreshList}) => {
                                 <>
                                     {
                                         listItems.map((item, index) => {
-                                            if (chatItem?.randomId == item.randomId) {
-                                                item = chatItem;
-                                            }
                                             return (
                                                 <div className={'d-flex align-items-center justify-content-between mb-5' + (item.randomId == chatItem?.randomId ? ' chat-item-active' : '')} key={index}>
                                                     <div className="d-flex align-items-center">
@@ -131,12 +159,13 @@ const ChatList = ({refreshList}) => {
                                                             {item.subTitle}
                                                         </span>
                                                             <span className="text-muted font-weight-bold font-size-sm">
-                                                                {item.chat.length == 0 ? '' : item.chat[(item.chat.length-1)].message_content}
+                                                                {(item.chat.length == 0) ? '' : (item.chat[(item.chat.length-1)].message_content || 'file')}
                                                             </span>
                                                         </div>
                                                     </div>
 
                                                     <div className="d-flex flex-column align-items-end">
+                                                        <UnreadMessagesComponent item={item} unreadMessages={unreadMessages} />
                                                         <span className="text-muted font-weight-bold font-size-sm">{item.text}</span>
                                                     </div>
                                                 </div>
@@ -157,5 +186,26 @@ const ChatList = ({refreshList}) => {
     );
 }
 
+const UnreadMessagesComponent = ({item, unreadMessages}) => {
+    let lastMessage = item.chat[item.chat.length - 1];
+    if (lastMessage?.myMessage || !lastMessage) {
+        return '';
+    }
+    let lastChatMessageId = lastMessage?.message_id;
+
+    unreadMessages.forEach((m) => {
+        if (m[item.identify] == item.id) {
+            lastChatMessageId = m.last_message_id;
+        }
+    })
+
+    if (lastMessage?.message_id <= lastChatMessageId) {
+        return '';
+    }
+
+    return (
+        <span className="label label-light-danger label-pill label-inline d-flex align-self-center">{translations['unread_message'] || 'unread message'}</span>
+    );
+}
 
 export default ChatList;
