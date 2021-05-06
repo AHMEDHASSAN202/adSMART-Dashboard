@@ -166,7 +166,7 @@ function initialDashboardData() {
             ],
             [
                 'title' => _e('categories'),
-                'icon' => 'fas fa-user-friends',
+                'icon' => 'flaticon2-list-1',
                 'page' => route('dashboard.categories.index'),
                 'extraClasses' => '',
                 'id'            => 'categories',

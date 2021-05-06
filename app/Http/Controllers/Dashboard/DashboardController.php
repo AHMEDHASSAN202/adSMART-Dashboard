@@ -18,9 +18,8 @@ class DashboardController extends Controller
 
     public function index(Request $request)
     {
+        app('document')->setTitle(_e('dashboard'));
         $data = $this->dashboardRepository->load($request);
-        $data['pageTitle'] = _e('dashboard');
-        $data['pageDescription'] = _e('dashboard_description');
         $data['activeId'] = $this->activeId;
 
         return \Inertia\Inertia::render('Dashboard', $data);

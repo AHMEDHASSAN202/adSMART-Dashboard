@@ -3081,6 +3081,36 @@ class TranslationsTableSeeder extends Seeder
                 "translation_key" => "unread_message",
                 "translation_value" => 'رسالة غير مقروءة',
                 "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "online_users",
+                "translation_value" => "Online Users",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "online_users",
+                "translation_value" => 'مستخدمين نشطين الان',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "start_chat",
+                "translation_value" => "Start Chat",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "start_chat",
+                "translation_value" => 'بداية محادثة',
+                "translation_lang" => "ar",
+            ],
+            [
+                "translation_key" => "latest",
+                "translation_value" => "Latest",
+                "translation_lang" => "en",
+            ],
+            [
+                "translation_key" => "latest",
+                "translation_value" => 'أحدث',
+                "translation_lang" => "ar",
             ]
         ]);
     }

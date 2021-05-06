@@ -1,4 +1,6 @@
 import {GET_MESSAGES_CHAT_URL} from "./Constants";
+import MomentComponent from "./Components/MomentComponent";
+import moment from "moment";
 
 export const formBuilder = (languages, formInputs={}, translatableInputs=[]) => {
     let keys = Object.keys(formInputs);
@@ -186,14 +188,13 @@ export class Message {
         this.message_id = message.message_id || '';
         this.message_type = message.message_type || 'text';
         this.message_content = message.message_content || '';
-        this.created_at = message.created_at ? timeSinceFromNow(new Date(message.created_at)) : '';
+        this.created_at = <MomentComponent fromNow date={moment.parseZone(message.created_at).toISOString()} />;;
         this.file_id = '';
         this.file_path = '';
         this.original_name = '';
         this.group_id = message.fk_group_id;
         this.reciever_id = message.fk_receiver_id;
         this.sender_id = message.fk_sender_id;
-        // this.user_id = message.user_id || '';
         this.user_name = message.user_name || '';
         this.user_avatar = message.user_avatar ? assets(message.user_avatar) : '';
         this.myMessage = (message.fk_sender_id === auth_id);

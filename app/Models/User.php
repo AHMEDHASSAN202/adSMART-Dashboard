@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\CanGetTableNameStatically;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,7 +11,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, CanGetTableNameStatically;
 
     protected $primaryKey = 'user_id';
 

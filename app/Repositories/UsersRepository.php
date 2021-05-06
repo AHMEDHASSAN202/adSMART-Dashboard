@@ -9,6 +9,7 @@ namespace App\Repositories;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -88,5 +89,15 @@ class UsersRepository
         $deleteUsers->map(function ($user) { $user->delete(); });
 
         return true;
+    }
+
+    public function getCountUsers()
+    {
+        return DB::table(User::getTableName())->count('user_id');
+    }
+
+    public function getLatestUsers($limit=5)
+    {
+        return User::select('user_id', 'fk_role_id', 'user_name', 'user_email', 'user_avatar')->with('role:role_id,name')->latest()->limit($limit)->get();
     }
 }

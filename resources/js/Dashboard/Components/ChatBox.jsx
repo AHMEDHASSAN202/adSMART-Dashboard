@@ -13,6 +13,7 @@ import Service from "../Service";
 import {Message, successAlert} from "../helpers";
 import Emoji from "./Emoji";
 import ChatInputFile from "./ChatInputFile";
+import MomentComponent from "./MomentComponent";
 
 const ChatBox = ({setRefreshList}) => {
     const {data:{chatItem}} = useContext(AppContext);
@@ -131,8 +132,9 @@ const ChatBoxBody = (() => {
                                                         : ''
                                                     }
                                                 </div>
-                                                <div title={message.created_at} className={"mt-1 rounded p-3 font-weight-bold font-size-lg text-left max-w-400px text-dark-50 " + (message.myMessage ? 'bg-light-primary' : 'bg-light-success')}>
+                                                <div className={"mt-1 rounded p-3 font-weight-bold font-size-lg text-left max-w-400px text-dark-50 " + (message.myMessage ? 'bg-light-primary' : 'bg-light-success')}>
                                                     {message.isText ? message.message_content : <div className="symbol"><img className='img-message' alt={message.original_name} src={message.file_path}/></div>}
+                                                    <small className='from-now-time-chatbox'>{message.created_at}</small>
                                                 </div>
                                             </div>
                                         ))

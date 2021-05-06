@@ -129,4 +129,9 @@ class PagesRepository
             return false;
         }
     }
+
+    public function getCountPages()
+    {
+        return DB::table(Page::getTableName())->count('page_id');
+    }
 }

@@ -6,15 +6,17 @@
 
 namespace App\Repositories;
 
-
 use Illuminate\Http\Request;
 
 class DashboardRepository
 {
-    public function __construct() {}
-
     public function load(Request $request)
     {
-        return [];
+        return [
+            'countUsers'    => app(UsersRepository::class)->getCountUsers(),
+            'countPages'    => app(PagesRepository::class)->getCountPages(),
+            'countCategories'    => app(CategoriesRepository::class)->getCountCategories(),
+            'latestUsers'    => app(UsersRepository::class)->getLatestUsers(),
+        ];
     }
 }

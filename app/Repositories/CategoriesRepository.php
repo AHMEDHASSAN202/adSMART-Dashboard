@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver;
 
 class CategoriesRepository
 {
@@ -139,7 +140,7 @@ class CategoriesRepository
         if (!is_array($data) || empty($data)) return true;
         try {
             foreach ($data as $key => $value) {
-                DB::table('categories')->where('category_id', $value['category_id'])->update([
+                DB::table(Category::getTableName())->where('category_id', $value['category_id'])->update([
                     'parent_id'  => $parentId,
                     'sort_order' => $key
                 ]);
@@ -150,5 +151,10 @@ class CategoriesRepository
         }catch (\Exception $exception) {
             return false;
         }
+    }
+
+    public function getCountCategories()
+    {
+        return DB::table(Category::getTableName())->count('category_id');
     }
 }

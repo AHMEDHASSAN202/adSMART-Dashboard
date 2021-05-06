@@ -24,11 +24,19 @@ const WebSocket = () => {
         Hooks.do_action('total_unread_messages', countMessagesRef.current, dispatch)
     }
 
+    const notification = (data) => Hooks.do_action('notification', data)
+
+    const testEvent = (data) => Hooks.do_action('test_event', data)
+
     useEffect(() => {
 
         SOCKET.on('onlineUsers', (data) => dispatch(setOnlineUsers(data)));
 
         SOCKET.on('total_unread_messages', totalUnreadMessages);
+
+        SOCKET.on('notification', notification)
+
+        SOCKET.on('test_event', testEvent)
 
     }, [])
 

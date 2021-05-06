@@ -13,10 +13,6 @@ class ActivityLog extends Model
 
     protected $appends = ['activity_description'];
 
-    protected $casts = [
-        'created_at'      => 'date:Y-m-d h:i'
-    ];
-
     //========== Appends Attributes ======================\\
     public function getActivityDescriptionAttribute()
     {

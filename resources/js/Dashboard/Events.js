@@ -6,6 +6,8 @@ export default class Events {
     static run() {
         Hooks.add_action('new_message', Events.newMessage);
         Hooks.add_action('total_unread_messages', Events.totalUnreadMessages);
+        Hooks.add_action('notification', Events.notification);
+        Hooks.add_action('test_event', Events.testEvent);
     }
 
     static newMessage(message, chatItem, listItems, setListItems, dispatch) {
@@ -48,5 +50,15 @@ export default class Events {
     static totalUnreadMessages(total, dispatch)
     {
         dispatch(setNewMessagesCount(total));
+    }
+
+    static notification(data)
+    {
+        console.log(data);
+    }
+
+    static testEvent(data)
+    {
+        console.log(data);
     }
 }

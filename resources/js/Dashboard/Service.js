@@ -1,5 +1,5 @@
 import HTTP from "../Common/HTTP";
-import {GET_USERS_AND_GROUPS_URL, GROUPS_URL} from "./Constants";
+import {GET_ONLINE_USERS_URL, GET_USERS_AND_GROUPS_URL, GROUPS_URL} from "./Constants";
 
 class Service {
     static getAllGroups(user_token)
@@ -53,6 +53,11 @@ class Service {
     static getMessages(url)
     {
         return HTTP.get(url);
+    }
+
+    static getOnlineUsers(user_token)
+    {
+        return HTTP.get(GET_ONLINE_USERS_URL, {auth_token: user_token});
     }
 }
 

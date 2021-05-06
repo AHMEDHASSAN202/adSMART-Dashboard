@@ -9,6 +9,7 @@ import FlagsSelectComponent from "../../Components/FlagsSelectComponent";
 import WriteCurrentPasswordPanel from "../../Components/WriteCurrentPasswordPanel";
 import { useForm } from '@inertiajs/inertia-react'
 import InvalidFeedBack from "../../Components/InvalidFeedback";
+import MomentComponent from "../../Components/MomentComponent";
 
 const breadcrumb = [
     {
@@ -301,7 +302,8 @@ const Index = (props) => {
                                             </div>
                                             <div className="d-flex flex-column flex-grow-1 mr-2">
                                                 {activity.platform}
-                                                <span className="text-muted font-weight-bold">{activity.browser} / {activity.ip_address} - {activity.created_at} {activity.currentDevice ? <span className='text-info font-weight-bold'>Current Device</span> : ''}</span>
+                                                {console.log(activity.created_at)}
+                                                <span className="text-muted font-weight-bold">{activity.browser} / {activity.ip_address} - <MomentComponent fromNow date={activity.created_at} /> {activity.currentDevice ? <span className='text-info font-weight-bold'>Current Device</span> : ''}</span>
                                             </div>
                                         </div>
                                     </li>
@@ -326,7 +328,7 @@ const Index = (props) => {
                                         <div className="timeline-item align-items-start" key={key}>
 
                                             <div className="timeline-label font-weight-bolder text-dark-75 font-size-lg">
-                                                {activity.updated_at || activity.created_at}
+                                                <MomentComponent fromNow date={activity.updated_at || activity.created_at} />
                                             </div>
 
                                             <div className="timeline-badge">
