@@ -6,6 +6,7 @@
       <change beforePath="$PROJECT_DIR$/app/Helpers/helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/helper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/TypesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/TypesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeders/OptionsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/OptionsTableSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeders/TranslationsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/TranslationsTableSeeder.php" afterDir="false" />
@@ -470,7 +471,7 @@
       <workItem from="1620217094585" duration="9370000" />
       <workItem from="1620303893773" duration="18293000" />
       <workItem from="1620386817138" duration="15997000" />
-      <workItem from="1620477204831" duration="4003000" />
+      <workItem from="1620477204831" duration="4996000" />
     </task>
     <servers />
   </component>

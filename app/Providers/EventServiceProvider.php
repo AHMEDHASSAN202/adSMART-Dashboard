@@ -58,12 +58,12 @@ class EventServiceProvider extends ServiceProvider
             RegisterResetUserPasswordActivity::class
         ],
         AfterEditUserEvent::class => [
-            ResendVerificationNotificationIfEditEmail::class,
+//            ResendVerificationNotificationIfEditEmail::class,
             ClearUserFiles::class,
             RegisterEditUserActivity::class
         ],
         AfterCreateUserEvent::class => [
-            ResendVerificationNotificationIfEditEmail::class,
+//            ResendVerificationNotificationIfEditEmail::class,
             SendUserNotificationAboutTheirAccount::class
         ],
         AfterRemoveUserEvent::class => [
