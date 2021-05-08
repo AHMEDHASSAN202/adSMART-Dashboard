@@ -102,6 +102,11 @@ class OptionsTableSeeder extends Seeder
                 'option_key'        => 'default_avatar',
                 'option_value'      => 'images/users/avatars/default.jpg',
                 'option_data'       => '',
+            ],
+            [
+                'option_key'        => 'default_role',
+                'option_value'      => 2,
+                'option_data'       => '',
             ]
         ]);
     }

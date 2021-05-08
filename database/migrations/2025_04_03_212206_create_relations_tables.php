@@ -19,7 +19,7 @@ class CreateRelationsTables extends Migration
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->foreign('fk_role_id')->references('role_id')->on('roles')->onDelete(null);
+            $table->foreign('fk_role_id')->references('role_id')->on('roles')->nullOnDelete();
         });
 
         Schema::table('pages_description', function (Blueprint $table) {

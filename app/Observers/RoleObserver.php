@@ -7,10 +7,12 @@
 namespace App\Observers;
 
 
+use App\Events\Dashboard\AfterDeleteRoleEvent;
+
 class RoleObserver
 {
     public function deleted($role)
     {
-        //update user role with default role
+        event(new AfterDeleteRoleEvent($role));
     }
 }

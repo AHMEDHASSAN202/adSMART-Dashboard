@@ -7,6 +7,7 @@ use App\Http\Requests\Dashboard\SettingsContactUsDataUpdatedRequest;
 use App\Http\Requests\Dashboard\SettingsDashboardDataUpdatedRequest;
 use App\Http\Requests\Dashboard\SettingsGeneralDataUpdatedRequest;
 use App\Repositories\OptionRepository;
+use App\Repositories\RolesRepository;
 use App\Repositories\SettingsRepository;
 use Inertia\Inertia;
 
@@ -23,8 +24,9 @@ class SettingsController extends Controller
     public function index()
     {
         app('document')->setTitle(_e('settings'));
+        $roles = app(RolesRepository::class)->getRoles();
 
-        return Inertia::render('Settings/Index', ['activeId' => $this->activeId]);
+        return Inertia::render('Settings/Index', ['activeId' => $this->activeId, 'roles' => $roles]);
     }
 
     public function updateGeneralData(SettingsGeneralDataUpdatedRequest $settingsGeneralDataUpdatedRequest)

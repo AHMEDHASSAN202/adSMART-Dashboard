@@ -14,6 +14,7 @@ import Checkbox from "../../Components/Checkbox";
 import Topbar from "../../Layout/Topbar";
 import {assets, isTrue} from "../../helpers";
 import Permissions from "../../Components/Permissions";
+import SelectComponent from "../../Components/Select";
 
 const tabs = [
     {id: 'general', title: translations['general']},
@@ -84,7 +85,7 @@ const breadcrumb = [
 
 const Index = (props) => {
     const {data: {languages}} = useContext(AppContext);
-    const {options} = props
+    const {options, roles} = props
 
     const generalFields = generateSettingsFields(languages, ['site_name', 'logo', 'keywords', 'description', 'default_lang'], ['site_name', 'logo', 'keywords', 'description'], options);
     const {
@@ -119,7 +120,7 @@ const Index = (props) => {
     })
 
 
-    const dashboardFields = generateSettingsFields(languages, ['dashboard_title', 'default_avatar', 'users_must_verify_email', 'display_must_verify_email_msg'], ['dashboard_title'], options);
+    const dashboardFields = generateSettingsFields(languages, ['dashboard_title', 'default_avatar', 'users_must_verify_email', 'display_must_verify_email_msg', 'default_role'], ['dashboard_title'], options);
     const {
         data:dashboardData,
         setData:setDashboardData,
@@ -277,6 +278,18 @@ const Index = (props) => {
                                     <label>{translations['display_must_verify_email_msg']}</label>
                                     <Checkbox checked={isTrue(dashboardData.display_must_verify_email_msg)} onChange={(e) => setDashboardData('display_must_verify_email_msg', e.target.checked)}/>
                                     <InvalidFeedBack msg={dashboardDataErrors['display_must_verify_email_msg']}/>
+                                </div>
+                                <div className='form-group d-flex justify-content-between'>
+                                    <label>{translations['default_role']}</label>
+                                    <SelectComponent
+                                        className='w-100'
+                                        getOptionLabel={(option) => option.name}
+                                        getOptionValue={(option) => option.role_id}
+                                        onChange={(e) => setDashboardData('default_role', e.role_id)}
+                                        options={roles}
+                                        value={roles.filter(option => option.role_id == dashboardData.default_role)}
+                                    />
+                                    <InvalidFeedBack msg={dashboardDataErrors['default_role']}/>
                                 </div>
                             </div>
 

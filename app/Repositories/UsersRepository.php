@@ -100,4 +100,9 @@ class UsersRepository
     {
         return User::select('user_id', 'fk_role_id', 'user_name', 'user_email', 'user_avatar')->with('role:role_id,name')->latest()->limit($limit)->get();
     }
+
+    public function setDefaultRoleForDeleteRole()
+    {
+        return DB::table(User::getTableName())->whereNull('fk_role_id')->update(['fk_role_id' => getOptionValue('default_role')]);
+    }
 }

@@ -19,6 +19,7 @@ class SettingsDashboardDataUpdatedRequest extends FormRequest
         $rules['display_must_verify_email_msg'] = 'boolean';
         $rules['users_must_verify_email'] = 'boolean';
         $rules['default_avatar'] = 'nullable|image|max:1024';
+        $rules['default_role'] = 'required|exists:roles,role_id';
 
         foreach ($languages as $language) {
             $rules['dashboard_title:' . $language->language_code] = 'required|max:200';
@@ -33,6 +34,7 @@ class SettingsDashboardDataUpdatedRequest extends FormRequest
 
         $attributes['display_must_verify_email_msg'] =  _e('display_must_verify_email_msg');
         $attributes['users_must_verify_email'] =  _e('users_must_verify_email');
+        $attributes['default_role'] =  _e('default_role');
         foreach ($languages as $language) {
             $rules['dashboard_title:' . $language->language_code] = _e('dashboard_title');
         }
@@ -48,6 +50,7 @@ class SettingsDashboardDataUpdatedRequest extends FormRequest
             'max.string'        => _e('validation::min.string'),
             'image'         => _e('validation::image'),
             'max.file'      => _e('validation::max.file'),
+            'exists'      => _e('validation::exists'),
         ];
     }
 }

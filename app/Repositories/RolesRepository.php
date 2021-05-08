@@ -96,7 +96,9 @@ class RolesRepository
         $ids = is_array($ids) ? $ids : [$ids];
         //used delete model for fire deleted event
         foreach ($ids as $role_id) {
-            Role::findOrFail($role_id)->delete();
+            if ($role_id != getOptionValue('default_role')) {
+                Role::findOrFail($role_id)->delete();
+            }
         }
 
         $this->clearCache();

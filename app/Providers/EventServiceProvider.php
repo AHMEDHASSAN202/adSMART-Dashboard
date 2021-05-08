@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Events\Dashboard\AfterChangeMyProfilePassword;
 use App\Events\Dashboard\AfterCreateUserEvent;
+use App\Events\Dashboard\AfterDeleteRoleEvent;
 use App\Events\Dashboard\AfterEditUserEvent;
 use App\Events\Dashboard\AfterPersonalOptionsEdit;
 use App\Events\Dashboard\AfterRemoveUserEvent;
@@ -23,6 +24,7 @@ use App\Listeners\Dashboard\RegisterUserAttemptedToDashboardLogin;
 use App\Listeners\Dashboard\ResendVerificationNotificationIfEditEmail;
 use App\Listeners\Dashboard\SendUserNotificationAboutTheirAccount;
 use App\Listeners\Dashboard\SendVerificationNotificationAfterLoggen;
+use App\Listeners\Dashboard\SetDefaultRoleForUsersDeletedRole;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -74,6 +76,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         AfterChangeMyProfilePassword::class => [
             RegisterChangeMyProfilePasswordActivity::class
+        ],
+        AfterDeleteRoleEvent::class => [
+            SetDefaultRoleForUsersDeletedRole::class
         ]
     ];
 

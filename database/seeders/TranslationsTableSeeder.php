@@ -439,6 +439,16 @@ class TranslationsTableSeeder extends Seeder
                 'translation_lang'      => 'ar',
             ],
             [
+                'translation_key'       => 'default_role',
+                'translation_value'     => 'Default Role',
+                'translation_lang'      => 'en',
+            ],
+            [
+                'translation_key'       => 'default_role',
+                'translation_value'     => 'الصلاحية الافتراضية',
+                'translation_lang'      => 'ar',
+            ],
+            [
                 'translation_key'       => 'reports',
                 'translation_value'     => 'Reports',
                 'translation_lang'      => 'en',
