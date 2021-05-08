@@ -23,7 +23,7 @@ class TypesController extends Controller
         $pageTitle = '';
 
         if ($type_key == 'page_type') {
-            $pageTitle = _e(['pages', 'types']);
+            $pageTitle = _e('pages_types');
         }
 
         app('document')->setTitle($pageTitle);

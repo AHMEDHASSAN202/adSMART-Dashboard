@@ -1,7 +1,7 @@
 import io from "socket.io-client";
 
 export const PaginationPerPageDefault = 10;
-export const WebSocketServer = 'ws://127.0.0.1:1215';
+export const WebSocketServer = window.WS_SERVICE_URL;
 export const WebSocketServerOptions = {
     withCredentials: true,
     transports: ['websocket'],

@@ -1,4 +1,4 @@
-import react, {useContext, useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import Layout from "./../../Layout/Layout";
 import Topbar from './../../Layout/Topbar';
 import Content from "./../../Layout/Content";
@@ -37,7 +37,7 @@ const Columns = [
 const Index = (props) => {
     const [selected, setSelected] = useState([]);
     const {categories} = props;
-    const { data: formData, setData, processing, put, errors} = useForm({sortable_categories: []})
+    const { data: formData, setData, processing, put} = useForm({sortable_categories: []})
     useEffect(() => {
         let flatCategories = categories.map((cat) => {
             return {

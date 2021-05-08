@@ -289,6 +289,16 @@ class TranslationsTableSeeder extends Seeder
                 'translation_lang'      => 'ar',
             ],
             [
+                'translation_key'       => 'pages_types',
+                'translation_value'     => 'Pages Types',
+                'translation_lang'      => 'en',
+            ],
+            [
+                'translation_key'       => 'pages_types',
+                'translation_value'     => 'أنواع الصفحات',
+                'translation_lang'      => 'ar',
+            ],
+            [
                 'translation_key'       => 'page',
                 'translation_value'     => 'Page',
                 'translation_lang'      => 'en',

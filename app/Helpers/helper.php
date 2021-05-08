@@ -184,7 +184,7 @@ function initialDashboardData() {
                 'id'           => 'pages',
             ],
             [
-                'title' => _e(['pages', 'types']),
+                'title' => _e('pages_types'),
                 'page'  => route('dashboard.types.index', ['type_key' => 'page_type']),
                 'extraClasses' => '',
                 'icon'      => 'flaticon2-medical-records',

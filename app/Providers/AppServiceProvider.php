@@ -25,6 +25,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (env('SHARED_WITH_EXPOSE', false)) {
+            $parse = parse_url(config('app.url'));
+            request()->headers->set('host', $parse['host']);
+        }
+
         $this->app->singleton('document', function () {
             return new InertiaDocument();
         });

@@ -10,7 +10,7 @@ import Hooks from "../../Common/Hooks";
 import {SOCKET} from "../Constants";
 
 const ChatList = ({refreshList}) => {
-    const {auth: {user_token, user_id}} = usePage().props;
+    const {auth: {user_token, user_id}, queries} = usePage().props;
     const {data:{chatItem, onlineUsers}, dispatch} = useContext(AppContext);
     const [loading, setLoading] = useState(true);
     const [listItems, setListItems] = useState([]);
@@ -27,7 +27,13 @@ const ChatList = ({refreshList}) => {
                         setHiddenPaginate(true);
                     }
                     let items = usersAndGroups.map((value) => {
-                        return new ChatItem(value, user_token, user_id);
+                        let chatItem = new ChatItem(value, user_token, user_id);
+                        if (queries.user) {
+                            if (chatItem.isUser && chatItem.id == queries.user) {
+                                openChatBox(chatItem);
+                            }
+                        }
+                        return chatItem;
                     });
                     if (refresh) {
                         setListItems(items);
@@ -78,17 +84,21 @@ const ChatList = ({refreshList}) => {
     //we will get messages for this item chat
     const handleItemClick = (e, item) => {
         e.preventDefault();
+        openChatBox(item);
+    }
+
+    const openChatBox = (item) => {
         dispatch(setChatBoxLoading(true));
         Service.getMessages(item.messagesUrl)
-                .then((r) => {
-                    const {data:{messages}} = r;
-                    let msgs = [];
-                    messages.forEach((msg) => {
-                        msgs.push(new Message(msg, user_id));
-                    });
-                    dispatch(setChat({...item, chat: msgs}));
-                })
-                .finally(() => dispatch(setChatBoxLoading(false)));
+            .then((r) => {
+                const {data:{messages}} = r;
+                let msgs = [];
+                messages.forEach((msg) => {
+                    msgs.push(new Message(msg, user_id));
+                });
+                dispatch(setChat({...item, chat: msgs}));
+            })
+            .finally(() => dispatch(setChatBoxLoading(false)));
 
         if (item.chat.length) {
             SOCKET.emit('unread_messages', {[item.identify]: item.id, last_message_id: item.chat[item.chat.length - 1].message_id});

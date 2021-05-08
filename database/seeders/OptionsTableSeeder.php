@@ -100,7 +100,7 @@ class OptionsTableSeeder extends Seeder
             ],
             [
                 'option_key'        => 'default_avatar',
-                'option_value'      => 'images/users/avatars/ehaS7YB1IHA4fpIEtjafp4AzFWcxJnhUrSQ6sCin.jpg',
+                'option_value'      => 'images/users/avatars/default.jpg',
                 'option_data'       => '',
             ]
         ]);

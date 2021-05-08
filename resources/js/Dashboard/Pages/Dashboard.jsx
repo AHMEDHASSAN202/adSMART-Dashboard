@@ -6,7 +6,6 @@ import { InertiaLink } from '@inertiajs/inertia-react'
 import Content from "../Layout/Content";
 import Service from "../Service";
 import {assets} from "../helpers";
-import {setOnlineUsers} from "../actions";
 import Loading from "../Components/Loading";
 
 const Dashboard = (props) => {
@@ -16,14 +15,21 @@ const Dashboard = (props) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        Service.getOnlineUsers(user_token)
-               .then(({data}) => {
-                   if (data) {
-                       setOnlineUsersState(data.onlineUsers)
-                   }
-               })
-               .finally(() => setLoading(false))
-    }, [])
+        let onlineUsersLength = onlineUsers.length;
+        if (onlineUsersLength != 0) {
+            Service.getOnlineUsers(user_token)
+                .then(({data}) => {
+                    if (data) {
+                        setOnlineUsersState(data.onlineUsers)
+                    }
+                })
+                .finally(() => setLoading(false))
+        }
+        return () => {
+            onlineUsersLength = 0;
+            setOnlineUsersState([]);
+        }
+    }, [onlineUsers])
 
     return (
         <>
@@ -111,7 +117,7 @@ const Dashboard = (props) => {
                                 <h3 className="card-title font-weight-bolder text-info">{translations['online_users'] || 'Online Users'}</h3>
                             </div>
 
-                            <div className="card-body pt-2">
+                            <div className="card-body pt-2 position-relative">
                                 {loading && <Loading />}
                                 {onlineUsersState.map((user, i) => (
                                     <div key={i} className="d-flex align-items-center mb-10">
@@ -123,11 +129,11 @@ const Dashboard = (props) => {
                                         </div>
 
                                         <div className="d-flex flex-column flex-grow-1 font-weight-bold">
-                                            <a href="#" className="text-dark text-hover-primary mb-1 font-size-lg">{user.user_name}</a>
+                                            <InertiaLink href={route('dashboard.users.edit', user.user_id)} className="text-dark text-hover-primary mb-1 font-size-lg">{user.user_name}</InertiaLink>
                                             <span className="text-muted">{user.user_email}</span>
                                         </div>
 
-                                        {user_id != user.user_id && <InertiaLink as='button' className='btn btn-dark font-weight-bolder btn-sm text-uppercase'>{translations['start_chat'] || 'start chat'}</InertiaLink>}
+                                        {user_id != user.user_id && <InertiaLink href={route('dashboard.chat.index', {user: user.user_id})} className='btn btn-dark font-weight-bolder btn-sm text-uppercase'>{translations['start_chat'] || 'start chat'}</InertiaLink>}
                                     </div>
                                 ))}
 
@@ -146,7 +152,7 @@ const Dashboard = (props) => {
                             <div className="card-body pt-2">
 
                                 {latestUsers.map((usr, key) => (
-                                    <div key={key} className="d-flex align-items-center mb-10">
+                                    <div key={key} className="d-flex align-items-center">
 
                                         <div className="symbol symbol-60 symbol-light-white mr-5">
                                             <div className="symbol-label">
@@ -155,7 +161,7 @@ const Dashboard = (props) => {
                                         </div>
 
                                         <div className="d-flex flex-column flex-grow-1 font-weight-bold">
-                                            <a href="#" className="text-dark text-hover-primary mb-1 font-size-lg">{usr.user_name}</a>
+                                            <InertiaLink href={route('dashboard.users.edit', usr.user_id)} className="text-dark text-hover-primary mb-1 font-size-lg">{usr.user_name}</InertiaLink>
                                             <span className="text-muted">{usr.user_email}</span>
                                         </div>
                                     </div>

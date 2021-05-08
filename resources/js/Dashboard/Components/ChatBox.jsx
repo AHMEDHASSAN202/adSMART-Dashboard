@@ -231,7 +231,7 @@ const ChatBoxFooter = (() => {
                 {toggleEmoji && <Emoji onSelect={handleChangeEmojiSelect} />}
             </div>
             <div>
-                <PrimaryButton onClick={handleSendMessage}>Send</PrimaryButton>
+                <PrimaryButton onClick={handleSendMessage}>{translations['send']}</PrimaryButton>
             </div>
         </div>
         </div>

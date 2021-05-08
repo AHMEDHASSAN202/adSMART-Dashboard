@@ -51,7 +51,7 @@ html[dir=rtl] #nprogress .spinner {
     right: -15px;
     z-index: 1;
 }
-html[dir=rtl] * {
+html[dir=rtl] *:not(.fa, .far, .fas) {
     font-family: 'Cairo', sans-serif;
 }
 .data-table-extensions-action {
@@ -92,9 +92,11 @@ html[dir=rtl] * {
 .activity-timeline:before {
     left: 85px !important;
 }
-
+.timeline.timeline-6:before {
+    right: 71px;
+}
 .activity-timeline .timeline-label {
-    width: 85px !important;
+    width: 70px !important;
 }
 .my-settings-tabs .nav-item {
     font-size: 14px;
@@ -142,12 +144,19 @@ html[dir=rtl] * {
     .header-fixed.subheader-fixed .subheader {
         top: 55px;
     }
-    .aside-enabled .header.header-fixed,
-    .aside-enabled.subheader-fixed .subheader {
+    html[dir=ltr] .aside-enabled .header.header-fixed,
+    html[dir=ltr] .aside-enabled.subheader-fixed .subheader {
         left: 245px;
     }
-    .aside-fixed .wrapper {
+    html[dir=rtl] .aside-enabled .header.header-fixed,
+    html[dir=rtl] .aside-enabled.subheader-fixed .subheader {
+        right: 245px;
+    }
+    html[dir=ltr] .aside-fixed .wrapper {
         padding-left: 245px;
+    }
+    html[dir=rtl] .aside-fixed .wrapper {
+        padding-right: 245px !important;
     }
 }
 .card.card-custom > .card-header {
@@ -181,9 +190,14 @@ html[dir=rtl] * {
     left: 0;
     right: 0;
 }
-.my-spinner:before {
+html[dir=ltr] .my-spinner:before {
     left: 50%;
     margin-left: -2rem;
+    top: 35%
+}
+html[dir=rtl] .my-spinner:before {
+    right: 50%;
+    margin-right: -2rem;
     top: 35%
 }
 .chat-item-active img,
@@ -241,4 +255,8 @@ html[dir=rtl] * {
 .from-now-time-chatbox {
     display: block;
     font-size: 8px;
+}
+
+html[dir=rtl] .trackVertical {
+    left: 2px !important;
 }

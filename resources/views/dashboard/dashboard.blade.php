@@ -1,4 +1,6 @@
 <?php $language = getLanguage() ?>
+<?php $appSecure = env('APP_SECURE') ?>
+
 <!DOCTYPE html>
 <html lang="{{$language->language_code}}" dir="{{$language->language_direction}}">
     <head>
@@ -17,31 +19,31 @@
 
         <!--begin::Global Theme Styles(used by all pages)-->
         @if($language->language_direction == 'rtl')
-            <link href="{{ asset('dashboard-assets/plugins/global/plugins.bundle.rtl.css') }}" rel="stylesheet" type="text/css"/>
-            <link href="{{ asset('dashboard-assets/plugins/custom/prismjs/prismjs.bundle.rtl.css') }}" rel="stylesheet" type="text/css"/>
-            <link href="{{ asset('dashboard-assets/css/style.bundle.rtl.css') }}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('dashboard-assets/plugins/global/plugins.bundle.rtl.css', $appSecure) }}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('dashboard-assets/plugins/custom/prismjs/prismjs.bundle.rtl.css', $appSecure) }}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('dashboard-assets/css/style.bundle.rtl.css', $appSecure) }}" rel="stylesheet" type="text/css"/>
         @else
-            <link href="{{ asset('dashboard-assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css"/>
-            <link href="{{ asset('dashboard-assets/plugins/custom/prismjs/prismjs.bundle.css') }}" rel="stylesheet" type="text/css"/>
-            <link href="{{ asset('dashboard-assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('dashboard-assets/plugins/global/plugins.bundle.css', $appSecure) }}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('dashboard-assets/plugins/custom/prismjs/prismjs.bundle.css', $appSecure) }}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('dashboard-assets/css/style.bundle.css', $appSecure) }}" rel="stylesheet" type="text/css"/>
         @endif
         <!--end::Global Theme Styles-->
 
         <!--begin::Layout Themes(used by all pages)-->
         @if($language->language_direction == 'rtl')
-            <link href="{{ asset('dashboard-assets/css/themes/layout/header/base/light.rtl.css') }}" rel="stylesheet" type="text/css"/>
-            <link href="{{ asset('dashboard-assets/css/themes/layout/header/menu/light.rtl.css') }}" rel="stylesheet" type="text/css"/>
-            <link href="{{ asset('dashboard-assets/css/themes/layout/brand/dark.rtl.css') }}" rel="stylesheet" type="text/css"/>
-            <link href="{{ asset('dashboard-assets/css/themes/layout/aside/dark.rtl.css') }}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('dashboard-assets/css/themes/layout/header/base/light.rtl.css', $appSecure) }}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('dashboard-assets/css/themes/layout/header/menu/light.rtl.css', $appSecure) }}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('dashboard-assets/css/themes/layout/brand/dark.rtl.css', $appSecure) }}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('dashboard-assets/css/themes/layout/aside/dark.rtl.css', $appSecure) }}" rel="stylesheet" type="text/css"/>
         @else
-            <link href="{{ asset('dashboard-assets/css/themes/layout/header/base/light.css') }}" rel="stylesheet" type="text/css"/>
-            <link href="{{ asset('dashboard-assets/css/themes/layout/header/menu/light.css') }}" rel="stylesheet" type="text/css"/>
-            <link href="{{ asset('dashboard-assets/css/themes/layout/brand/dark.css') }}" rel="stylesheet" type="text/css"/>
-            <link href="{{ asset('dashboard-assets/css/themes/layout/aside/dark.css') }}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('dashboard-assets/css/themes/layout/header/base/light.css', $appSecure) }}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('dashboard-assets/css/themes/layout/header/menu/light.css', $appSecure) }}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('dashboard-assets/css/themes/layout/brand/dark.css', $appSecure) }}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('dashboard-assets/css/themes/layout/aside/dark.css', $appSecure) }}" rel="stylesheet" type="text/css"/>
         @endif
         <!--end::Layout Themes-->
 
-        <link rel="shortcut icon" href="{{ asset('dashboard-assets/media/logos/favicon.ico') }}"/>
+        <link rel="shortcut icon" href="{{ asset('dashboard-assets/media/logos/favicon.ico', $appSecure) }}"/>
 
         <link href="{{ mix('/css/dashboard.css') }}" rel="stylesheet"/>
         <script src="{{ mix('/js/dashboard.js') }}" defer></script>
@@ -53,6 +55,7 @@
             window.currentLanguage = @json($language);
             window.csrfToken = @json(csrf_token());
             window.WS_SERVICE_DOMAIN = @json(env('WS_SERVICE_DOMAIN'));
+            window.WS_SERVICE_URL = @json(env('WS_SERVICE_URL'));
             window.USER_TOKEN = @json($initialData['user_token']);
         </script>
 
