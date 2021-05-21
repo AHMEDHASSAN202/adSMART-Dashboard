@@ -260,4 +260,11 @@ html[dir=rtl] .my-spinner:before {
 html[dir=rtl] .trackVertical {
     left: 2px !important;
 }
+.adSmart-banner {
+    height: 300px;
+    background-repeat: no-repeat, repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url(/dashboard-assets/images/adSMART.gif);
+}
 

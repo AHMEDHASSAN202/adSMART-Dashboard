@@ -37,6 +37,16 @@ const Dashboard = (props) => {
             <Content>
 
                 <div className="row">
+                    <div className="col-xl-6">
+                        <div className="card card-custom card-stretch gutter-b">
+                            <div className="card-body d-flex p-0">
+                                <div className="flex-grow-1 p-20 pb-40 card-rounded flex-grow-1 bgi-no-repeat adSmart-banner"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="row">
                     <div className="col-md-3 col-sm-6">
                         <div className="card card-custom bg-info gutter-b" style={{height: '150px'}}>
                             <div className="card-body">

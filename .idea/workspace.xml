@@ -1,61 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="21fb09e6-cf43-4a90-9441-cdffd365609b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Helpers/helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/SettingsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/SettingsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/TypesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/TypesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Dashboard/SettingsDashboardDataUpdatedRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Dashboard/SettingsDashboardDataUpdatedRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Observers/RoleObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/RoleObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/RolesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/RolesRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/UsersRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/UsersRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2025_04_03_212206_create_relations_tables.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2025_04_03_212206_create_relations_tables.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/OptionsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/OptionsTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/TranslationsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/TranslationsTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/logos/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/logos/logo-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/logos/logo-4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/logos/logo-dark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/logos/logo-default-inverse.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/logos/logo-default.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/logos/logo-letter-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/logos/logo-letter-10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/logos/logo-letter-11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/logos/logo-letter-12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/logos/logo-letter-13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/logos/logo-letter-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/logos/logo-letter-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/logos/logo-letter-4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/logos/logo-letter-5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/logos/logo-letter-6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/logos/logo-letter-7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/logos/logo-letter-8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/logos/logo-letter-9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/logos/logo-light.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/logos/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/logos/stars.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/misc/bg-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/misc/bg-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard-assets/media/misc/invoice 5 bar.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Components/ChatBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Components/ChatBox.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Components/ChatList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Components/ChatList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Components/Scroll.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Components/Scroll.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Constants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Pages/About.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Pages/Categories/Index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Pages/Categories/Index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Pages/Dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Pages/Dashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Pages/Settings/Index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Pages/Settings/Index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-    </list>
+    <list default="true" id="21fb09e6-cf43-4a90-9441-cdffd365609b" name="Default" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -368,7 +314,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JSX Harmony&#10;TEXT" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/logos" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../adSMART-Dashboard/public/dashboard-assets/images" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -378,11 +324,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Laravel\adSMART-Dashboard\public\dashboard-assets\images" />
       <recent name="E:\Laravel\InertiaDashboard\public\logos" />
       <recent name="E:\Laravel\InertiaDashboard\resources\js\Dashboard\Components" />
       <recent name="E:\Laravel\InertiaDashboard\resources\js\Dashboard" />
       <recent name="E:\Laravel\InertiaDashboard\resources\js\Dashboard\Pages\Chat\Groups" />
-      <recent name="E:\Laravel\InertiaDashboard\public\dashboard-assets\images\icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Laravel\InertiaDashboard\public\storage" />
@@ -479,7 +425,8 @@
       <workItem from="1620217094585" duration="9370000" />
       <workItem from="1620303893773" duration="18293000" />
       <workItem from="1620386817138" duration="15997000" />
-      <workItem from="1620477204831" duration="10426000" />
+      <workItem from="1620477204831" duration="10687000" />
+      <workItem from="1621621715446" duration="3391000" />
     </task>
     <servers />
   </component>
