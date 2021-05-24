@@ -57,6 +57,7 @@
             window.WS_SERVICE_DOMAIN = @json(env('WS_SERVICE_DOMAIN'));
             window.WS_SERVICE_URL = @json(env('WS_SERVICE_URL'));
             window.USER_TOKEN = @json($initialData['user_token']);
+            window.DEFAULT_USER_AVATAR = @json(getOptionValue('default_avatar'));
         </script>
 
     </head>

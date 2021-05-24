@@ -134,7 +134,7 @@ const Dashboard = (props) => {
 
                                         <div className="symbol symbol-60 symbol-light-white mr-5">
                                             <div className="symbol-label">
-                                                <img src={assets(user.user_avatar)} className="h-75 align-self-end" alt={user.user_name}/>
+                                                <img src={user.user_avatar ? assets(user.user_avatar) : assets(DEFAULT_USER_AVATAR)} className="h-75 align-self-end" alt={user.user_name}/>
                                             </div>
                                         </div>
 
@@ -166,7 +166,7 @@ const Dashboard = (props) => {
 
                                         <div className="symbol symbol-60 symbol-light-white mr-5">
                                             <div className="symbol-label">
-                                                <img src={assets(usr.user_avatar)} className="h-75 align-self-end" alt={usr.user_name}/>
+                                                <img src={usr.user_avatar_full_path} className="h-75 align-self-end" alt={usr.user_name}/>
                                             </div>
                                         </div>
 

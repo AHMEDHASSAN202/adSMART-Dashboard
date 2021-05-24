@@ -2,7 +2,7 @@ import Scroll from "./Scroll";
 import {useContext, useEffect, useState} from "react";
 import {AppContext} from "../AppContext";
 import Loading from "./Loading";
-import {LIMIT_MESSAGES_CHAT, SOCKET} from "../Constants";
+import {LIMIT_MESSAGES_CHAT} from "../Constants";
 import {setChat, setChatBoxLoading, updateAlert} from "../actions";
 import {InertiaLink, usePage} from "@inertiajs/inertia-react";
 import Dropdown from "./Dropdown";
@@ -10,10 +10,10 @@ import Permissions from "./Permissions";
 import UsersSelectComponent from "./UsersSelectComponent";
 import PrimaryButton from "./PrimaryButton";
 import Service from "../Service";
-import {Message, successAlert} from "../helpers";
+import {assets, Message, successAlert} from "../helpers";
 import Emoji from "./Emoji";
 import ChatInputFile from "./ChatInputFile";
-import MomentComponent from "./MomentComponent";
+import {SOCKET} from "../Constants";
 
 const ChatBox = ({setRefreshList}) => {
     const {data:{chatItem}} = useContext(AppContext);
@@ -126,7 +126,7 @@ const ChatBoxBody = (() => {
                                                     {!message.myMessage
                                                         ? <>
                                                             <div className="symbol symbol-circle symbol-30 mr-2">
-                                                                <img className='cursor-pointer' alt={message.user_name} title={message.user_name} src={message.user_avatar} />
+                                                                <img className='cursor-pointer' alt={message.user_name} title={message.user_name} src={message.user_avatar ? assets(message.user_avatar) : assets(DEFAULT_USER_AVATAR)} />
                                                             </div>
                                                         </>
                                                         : ''

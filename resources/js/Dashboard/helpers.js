@@ -117,6 +117,13 @@ export const isEmptyObject = (object) => {
     return Object.keys(object).length == 0;
 }
 
+export const compareTwoArray = (array1, array2) => {
+    if (array1.length !== array2.length) {
+        return false;
+    }
+    return array1.sort().join(',') === array2.sort().join(',');
+}
+
 export const getParents = (el, parentSelector) => {
     var parents = [];
     var p = el?.parentNode;
@@ -153,7 +160,7 @@ export class ChatItem {
                 this.title = item.user_name;
                 this.span = item.name;
                 this.subTitle = item.user_email;
-                this.imageComponent = <img alt={this.title} src={assets(item.user_avatar)}/>;
+                this.imageComponent = <img alt={this.title} src={item.user_avatar ? assets(item.user_avatar) : assets(DEFAULT_USER_AVATAR)}/>;
                 this.messagesUrl = GET_MESSAGES_CHAT_URL + '?auth_token=' + user_token + '&lang=' + currentLanguage.language_id + '&user_id=' + item.user_id;
                 this.id = item.user_id;
                 this.isUser = true;

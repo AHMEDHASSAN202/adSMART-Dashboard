@@ -1,13 +1,14 @@
 import {useEffect, useContext, useRef} from 'react';
-import {SOCKET } from "../Constants";
 import {AppContext} from "../AppContext";
 import {setNewMessagesCount, setOnlineUsers} from "../actions";
 import { usePage } from '@inertiajs/inertia-react'
 import Hooks from "../../Common/Hooks";
+import {SOCKET} from "../Constants";
+import {compareTwoArray} from "../helpers";
 
 const WebSocket = () => {
     const countMessagesRef = useRef(0)
-    const {data:{chatItem}, dispatch} = useContext(AppContext);
+    const {data:{chatItem, onlineUsers}, dispatch} = useContext(AppContext);
     const {auth:{user_id}} = usePage().props;
 
     const newMessage = (msg) => {
@@ -28,24 +29,30 @@ const WebSocket = () => {
 
     const testEvent = (data) => Hooks.do_action('test_event', data)
 
+    const handleOnlineUsers = (data) => {
+        if (!compareTwoArray(data, onlineUsers)) {
+            dispatch(setOnlineUsers(data));
+        }
+    }
+
     useEffect(() => {
 
-        SOCKET.on('onlineUsers', (data) => dispatch(setOnlineUsers(data)));
-
+        SOCKET.on('onlineUsers', handleOnlineUsers);
         SOCKET.on('total_unread_messages', totalUnreadMessages);
-
         SOCKET.on('notification', notification)
-
         SOCKET.on('test_event', testEvent)
 
+        return () => {
+            SOCKET.off('onlineUsers', handleOnlineUsers)
+            SOCKET.off('total_unread_messages', totalUnreadMessages)
+            SOCKET.off('notification', notification)
+            SOCKET.off('test_event', testEvent)
+        };
     }, [])
 
     useEffect(() => {
-
         SOCKET.on('private_message', newMessage);
-
         return () => SOCKET.off('private_message', newMessage);
-
     }, [chatItem])
 
     return ('');
