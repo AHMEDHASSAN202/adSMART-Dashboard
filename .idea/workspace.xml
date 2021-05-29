@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="21fb09e6-cf43-4a90-9441-cdffd365609b" name="Default" comment="" />
+    <list default="true" id="21fb09e6-cf43-4a90-9441-cdffd365609b" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -314,7 +316,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JSX Harmony&#10;TEXT" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../adSMART-Dashboard/public/dashboard-assets/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -427,6 +429,7 @@
       <workItem from="1620386817138" duration="15997000" />
       <workItem from="1620477204831" duration="10687000" />
       <workItem from="1621621715446" duration="3779000" />
+      <workItem from="1622296748181" duration="338000" />
     </task>
     <servers />
   </component>
