@@ -294,7 +294,8 @@ const Index = (props) => {
                                                     {activity.device_type ?
                                                         {
                                                             desktop: <i className='flaticon-laptop icon-3x d-flex justify-content-center align-items-center h-100'></i>,
-                                                            mobile: <i className='fas fa-mobile-alt icon-3x d-flex justify-content-center align-items-center h-100'></i>
+                                                            mobile: <i className='fas fa-mobile-alt icon-3x d-flex justify-content-center align-items-center h-100'></i>,
+                                                            phone: <i className='fas fa-mobile-alt icon-3x d-flex justify-content-center align-items-center h-100'></i>
                                                         }[activity.device_type]
                                                         : ''
                                                     }
@@ -302,7 +303,6 @@ const Index = (props) => {
                                             </div>
                                             <div className="d-flex flex-column flex-grow-1 mr-2">
                                                 {activity.platform}
-                                                {console.log(activity.created_at)}
                                                 <span className="text-muted font-weight-bold">{activity.browser} / {activity.ip_address} - <MomentComponent fromNow date={activity.created_at} /> {activity.currentDevice ? <span className='text-info font-weight-bold'>Current Device</span> : ''}</span>
                                             </div>
                                         </div>

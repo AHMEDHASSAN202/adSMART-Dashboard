@@ -65,7 +65,7 @@ const Index = (props) => {
             </Topbar>
             <Content>
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-md-6 col-sm-12">
                         <CardComponent title={props.pageTitle}>
                             <Table
                                 noHeader={true}
@@ -87,7 +87,7 @@ const Index = (props) => {
                             />
                         </CardComponent>
                     </div>
-                    <div className="col-6">
+                    <div className="col-md-6 col-sm-12">
                         <CardComponent
                             title={translations['sort']}
                             footer={
