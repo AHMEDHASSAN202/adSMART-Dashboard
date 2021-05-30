@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="21fb09e6-cf43-4a90-9441-cdffd365609b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/Dashboard/Components/SearchComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Dashboard/Components/SearchComponent.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -316,7 +317,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JSX Harmony&#10;TEXT" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/dashboard-assets" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -326,11 +327,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Laravel\adSMART-Dashboard\public\dashboard-assets" />
       <recent name="E:\Laravel\adSMART-Dashboard\public\dashboard-assets\images" />
       <recent name="E:\Laravel\InertiaDashboard\public\logos" />
       <recent name="E:\Laravel\InertiaDashboard\resources\js\Dashboard\Components" />
       <recent name="E:\Laravel\InertiaDashboard\resources\js\Dashboard" />
-      <recent name="E:\Laravel\InertiaDashboard\resources\js\Dashboard\Pages\Chat\Groups" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Laravel\InertiaDashboard\public\storage" />
@@ -429,7 +430,8 @@
       <workItem from="1620386817138" duration="15997000" />
       <workItem from="1620477204831" duration="10687000" />
       <workItem from="1621621715446" duration="3779000" />
-      <workItem from="1622296748181" duration="338000" />
+      <workItem from="1622296748181" duration="621000" />
+      <workItem from="1622387623700" duration="570000" />
     </task>
     <servers />
   </component>

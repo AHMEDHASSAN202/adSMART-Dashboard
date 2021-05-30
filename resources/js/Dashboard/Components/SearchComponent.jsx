@@ -41,7 +41,7 @@ const SearchComponent = ({data, columns, setDataFunction, originalData, paginati
     }
 
     return (
-        <div className="col-md-6">
+        <div>
             <input
                 ref={searchInput}
                 className={'form-control'}

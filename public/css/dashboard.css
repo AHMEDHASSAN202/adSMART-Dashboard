@@ -268,3 +268,29 @@ html[dir=rtl] .trackVertical {
     background-image: url(/dashboard-assets/images/adSMART.gif);
 }
 
+@media (max-width: 992px) {
+    #openSidebar {
+        display: inline-block !important;
+        position: absolute;
+        top: 8px;
+        left: 20px;
+        z-index: 999999999;
+    }
+    #closeSidebar {
+        z-index: 999999999;
+        justify-content: flex-end;
+    }
+}
+@media (max-width: 1280px) {
+    #openSidebar,
+    #closeSidebar {
+        display: none;
+    }
+}
+@media (min-width: 992px) {
+    #openSidebar,
+    #closeSidebar {
+        display: none !important;
+    }
+}
+
